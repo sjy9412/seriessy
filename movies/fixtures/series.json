@@ -1,369 +1,520 @@
 [
-{
-  "model": "movies.series",
-  "pk": 1,
-  "fields": {
-    "name": "007",
-    "genre": [
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 2,
-  "fields": {
-    "name": "\ub9c8\ube14 \uc2dc\ub124\ub9c8\ud2f1 \uc720\ub2c8\ubc84\uc2a4",
-    "genre": [
-      19,
-      28
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 3,
-  "fields": {
-    "name": "\uc2a4\ud0c0\uc6cc\uc988",
-    "genre": [
-      2,
-      18,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 4,
-  "fields": {
-    "name": "\uc288\ub809",
-    "genre": [
-      2,
-      6,
-      11,
-      12,
-      15
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 5,
-  "fields": {
-    "name": "\uce90\ub9ac\ube44\uc548\uc758 \ud574\uc801",
-    "genre": [
-      2,
-      6,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 6,
-  "fields": {
-    "name": "\uc96c\ub77c\uae30 \uacf5\uc6d0",
-    "genre": [
-      6,
-      18,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 7,
-  "fields": {
-    "name": "\ud5dd\uac70 \uac8c\uc784",
-    "genre": [
-      2,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 8,
-  "fields": {
-    "name": "\ub098\ub2c8\uc544 \uc5f0\ub300\uae30",
-    "genre": [
-      2,
-      6,
-      12
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 9,
-  "fields": {
-    "name": "\uba54\uc774\uc988 \ub7ec\ub108",
-    "genre": [
-      7,
-      18,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 10,
-  "fields": {
-    "name": "\ud3ec\ucf13\ubaac\uc2a4\ud130 \uc560\ub2c8\uba54\uc774\uc158",
-    "genre": [
-      15
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 11,
-  "fields": {
-    "name": "\ub098 \ud640\ub85c \uc9d1\uc5d0",
-    "genre": [
-      6,
-      11,
-      12
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 12,
-  "fields": {
-    "name": "\ubc18\uc9c0\uc758 \uc81c\uc655",
-    "genre": [
-      2,
-      6,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 13,
-  "fields": {
-    "name": "\ud638\ube57",
-    "genre": [
-      2,
-      6
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 14,
-  "fields": {
-    "name": "\ud574\ub9ac\ud3ec\ud130",
-    "genre": [
-      2,
-      6,
-      12,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 15,
-  "fields": {
-    "name": "\uc2e0\ube44\ud55c \ub3d9\ubb3c\uc0ac\uc804",
-    "genre": [
-      2,
-      6,
-      12
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 16,
-  "fields": {
-    "name": "\ub9e4\ud2b8\ub9ad\uc2a4",
-    "genre": [
-      18,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 17,
-  "fields": {
-    "name": "\ub300\ubd80",
-    "genre": [
-      1,
-      7,
-      16
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 18,
-  "fields": {
-    "name": "\ubcf8",
-    "genre": [
-      7,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 19,
-  "fields": {
-    "name": "\ubbf8\uc158\uc784\ud30c\uc11c\ube14",
-    "genre": [
-      6,
-      7,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 20,
-  "fields": {
-    "name": "\ubc30\ud2b8\ub9e8",
-    "genre": [
-      1,
-      13,
-      16,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 21,
-  "fields": {
-    "name": "\uc5d1\uc2a4\ub9e8",
-    "genre": [
-      6,
-      18,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 22,
-  "fields": {
-    "name": "\ud0b9\uc2a4\ub9e8",
-    "genre": [
-      6,
-      19
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 23,
-  "fields": {
-    "name": "\uc3d8\uc6b0",
-    "genre": [
-      4,
-      7,
-      16
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 24,
-  "fields": {
-    "name": "\ucee8\uc800\ub9c1",
-    "genre": [
-      4,
-      7
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 25,
-  "fields": {
-    "name": "\uc5ec\uace0\uad34\ub2f4",
-    "genre": [
-      4
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 26,
-  "fields": {
-    "name": "\uc778\uc2dc\ub514\uc5b4\uc2a4",
-    "genre": [
-      4,
-      7,
-      13
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 27,
-  "fields": {
-    "name": "\ud1a0\uc774\uc2a4\ud1a0\ub9ac",
-    "genre": [
-      6,
-      11,
-      12,
-      15
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 28,
-  "fields": {
-    "name": "\ube44\ud3ec",
-    "genre": [
-      1,
-      5
-    ],
-    "like_users": ""
-  }
-},
-{
-  "model": "movies.series",
-  "pk": 29,
-  "fields": {
-    "name": "\ud0c0\uc9dc",
-    "genre": [
-      1,
-      16
-    ],
-    "like_users": ""
-  }
-}
+	{
+		"pk": 10,
+		"model": "movies.series",
+		"fields": {
+			"name": "스타 워즈",
+			"genre": [
+				28,
+				12,
+				878,
+				14
+			]
+		}
+	},
+	{
+		"pk": 84,
+		"model": "movies.series",
+		"fields": {
+			"name": "인디아나 존스",
+			"genre": [
+				28,
+				12
+			]
+		}
+	},
+	{
+		"pk": 119,
+		"model": "movies.series",
+		"fields": {
+			"name": "반지의 제왕",
+			"genre": [
+				28,
+				12,
+				14
+			]
+		}
+	},
+	{
+		"pk": 151,
+		"model": "movies.series",
+		"fields": {
+			"name": "스타 트렉 : 오리지날",
+			"genre": [
+				12,
+				9648,
+				878,
+				28,
+				53
+			]
+		}
+	},
+	{
+		"pk": 230,
+		"model": "movies.series",
+		"fields": {
+			"name": "대부",
+			"genre": [
+				80,
+				18,
+				53
+			]
+		}
+	},
+	{
+		"pk": 263,
+		"model": "movies.series",
+		"fields": {
+			"name": "다크 나이트",
+			"genre": [
+				28,
+				80,
+				18,
+				53
+			]
+		}
+	},
+	{
+		"pk": 264,
+		"model": "movies.series",
+		"fields": {
+			"name": "빽 투 더 퓨쳐",
+			"genre": [
+				12,
+				35,
+				878,
+				10751
+			]
+		}
+	},
+	{
+		"pk": 295,
+		"model": "movies.series",
+		"fields": {
+			"name": "캐리비안의 해적",
+			"genre": [
+				28,
+				12,
+				14,
+				35
+			]
+		}
+	},
+	{
+		"pk": 328,
+		"model": "movies.series",
+		"fields": {
+			"name": "쥬라기 공원",
+			"genre": [
+				12,
+				878,
+				28,
+				53
+			]
+		}
+	},
+	{
+		"pk": 399,
+		"model": "movies.series",
+		"fields": {
+			"name": "프레데터",
+			"genre": [
+				878,
+				28,
+				12,
+				53,
+				27
+			]
+		}
+	},
+	{
+		"pk": 420,
+		"model": "movies.series",
+		"fields": {
+			"name": "나니아 연대기",
+			"genre": [
+				12,
+				10751,
+				14
+			]
+		}
+	},
+	{
+		"pk": 432,
+		"model": "movies.series",
+		"fields": {
+			"name": "큐브",
+			"genre": [
+				9648,
+				878,
+				53
+			]
+		}
+	},
+	{
+		"pk": 528,
+		"model": "movies.series",
+		"fields": {
+			"name": "터미네이터",
+			"genre": [
+				28,
+				53,
+				878,
+				12
+			]
+		}
+	},
+	{
+		"pk": 556,
+		"model": "movies.series",
+		"fields": {
+			"name": "스파이더맨",
+			"genre": [
+				28,
+				14,
+				12
+			]
+		}
+	},
+	{
+		"pk": 645,
+		"model": "movies.series",
+		"fields": {
+			"name": "007 제임스 본드",
+			"genre": [
+				12,
+				28,
+				53,
+				878,
+				80
+			]
+		}
+	},
+	{
+		"pk": 656,
+		"model": "movies.series",
+		"fields": {
+			"name": "쏘우",
+			"genre": [
+				80,
+				27,
+				9648,
+				53
+			]
+		}
+	},
+	{
+		"pk": 748,
+		"model": "movies.series",
+		"fields": {
+			"name": "엑스맨",
+			"genre": [
+				12,
+				28,
+				878,
+				53,
+				14
+			]
+		}
+	},
+	{
+		"pk": 1241,
+		"model": "movies.series",
+		"fields": {
+			"name": "해리 포터",
+			"genre": [
+				12,
+				14,
+				10751,
+				9648
+			]
+		}
+	},
+	{
+		"pk": 1565,
+		"model": "movies.series",
+		"fields": {
+			"name": "28일/주 후",
+			"genre": [
+				27,
+				53,
+				878
+			]
+		}
+	},
+	{
+		"pk": 1570,
+		"model": "movies.series",
+		"fields": {
+			"name": "다이 하드",
+			"genre": [
+				28,
+				53
+			]
+		}
+	},
+	{
+		"pk": 1582,
+		"model": "movies.series",
+		"fields": {
+			"name": "닌자거북이",
+			"genre": [
+				878,
+				12,
+				28,
+				35,
+				10751,
+				14
+			]
+		}
+	},
+	{
+		"pk": 1709,
+		"model": "movies.series",
+		"fields": {
+			"name": "혹성탈출 오리지널",
+			"genre": [
+				878,
+				12,
+				18,
+				28,
+				9648
+			]
+		}
+	},
+	{
+		"pk": 1733,
+		"model": "movies.series",
+		"fields": {
+			"name": "미이라",
+			"genre": [
+				12,
+				28,
+				14,
+				27,
+				53
+			]
+		}
+	},
+	{
+		"pk": 2150,
+		"model": "movies.series",
+		"fields": {
+			"name": "슈렉",
+			"genre": [
+				12,
+				16,
+				35,
+				10751,
+				14
+			]
+		}
+	},
+	{
+		"pk": 131635,
+		"model": "movies.series",
+		"fields": {
+			"name": "헝거게임",
+			"genre": [
+				12,
+				878,
+				53,
+				28,
+				14
+			]
+		}
+	},
+	{
+		"pk": 295130,
+		"model": "movies.series",
+		"fields": {
+			"name": "메이즈 러너",
+			"genre": [
+				28,
+				9648,
+				878,
+				53
+			]
+		}
+	},
+	{
+		"pk": 34055,
+		"model": "movies.series",
+		"fields": {
+			"name": "포켓몬",
+			"genre": [
+				12,
+				16,
+				14,
+				878,
+				10751,
+				28,
+				18,
+				35
+			]
+		}
+	},
+	{
+		"pk": 9888,
+		"model": "movies.series",
+		"fields": {
+			"name": "나 홀로 집에",
+			"genre": [
+				35,
+				10751,
+				12,
+				80
+			]
+		}
+	},
+	{
+		"pk": 121938,
+		"model": "movies.series",
+		"fields": {
+			"name": "호빗",
+			"genre": [
+				28,
+				12,
+				14
+			]
+		}
+	},
+	{
+		"pk": 435259,
+		"model": "movies.series",
+		"fields": {
+			"name": "신비한 동물사전",
+			"genre": [
+				12,
+				14,
+				10751
+			]
+		}
+	},
+	{
+		"pk": 2344,
+		"model": "movies.series",
+		"fields": {
+			"name": "매트릭스",
+			"genre": [
+				28,
+				878,
+				12,
+				53,
+				16
+			]
+		}
+	},
+	{
+		"pk": 31562,
+		"model": "movies.series",
+		"fields": {
+			"name": "본",
+			"genre": [
+				28,
+				18,
+				9648,
+				53
+			]
+		}
+	},
+	{
+		"pk": 87359,
+		"model": "movies.series",
+		"fields": {
+			"name": "미션 임파서블",
+			"genre": [
+				12,
+				28,
+				53
+			]
+		}
+	},
+	{
+		"pk": 391860,
+		"model": "movies.series",
+		"fields": {
+			"name": "킹스맨",
+			"genre": [
+				28,
+				12,
+				35,
+				80
+			]
+		}
+	},
+	{
+		"pk": 313086,
+		"model": "movies.series",
+		"fields": {
+			"name": "컨저링",
+			"genre": [
+				27,
+				53,
+				9648
+			]
+		}
+	},
+	{
+		"pk": 131780,
+		"model": "movies.series",
+		"fields": {
+			"name": "여고괴담",
+			"genre": [
+				27,
+				14,
+				10749
+			]
+		}
+	},
+	{
+		"pk": 228446,
+		"model": "movies.series",
+		"fields": {
+			"name": "인시디어스",
+			"genre": [
+				27,
+				53,
+				18,
+				9648
+			]
+		}
+	},
+	{
+		"pk": 10194,
+		"model": "movies.series",
+		"fields": {
+			"name": "토이 스토리",
+			"genre": [
+				16,
+				35,
+				10751,
+				12,
+				14
+			]
+		}
+	},
+	{
+		"pk": 123800,
+		"model": "movies.series",
+		"fields": {
+			"name": "비포...",
+			"genre": [
+				18,
+				10749
+			]
+		}
+	},
+	{
+		"pk": 473847,
+		"model": "movies.series",
+		"fields": {
+			"name": "타짜",
+			"genre": [
+				80,
+				35,
+				18
+			]
+		}
+	}
 ]
