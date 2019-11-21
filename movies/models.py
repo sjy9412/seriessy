@@ -7,8 +7,8 @@ class Genre(models.Model):
 
 class Series(models.Model):
     name = models.CharField(max_length=30)
-    genre = models.ForeignKey(Genre, on_delete=models.PROTECT)
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_series')
+    genre = models.ManyToManyField(Genre)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_series', )
 
 class Movie(models.Model):
     title = models.CharField(max_length=100)
@@ -19,6 +19,7 @@ class Movie(models.Model):
     director = models.CharField(max_length=100)
     actor = models.CharField(max_length=100)
     userRating = models.FloatField()
+    series = models.ForeignKey(Series, on_delete=models.CASCADE)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
 
 class Review(models.Model):

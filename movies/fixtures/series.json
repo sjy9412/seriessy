@@ -1,0 +1,427 @@
+[
+{
+  "model": "movies.series",
+  "pk": 1,
+  "fields": {
+    "name": "007",
+    "genre": [
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 2,
+  "fields": {
+    "name": "\ub9c8\ube14 \uc2dc\ub124\ub9c8\ud2f1 \uc720\ub2c8\ubc84\uc2a4",
+    "genre": [
+      19,
+      28
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 3,
+  "fields": {
+    "name": "\uc2a4\ud0c0\uc6cc\uc988",
+    "genre": [
+      2,
+      18,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 4,
+  "fields": {
+    "name": "\uc288\ub809",
+    "genre": [
+      2,
+      6,
+      11,
+      12,
+      15
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 5,
+  "fields": {
+    "name": "\uce90\ub9ac\ube44\uc548\uc758 \ud574\uc801",
+    "genre": [
+      2,
+      6,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 6,
+  "fields": {
+    "name": "\uc96c\ub77c\uae30 \uacf5\uc6d0",
+    "genre": [
+      6,
+      18,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 7,
+  "fields": {
+    "name": "\ud5dd\uac70 \uac8c\uc784",
+    "genre": [
+      2,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 8,
+  "fields": {
+    "name": "\ub098\ub2c8\uc544 \uc5f0\ub300\uae30",
+    "genre": [
+      2,
+      6,
+      12
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 9,
+  "fields": {
+    "name": "\uba54\uc774\uc988 \ub7ec\ub108",
+    "genre": [
+      7,
+      18,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 10,
+  "fields": {
+    "name": "\ud3ec\ucf13\ubaac\uc2a4\ud130 \uc560\ub2c8\uba54\uc774\uc158",
+    "genre": [
+      15
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 11,
+  "fields": {
+    "name": "\ub098 \ud640\ub85c \uc9d1\uc5d0",
+    "genre": [
+      6,
+      11,
+      12
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 12,
+  "fields": {
+    "name": "\ubc18\uc9c0\uc758 \uc81c\uc655",
+    "genre": [
+      2,
+      6,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 13,
+  "fields": {
+    "name": "\ud638\ube57",
+    "genre": [
+      2,
+      6
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 14,
+  "fields": {
+    "name": "\ud574\ub9ac\ud3ec\ud130",
+    "genre": [
+      2,
+      6,
+      12,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 15,
+  "fields": {
+    "name": "\uc2e0\ube44\ud55c \ub3d9\ubb3c\uc0ac\uc804",
+    "genre": [
+      2,
+      6,
+      12
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 16,
+  "fields": {
+    "name": "\ub9e4\ud2b8\ub9ad\uc2a4",
+    "genre": [
+      18,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 17,
+  "fields": {
+    "name": "\ub300\ubd80",
+    "genre": [
+      1,
+      7,
+      16
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 18,
+  "fields": {
+    "name": "\ubcf8",
+    "genre": [
+      7,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 19,
+  "fields": {
+    "name": "\ubbf8\uc158\uc784\ud30c\uc11c\ube14",
+    "genre": [
+      6,
+      7,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 20,
+  "fields": {
+    "name": "\ubc30\ud2b8\ub9e8",
+    "genre": [
+      1,
+      13,
+      16,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 21,
+  "fields": {
+    "name": "\uc5d1\uc2a4\ub9e8",
+    "genre": [
+      6,
+      18,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 22,
+  "fields": {
+    "name": "\ud0b9\uc2a4\ub9e8",
+    "genre": [
+      6,
+      19
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 23,
+  "fields": {
+    "name": "\uc3d8\uc6b0",
+    "genre": [
+      4,
+      7,
+      16
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 24,
+  "fields": {
+    "name": "\ucee8\uc800\ub9c1",
+    "genre": [
+      4,
+      7
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 25,
+  "fields": {
+    "name": "\uc5ec\uace0\uad34\ub2f4",
+    "genre": [
+      4
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 26,
+  "fields": {
+    "name": "\uc778\uc2dc\ub514\uc5b4\uc2a4",
+    "genre": [
+      4,
+      7,
+      13
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 27,
+  "fields": {
+    "name": "\ud1a0\uc774\uc2a4\ud1a0\ub9ac",
+    "genre": [
+      6,
+      11,
+      12,
+      15
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 28,
+  "fields": {
+    "name": "\ube44\ud3ec",
+    "genre": [
+      1,
+      5
+    ],
+    "like_users": [
+      3
+    ]
+  }
+},
+{
+  "model": "movies.series",
+  "pk": 29,
+  "fields": {
+    "name": "\ud0c0\uc9dc",
+    "genre": [
+      1,
+      16
+    ],
+    "like_users": [
+      3
+    ]
+  }
+}
+]
