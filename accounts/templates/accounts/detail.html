@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+{{ detail_user.username }}
+<form action="{% url 'accounts:following' detail_user.pk %}" method='POST'>
+{% csrf_token %}
+<button type='submit'>팔로잉</button>
+</form>
+<h3>팔로워 목록</h3>
+{% for u in detail_user.followers.all %}
+<p>{{ u }}</p>
+{% endfor %}
+<h3>팔로잉 목록</h3>
+{% for u in detail_user.followings.all %}
+<p>{{ u }}</p>
+{% endfor %}
+{% endblock %}
