@@ -13,7 +13,7 @@ def signup(request):
         if forms.is_valid():
             user = forms.save()
             auth_login(request, user)
-            return redirect('movies:index')
+            return redirect('series:index')
     else:
         forms = CustomUserCreationFrom()
     context = {
@@ -27,7 +27,7 @@ def login(request):
         if forms.is_valid():
             user = forms.get_user()
             auth_login(request, user)
-            return redirect(request.GET.get('next') or 'movies:index')
+            return redirect(request.GET.get('next') or 'series:index')
     else:
         forms = AuthenticationForm()
     context = {
@@ -37,7 +37,7 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
-    return redirect('movies:index')
+    return redirect('series:index')
 
 @login_required
 def detail(request, pk):
@@ -50,8 +50,9 @@ def detail(request, pk):
 def following(request, pk):
     if request.method == 'POST':
         detail_user = get_user_model().objects.get(pk=pk)
-        if request.user in detail_user.followers.all():
-            detail_user.followers.remove(request.user)
-        else:
-            detail_user.followers.add(request.user) 
+        if detail_user != request.user:
+            if request.user in detail_user.followers.all():
+                detail_user.followers.remove(request.user)
+            else:
+                detail_user.followers.add(request.user) 
     return redirect('accounts:detail', pk)

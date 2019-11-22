@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+{% for s in series %}
+<a href="{% url 'series:detail' s.pk %}">
+{{ s.name }}
+</a>
+<br>
+</form>
+{% endfor %}
+{% endblock %}

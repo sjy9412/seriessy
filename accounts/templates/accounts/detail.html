@@ -1,16 +1,26 @@
 {% extends 'base.html' %}
 {% block body %}
 {{ detail_user.username }}
+{% if user != detail_user %}
 <form action="{% url 'accounts:following' detail_user.pk %}" method='POST'>
 {% csrf_token %}
 <button type='submit'>팔로잉</button>
 </form>
+{% endif %}
 <h3>팔로워 목록</h3>
-{% for u in detail_user.followers.all %}
-<p>{{ u }}</p>
+{% for user in detail_user.followers.all %}
+<p>{{ user }}</p>
 {% endfor %}
 <h3>팔로잉 목록</h3>
-{% for u in detail_user.followings.all %}
-<p>{{ u }}</p>
+{% for user in detail_user.followings.all %}
+<p>{{ user }}</p>
+{% endfor %}
+<h3>좋아하는 시리즈</h3>
+{% for series in detail_user.like_series.all %}
+<p>{{ series.name }}</p>
+{% endfor %}
+<h3>작성한 리뷰</h3>
+{% for review in detail_user.review_set.all %}
+<p>{{ review.movie.title }} : {{ review.content }} [{{ review.score }}]</p>
 {% endfor %}
 {% endblock %}

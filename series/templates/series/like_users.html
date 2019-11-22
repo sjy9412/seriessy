@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block body %}
+{% for user in series.like_users.all %}
+<a href="{% url 'accounts:detail' user.pk %}">{{ user }}</a>
+{% endfor %}
+{% endblock %}

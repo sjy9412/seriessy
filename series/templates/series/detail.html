@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>
+{{ series.name }}
+</h1>
+<a href="{% url 'series:like_users' series.pk %}">이 시리즈를 좋아하는 사람들</a><br>
+<form action="{% url 'series:like' series.pk %}" method="POST" class="d-inline">
+      {% csrf_token %}
+      {% if request.user in series.like_users.all %}
+      <button>
+        좋아요취소..
+      </button>
+      {% else %}
+      <button>
+        좋아요..!!
+      </button>
+      {% endif %}
+</form>
+{% for movie in movies %}
+<a href="{% url 'series:movie_detail' movie.pk %}">
+{{ movie.title }}
+</a>
+<br>
+<img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="">
+<br>
+{{ movie.vote_average }}
+{% endfor %}
+{% endblock %}

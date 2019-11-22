@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+제목 : {{ movie.title }}
+평점 : {{ movie.vote_average}}
+<img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="">
+<img src="https://image.tmdb.org/t/p/w500/{{ movie.backdrop_path }}" alt="">
+설명 : {{movie.overview}}<br>
+{% for review in reviews %}
+{{ review.content }}
+{{ review.score }}
+{{ review.user }}
+<form action="{% url 'series:review_delete' movie.pk review.pk %}" method='POST'>
+{% csrf_token %}
+<button type="submit">댓글 삭제</button>
+</form>
+{% endfor %}
+<form action="{% url 'series:review_create' movie.pk %}" method='POST'>
+{% csrf_token %}
+{{ forms }}
+<button type="submit">댓글 달기</button>
+</form>
+
+{% endblock %}
+

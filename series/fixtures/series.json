@@ -1,0 +1,520 @@
+[
+	{
+		"pk": 10,
+		"model": "series.series",
+		"fields": {
+			"name": "스타 워즈",
+			"genre": [
+				28,
+				12,
+				878,
+				14
+			]
+		}
+	},
+	{
+		"pk": 84,
+		"model": "series.series",
+		"fields": {
+			"name": "인디아나 존스",
+			"genre": [
+				28,
+				12
+			]
+		}
+	},
+	{
+		"pk": 119,
+		"model": "series.series",
+		"fields": {
+			"name": "반지의 제왕",
+			"genre": [
+				28,
+				12,
+				14
+			]
+		}
+	},
+	{
+		"pk": 151,
+		"model": "series.series",
+		"fields": {
+			"name": "스타 트렉 : 오리지날",
+			"genre": [
+				12,
+				9648,
+				878,
+				28,
+				53
+			]
+		}
+	},
+	{
+		"pk": 230,
+		"model": "series.series",
+		"fields": {
+			"name": "대부",
+			"genre": [
+				80,
+				18,
+				53
+			]
+		}
+	},
+	{
+		"pk": 263,
+		"model": "series.series",
+		"fields": {
+			"name": "다크 나이트",
+			"genre": [
+				28,
+				80,
+				18,
+				53
+			]
+		}
+	},
+	{
+		"pk": 264,
+		"model": "series.series",
+		"fields": {
+			"name": "빽 투 더 퓨쳐",
+			"genre": [
+				12,
+				35,
+				878,
+				10751
+			]
+		}
+	},
+	{
+		"pk": 295,
+		"model": "series.series",
+		"fields": {
+			"name": "캐리비안의 해적",
+			"genre": [
+				28,
+				12,
+				14,
+				35
+			]
+		}
+	},
+	{
+		"pk": 328,
+		"model": "series.series",
+		"fields": {
+			"name": "쥬라기 공원",
+			"genre": [
+				12,
+				878,
+				28,
+				53
+			]
+		}
+	},
+	{
+		"pk": 399,
+		"model": "series.series",
+		"fields": {
+			"name": "프레데터",
+			"genre": [
+				878,
+				28,
+				12,
+				53,
+				27
+			]
+		}
+	},
+	{
+		"pk": 420,
+		"model": "series.series",
+		"fields": {
+			"name": "나니아 연대기",
+			"genre": [
+				12,
+				10751,
+				14
+			]
+		}
+	},
+	{
+		"pk": 432,
+		"model": "series.series",
+		"fields": {
+			"name": "큐브",
+			"genre": [
+				9648,
+				878,
+				53
+			]
+		}
+	},
+	{
+		"pk": 528,
+		"model": "series.series",
+		"fields": {
+			"name": "터미네이터",
+			"genre": [
+				28,
+				53,
+				878,
+				12
+			]
+		}
+	},
+	{
+		"pk": 556,
+		"model": "series.series",
+		"fields": {
+			"name": "스파이더맨",
+			"genre": [
+				28,
+				14,
+				12
+			]
+		}
+	},
+	{
+		"pk": 645,
+		"model": "series.series",
+		"fields": {
+			"name": "007 제임스 본드",
+			"genre": [
+				12,
+				28,
+				53,
+				878,
+				80
+			]
+		}
+	},
+	{
+		"pk": 656,
+		"model": "series.series",
+		"fields": {
+			"name": "쏘우",
+			"genre": [
+				80,
+				27,
+				9648,
+				53
+			]
+		}
+	},
+	{
+		"pk": 748,
+		"model": "series.series",
+		"fields": {
+			"name": "엑스맨",
+			"genre": [
+				12,
+				28,
+				878,
+				53,
+				14
+			]
+		}
+	},
+	{
+		"pk": 1241,
+		"model": "series.series",
+		"fields": {
+			"name": "해리 포터",
+			"genre": [
+				12,
+				14,
+				10751,
+				9648
+			]
+		}
+	},
+	{
+		"pk": 1565,
+		"model": "series.series",
+		"fields": {
+			"name": "28일/주 후",
+			"genre": [
+				27,
+				53,
+				878
+			]
+		}
+	},
+	{
+		"pk": 1570,
+		"model": "series.series",
+		"fields": {
+			"name": "다이 하드",
+			"genre": [
+				28,
+				53
+			]
+		}
+	},
+	{
+		"pk": 1582,
+		"model": "series.series",
+		"fields": {
+			"name": "닌자거북이",
+			"genre": [
+				878,
+				12,
+				28,
+				35,
+				10751,
+				14
+			]
+		}
+	},
+	{
+		"pk": 1709,
+		"model": "series.series",
+		"fields": {
+			"name": "혹성탈출 오리지널",
+			"genre": [
+				878,
+				12,
+				18,
+				28,
+				9648
+			]
+		}
+	},
+	{
+		"pk": 1733,
+		"model": "series.series",
+		"fields": {
+			"name": "미이라",
+			"genre": [
+				12,
+				28,
+				14,
+				27,
+				53
+			]
+		}
+	},
+	{
+		"pk": 2150,
+		"model": "series.series",
+		"fields": {
+			"name": "슈렉",
+			"genre": [
+				12,
+				16,
+				35,
+				10751,
+				14
+			]
+		}
+	},
+	{
+		"pk": 131635,
+		"model": "series.series",
+		"fields": {
+			"name": "헝거게임",
+			"genre": [
+				12,
+				878,
+				53,
+				28,
+				14
+			]
+		}
+	},
+	{
+		"pk": 295130,
+		"model": "series.series",
+		"fields": {
+			"name": "메이즈 러너",
+			"genre": [
+				28,
+				9648,
+				878,
+				53
+			]
+		}
+	},
+	{
+		"pk": 34055,
+		"model": "series.series",
+		"fields": {
+			"name": "포켓몬",
+			"genre": [
+				12,
+				16,
+				14,
+				878,
+				10751,
+				28,
+				18,
+				35
+			]
+		}
+	},
+	{
+		"pk": 9888,
+		"model": "series.series",
+		"fields": {
+			"name": "나 홀로 집에",
+			"genre": [
+				35,
+				10751,
+				12,
+				80
+			]
+		}
+	},
+	{
+		"pk": 121938,
+		"model": "series.series",
+		"fields": {
+			"name": "호빗",
+			"genre": [
+				28,
+				12,
+				14
+			]
+		}
+	},
+	{
+		"pk": 435259,
+		"model": "series.series",
+		"fields": {
+			"name": "신비한 동물사전",
+			"genre": [
+				12,
+				14,
+				10751
+			]
+		}
+	},
+	{
+		"pk": 2344,
+		"model": "series.series",
+		"fields": {
+			"name": "매트릭스",
+			"genre": [
+				28,
+				878,
+				12,
+				53,
+				16
+			]
+		}
+	},
+	{
+		"pk": 31562,
+		"model": "series.series",
+		"fields": {
+			"name": "본",
+			"genre": [
+				28,
+				18,
+				9648,
+				53
+			]
+		}
+	},
+	{
+		"pk": 87359,
+		"model": "series.series",
+		"fields": {
+			"name": "미션 임파서블",
+			"genre": [
+				12,
+				28,
+				53
+			]
+		}
+	},
+	{
+		"pk": 391860,
+		"model": "series.series",
+		"fields": {
+			"name": "킹스맨",
+			"genre": [
+				28,
+				12,
+				35,
+				80
+			]
+		}
+	},
+	{
+		"pk": 313086,
+		"model": "series.series",
+		"fields": {
+			"name": "컨저링",
+			"genre": [
+				27,
+				53,
+				9648
+			]
+		}
+	},
+	{
+		"pk": 131780,
+		"model": "series.series",
+		"fields": {
+			"name": "여고괴담",
+			"genre": [
+				27,
+				14,
+				10749
+			]
+		}
+	},
+	{
+		"pk": 228446,
+		"model": "series.series",
+		"fields": {
+			"name": "인시디어스",
+			"genre": [
+				27,
+				53,
+				18,
+				9648
+			]
+		}
+	},
+	{
+		"pk": 10194,
+		"model": "series.series",
+		"fields": {
+			"name": "토이 스토리",
+			"genre": [
+				16,
+				35,
+				10751,
+				12,
+				14
+			]
+		}
+	},
+	{
+		"pk": 123800,
+		"model": "series.series",
+		"fields": {
+			"name": "비포 시리즈",
+			"genre": [
+				18,
+				10749
+			]
+		}
+	},
+	{
+		"pk": 473847,
+		"model": "series.series",
+		"fields": {
+			"name": "타짜",
+			"genre": [
+				80,
+				35,
+				18
+			]
+		}
+	}
+]
