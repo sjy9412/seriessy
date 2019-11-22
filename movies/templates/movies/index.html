@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block body %}
 {% for s in series %}
-<a href="">
+<a href="{% url 'movies:detail' s.pk %}">
 {{ s.name }}
 </a>
+<br>
+</form>
 {% endfor %}
 {% endblock %}

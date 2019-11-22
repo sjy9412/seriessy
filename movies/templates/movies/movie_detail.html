@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+제목 : {{ movie.title }}
+평점 : {{ movie.vote_average}}
+<img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="">
+<img src="https://image.tmdb.org/t/p/w500/{{ movie.backdrop_path }}" alt="">
+설명 : {{movie.overview}}
+
+{% endblock %}
+

@@ -15,7 +15,6 @@ class Movie(models.Model):
     release_date = models.DateField(null=True, blank=True)
     vote_average = models.FloatField()
     series = models.ForeignKey(Series, on_delete=models.CASCADE)
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
     poster_path = models.CharField(max_length=100, null=True)
     backdrop_path = models.CharField(max_length=100, null=True)
     overview = models.TextField(blank=True)
