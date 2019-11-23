@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Genre, Movie, Review, Series
 from .forms import ReviewForm
 from django.contrib.auth.decorators import login_required
-
+from django.utils.safestring import mark_safe
+import json
 # Create your views here.
 
 def index(request):
@@ -68,4 +69,8 @@ def review_delete(request, movie_pk, review_pk):
         review.delete()
     return redirect('series:movie_detail', movie_pk)
 
-    
+
+def room(request, series_pk):
+    return render(request, 'series/room.html', {
+        'room_name_json': mark_safe(json.dumps(series_pk))
+    })

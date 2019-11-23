@@ -2,8 +2,21 @@
 {% block body %}
 <h1>
 {{ series.name }}
+<br>
+
+<form id="room-name-input" action="{% url 'series:room' series.pk %}">
+<input id="room-name-submit" type="button" value="Enter"/>
+</form>
+
 </h1>
 <a href="{% url 'series:like_users' series.pk %}">이 시리즈를 좋아하는 사람들</a><br>
+{% if not user.is_authenticated %}
+<form action="{% url 'accounts:login' %}" method="POST" class="d-inline">
+{% csrf_token %}
+<button>
+좋아요..!!
+</button>
+{% else %}
 <form action="{% url 'series:like' series.pk %}" method="POST" class="d-inline">
       {% csrf_token %}
       {% if request.user in series.like_users.all %}
@@ -16,6 +29,7 @@
       </button>
       {% endif %}
 </form>
+{% endif %}
 {% for movie in movies %}
 <a href="{% url 'series:movie_detail' movie.pk %}">
 {{ movie.title }}
@@ -25,4 +39,20 @@
 <br>
 {{ movie.vote_average }}
 {% endfor %}
+
 {% endblock %}
+
+    
+    <script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname = '/series/' + roomName + '/room/';
+        };
+    </script>
