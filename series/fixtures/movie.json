@@ -47,7 +47,7 @@
 			"vote_average": 6.4,
 			"overview": "공화국력 BBY 32년, 공화국이 큰 분쟁에 휩싸인다. 상인 조직인 무역 연합이 암흑에 가린 세력의 조종을 받고 나부 행성을 봉쇄해버린 것. 분쟁을 해결하기 위해 은하계 원로 회의는 콰이곤 진과 오비완 케노비 두 제다이를 파견한다. 타투인 행성에서 그는 노예 구역에서 어머니와 살고 있는 아나킨 스카이워커라는 소년을 만나 그가 미래의 은하계를 구할 수 있는 강한 힘을 가진 인물임을 믿고 그를 데려간다. 한편 나부 행성이 침입을 받자 아미달라 여왕은 은하계 원로 회의에 도움을 청하나, 원로 회의는 힘을 상실한 상태로 나부 행성은 위험에 처하게 되는데...",
 			"poster_path": "/pt7oxFkvQFzXD0ByCe1uJumL6vD.jpg",
-			"backdrop_path": "/zE7yQPLvDc2G88EOWEgKrIT0rWs.jpg",
+			"backdrop_path": "/oFmzoKDMedABPpRBDVwr0aynSK1.jpg",
 			"series": 10
 		}
 	},
@@ -641,7 +641,7 @@
 		"model": "series.movie",
 		"fields": {
 			"title": "The Chronicles of Narnia: The Silver Chair",
-			"release_date": null,
+			"release_date": "",
 			"vote_average": 0.0,
 			"overview": "",
 			"poster_path": "/fwfLgk5Kn6FuVDWfqDc1RKFU0N2.jpg",
@@ -762,7 +762,7 @@
 			"vote_average": 6.4,
 			"overview": "심판의 날 그 후, 뒤바뀐 미래. 새로운 인류의 희망 ‘대니’를 지키기 위해 슈퍼 솔져 ‘그레이스’가 미래에서 찾아오고, ‘대니’를 제거하기 위한 터미네이터 ‘Rev-9’의 추격이 시작된다.  최첨단 기술력으로 무장한 최강의 적 터미네이터 ‘Rev-9’의 무차별적인 공격에 쫓기기 시작하던 ‘그레이스’와 ‘대니’ 앞에 터미네이터 헌터 ‘사라 코너’가 나타나 도움을 준다. 인류의 수호자이자 기계로 강화된 슈퍼 솔져 ‘그레이스’와 ‘사라 코너’는 ‘대니’를 지키기 위해 새로운 조력자를 찾아 나서고, 터미네이터 ‘Rev-9’은 그들의 뒤를 끈질기게 추격하는데...",
 			"poster_path": "/nIoDNiWWOtCFdJRi89aFI98cdj0.jpg",
-			"backdrop_path": "/a6cDxdwaQIFjSkXf7uskg78ZyTq.jpg",
+			"backdrop_path": "/riTANvQ8GKmQbgtC1ps3OfkU43A.jpg",
 			"series": 528
 		}
 	},
@@ -1547,6 +1547,19 @@
 		}
 	},
 	{
+		"pk": 546330,
+		"model": "series.movie",
+		"fields": {
+			"title": "McClane",
+			"release_date": null,
+			"vote_average": 0.0,
+			"overview": "",
+			"poster_path": null,
+			"backdrop_path": null,
+			"series": 1570
+		}
+	},
+	{
 		"pk": 1497,
 		"model": "series.movie",
 		"fields": {
@@ -1931,7 +1944,7 @@
 			"release_date": "2002-07-13",
 			"vote_average": 6.4,
 			"overview": "세계에서 가장 아름답다고 불리우는 물의 도시 「아르트말레이」.\r 거기서 지우 일행은 신비한 기술을 지닌 포켓몬 「라티아스」, 「라티오스」와 만난다.  「라티오스」는 오빠, 「라티아스」는 여동생.  사이가 좋은 오누이로 이 마을의 비보 「마음의 물방울」을 지키고 있다.  비보를 노리고 나타난 괴도 자매 「잔느」와 「리온」.  이 두 괴도자매가 일으킨 사건에 휘말리는 지우와 피카츄 일행.  숨겨진 봉인이 풀릴 때 마을은 큰 수해를 입는다.\r 빼앗긴 「마음의 물방울」을 되찾기 위해 지우와 피카츄가 물의 도시를 달려나간다.",
-			"poster_path": "/3lhRiL5CoVkkpxNiTRQ9feVh46C.jpg",
+			"poster_path": "/A9IJrsEndgf3rKNGJVraNisgnpN.jpg",
 			"backdrop_path": "/sZ5vL6LJTcvo7bgCpQTPIhefLCe.jpg",
 			"series": 34055
 		}
@@ -2141,6 +2154,19 @@
 			"overview": "바람 축제에 온 지우와 피카츄. 이브이를 찾는 리사와 새로 만난 친구들과 함께 하던 중, 갑자기 모든 바람이 사라지고 정체를 알 수 없는 검은 연기가 마을을 뒤덮는다. 사람과 포켓몬 모두가 위험해질 위기가 찾아오자, 바람을 되찾기 위해 지우와 피카츄, 리사와 이브이, 라르고, 카가치, 히스이, 토리토의 모두가 함께하는 기적 같은 이야기가 시작된다.",
 			"poster_path": "/kFbN0FmDQGTt5q6HW3t7p1Yv8a3.jpg",
 			"backdrop_path": "/b1EKIjZWYAoC3WUk14012DX46Cb.jpg",
+			"series": 34055
+		}
+	},
+	{
+		"pk": 137773,
+		"model": "series.movie",
+		"fields": {
+			"title": "戦慄のミラージュポケモン",
+			"release_date": "2006-04-29",
+			"vote_average": 7.0,
+			"overview": "",
+			"poster_path": "/b1U1pzF2pAvBfajSU2Hv9HI4zFa.jpg",
+			"backdrop_path": null,
 			"series": 34055
 		}
 	},
@@ -2457,6 +2483,19 @@
 		}
 	},
 	{
+		"pk": 393640,
+		"model": "series.movie",
+		"fields": {
+			"title": "Untitled Jeremy Renner/Bourne Sequel",
+			"release_date": "",
+			"vote_average": 0.0,
+			"overview": "",
+			"poster_path": null,
+			"backdrop_path": null,
+			"series": 31562
+		}
+	},
+	{
 		"pk": 954,
 		"model": "series.movie",
 		"fields": {
@@ -2604,7 +2643,7 @@
 		"model": "series.movie",
 		"fields": {
 			"title": "Kingsman 3",
-			"release_date": null,
+			"release_date": "",
 			"vote_average": 0.0,
 			"overview": "",
 			"poster_path": null,
@@ -2617,7 +2656,7 @@
 		"model": "series.movie",
 		"fields": {
 			"title": "Statesman",
-			"release_date": null,
+			"release_date": "",
 			"vote_average": 0.0,
 			"overview": "",
 			"poster_path": null,
@@ -2917,7 +2956,7 @@
 		"fields": {
 			"title": "타짜: 원 아이드 잭",
 			"release_date": "2019-09-11",
-			"vote_average": 7.6,
+			"vote_average": 7.3,
 			"overview": "전설적인 타짜 짝귀의 아들이자 고시생인 일출(박정민)은 공부에는 흥미가 없지만 포커판에서는 날고 기는 실력자다. 포커판에서 우연히 알게 된 마돈나(최유화)의 묘한 매력에 빠져든 일출은 그녀의 곁을 지키는 이상무(윤제문)에게 속아 포커의 쓴맛을 제대로 배운다. 돈도 잃고 자존심까지 무너진 채 벼랑 끝에 몰린 그의 앞에 정체불명의 타짜 애꾸(류승범)가 나타난다. 50억이 걸린 거대한 판을 설계한 애꾸는 전국에서 타짜들을 불러모은다. 무엇이든 될 수 있고, 누구든 이길 수 있는 원 아이드 잭 팀으로 모인 이들, 인생을 바꿀 새로운 판에 뛰어드는데...",
 			"poster_path": "/aebY0aGAP7Od5qs3k6PXEVIMwYD.jpg",
 			"backdrop_path": "/uw7gbC7VWeuIgEd7gHUTcy0WNwQ.jpg",

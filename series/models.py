@@ -8,6 +8,9 @@ class Genre(models.Model):
 class Series(models.Model):
     name = models.CharField(max_length=30)
     genre = models.ManyToManyField(Genre)
+    overview = models.TextField(blank=True)
+    poster_path = models.CharField(max_length=100, null=True)
+    backdrop_path = models.CharField(max_length=100, null=True)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_series', blank=True)
 
 class Movie(models.Model):

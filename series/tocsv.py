@@ -12,7 +12,10 @@ for num in ids:
         "model": "series.series",
         "fields": {
             "name": response['name'].replace(' 시리즈', ''),
-            "genre": []
+            "genre": [],
+            "overview": response.get('overview'),
+            "poster_path": response.get('poster_path'),
+            "backdrop_path": response.get('backdrop_path')
         }
     })
     for movie in response['parts']:

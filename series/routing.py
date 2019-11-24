@@ -2,5 +2,5 @@ from django.urls import path
 from . import consumers
 
 websocket_urlpatterns = [
-    path('series/<int:series_pk>/room/', consumers.ChatConsumer),
+    path('chat/<int:room_name>/', consumers.ChatConsumer),
 ]

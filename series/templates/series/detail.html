@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block body %}
+<img src="https://image.tmdb.org/t/p/w500/{{ series.backdrop_path }}" alt="{{ series.name }} backdrop path">
 <h1>
 {{ series.name }}
 <br>
 
 <form id="room-name-input" action="{% url 'series:room' series.pk %}">
-<input id="room-name-submit" type="button" value="Enter"/>
+<button>Enter</button>
 </form>
 
 </h1>
