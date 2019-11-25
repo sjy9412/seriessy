@@ -4,6 +4,7 @@ from .forms import ReviewForm
 from django.contrib.auth.decorators import login_required
 from django.utils.safestring import mark_safe
 import json
+
 # Create your views here.
 
 def index(request):
