@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block body %}
 {% for s in series %}
+<img src="https://image.tmdb.org/t/p/w500/{{ s.backdrop_path }}" alt="{{ s.name }} backdrop path" width="100%">
 <a href="{% url 'series:detail' s.pk %}">
 {{ s.name }}
 </a>

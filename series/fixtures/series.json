@@ -612,7 +612,7 @@
 		"pk": 123800,
 		"model": "series.series",
 		"fields": {
-			"name": "비포...",
+			"name": "비포 시리즈",
 			"genre": [
 				18,
 				10749

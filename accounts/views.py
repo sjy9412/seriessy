@@ -12,7 +12,7 @@ def signup(request):
         forms = CustomUserCreationFrom(request.POST)
         if forms.is_valid():
             user = forms.save()
-            auth_login(request, user)
+            auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('series:index')
     else:
         forms = CustomUserCreationFrom()
@@ -26,7 +26,7 @@ def login(request):
         forms = AuthenticationForm(request, request.POST)
         if forms.is_valid():
             user = forms.get_user()
-            auth_login(request, user)
+            auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect(request.GET.get('next') or 'series:index')
     else:
         forms = AuthenticationForm()
