@@ -10,7 +10,8 @@ import json
 def index(request):
     series = Series.objects.all()
     context = {
-        'series':series
+        'series':series,
+        'chk': False
     }
     return render(request, 'series/index.html', context)
 
@@ -75,3 +76,17 @@ def room(request, series_pk):
     return render(request, 'series/room.html', {
         'room_name_json': mark_safe(json.dumps(series_pk))
     })
+
+def search(request):
+    series = Series.objects.all()
+    search = request.GET.get('search')
+    if search != '':
+        for s in series:
+            name = s.name.replace(' ', '')
+            if search in name or search in s.name:
+                return redirect(f'/series/#{s.pk}')
+    context = {
+        'series':series,
+        'chk': False
+    }
+    return render(request, 'series/index.html', context)
