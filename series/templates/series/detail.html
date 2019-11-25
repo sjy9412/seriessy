@@ -22,11 +22,11 @@
       {% csrf_token %}
       {% if request.user in series.like_users.all %}
       <button>
-        좋아요취소..
+        옆구리에 빼기
       </button>
       {% else %}
       <button>
-        좋아요..!!
+        옆구리에 담기
       </button>
       {% endif %}
 </form>
@@ -42,8 +42,6 @@
 {% endfor %}
 
 {% endblock %}
-
-    
     <script>
         document.querySelector('#room-name-input').focus();
         document.querySelector('#room-name-input').onkeyup = function(e) {
@@ -57,3 +55,5 @@
             window.location.pathname = '/series/' + roomName + '/room/';
         };
     </script>
+
+

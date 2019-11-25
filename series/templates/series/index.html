@@ -1,10 +1,131 @@
 {% extends 'base.html' %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css" />
+<script src="http://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
+{% endblock %}
+{% block css %}
+ .movies:link { 
+   color: black; 
+   text-decoration: none;
+   }
+ .movies:visited {
+    color: black; 
+    text-decoration: none;
+    }
+ .movies:hover { 
+   color: rgb(60, 116, 108); 
+   text-decoration: none;
+   }
+.background-change-wrap {
+  text-align: center;
+  height: 300vh;
+  padding-bottom: 100px;
+}
+.background-change-wrap > div {
+  overflow: hidden;
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 100vh;
+}
+.background-change-wrap > div > h2 {
+  margin: 0;
+  padding: 20px;
+  line-height: 40px;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.background-change-wrap > div > img {
+  position: sticky;
+  width: 100%;
+  object-fit: cover;
+}
+h1 {
+  text-align: center;
+  position: sticky;
+}
+{% endblock %}
 {% block body %}
 {% for s in series %}
+<section class="background-change-wrap">
+<div>
 <img src="https://image.tmdb.org/t/p/w500/{{ s.backdrop_path }}" alt="{{ s.name }} backdrop path" width="100%">
-<a href="{% url 'series:detail' s.pk %}">
-{{ s.name }}
-</a>
+</div>
+<div style="margin-top:100px;">
 <br>
+<br>
+<br>
+<br>
+<br>
+<h1 id="{{ s.pk }}">
+{{ s.name }}
+</h1>
+<div class="slick-items p-5 d-inline-block" style="margin: 0 40px; width: 90vw;">
+{% for movie in s.movie_set.all %}
+<a class="movies" href="{% url 'series:movie_detail' movie.pk %}">
+  <div>
+    <div style="width:25vw;">
+    <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" style="width:25vw; height:50vh;" alt="">
+    <h3 class="m-3" style="font-size:1.7vw">{{ movie.title }}</h3>
+    </div>
+  </div>
+  </a>
+{% endfor%}
+    </div>
+</div>
+</section>
 {% endfor %}
+<script>
+let ticking = false;
+
+function isElementUnderBottom(elem, triggerDiff) {
+  const { top } = elem.getBoundingClientRect();
+  const { innerHeight } = window;
+  return top > innerHeight + (triggerDiff || 0);
+}
+
+function handleScroll() {
+  ticking = false;
+  
+  const changeBgSection = document.querySelectorAll('.background-change-wrap');
+  changeBgSection.forEach(elem => {
+  const changeBgImg = elem.querySelector('div');
+  const {top: bgTop, height: bgHeight} = elem.getBoundingClientRect();
+  if (bgTop < 0) {
+    console.log(bgTop)
+    const rate = (-1) * bgTop / 5;
+    changeBgImg.style.filter = `grayscale(${rate}%)`;
+    changeBgImg.style.opacity = `${(100-rate/5) / 100}`;
+  } else {
+    changeBgImg.style.filter = 'none';
+    changeBgImg.style.opacity = `1`;
+  }
+  })
+}
+
+function requestTick() {
+  if(!ticking) {
+    requestAnimationFrame(handleScroll);
+  }
+  ticking = true;
+}
+
+ window.addEventListener('scroll', requestTick);
+	$('.slick-items').slick({
+		autoplay : true,
+		dots: true,
+		speed : 300 /* 이미지가 슬라이딩시 걸리는 시간 */,
+		infinite: true,
+		autoplaySpeed: 3000 /* 이미지가 다른 이미지로 넘어 갈때의 텀 */,
+		arrows: true,
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		fade: false
+	});
+</script>
 {% endblock %}
