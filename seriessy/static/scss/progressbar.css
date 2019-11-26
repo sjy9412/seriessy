@@ -1,0 +1,49 @@
+@keyframes grow {
+  from {
+    width: 0%; }
+  to {
+    width: 70%; } }
+
+#water {
+  display: none; }
+
+#waterlabel {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border-radius: 0.4rem;
+  border: 2px solid white;
+  overflow: hidden; }
+  #waterlabel #fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #A3E2EF 35%, #4F9CC0);
+    height: 100%;
+    width: 0%;
+    animation: grow 2s forwards; }
+    #waterlabel #fill:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/172299/bubbles-mask.gif);
+      mix-blend-mode: overlay;
+      opacity: 0.5; }
+
+.water {
+  display: inline-block;
+  color: #4F9CC0;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 0.7rem; }
+  .water:last-child {
+    float: right; }
+
+/*# sourceMappingURL=progressbar.css.map */

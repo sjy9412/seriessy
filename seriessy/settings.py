@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'sass_processor',
     'bootstrap4',
     'channels',
     'series',
@@ -154,3 +155,6 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+SASS_PROCESSOR_ENABLED = True
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'seriessy', 'static')

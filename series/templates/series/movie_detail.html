@@ -3,17 +3,54 @@
 .bg {
   background-image: url('https://image.tmdb.org/t/p/original/{{ movie.backdrop_path }}');
   background-size: cover;
-  height: 100vh;
-  opacity: 0.5;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+.bg > div {
+  background-color: rgba(255, 255, 255, 0.6);
+  min-height: 100vh;
+}
+span.star-prototype, span.star-prototype > * {
+    height: 16px; 
+    background: url(http://i.imgur.com/YsyS5y8.png) 0 -16px repeat-x;
+    width: 80px;
+    display: inline-block;
+}
+ 
+span.star-prototype > * {
+    background-position: 0 0;
+    max-width:80px; 
 }
 {% endblock %}
 {% block body %}
-제목 : {{ movie.title }}
-평점 : {{ movie.vote_average}}
-<img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="">
-<img src="" alt="">
-설명 : {{movie.overview}}<br>
-{% for review in reviews %}
+<div class="bg">
+<div>
+<div class="container" style="padding-top: 95px;">
+<div class="row">
+    <div class="col">
+    <h1 style="text-align:center; font-size:4vh;">{{ movie.title }}</h1>
+   </div>
+   </div> 
+  <div class="row m-5">
+    <div class="col" style="margin: auto 0;">
+      <div style="height:60vh; text-align:center; ">
+        <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" style="border:3px solid white; border-radius: 1%;" height="100%" alt="{{ movie.title }} poster">
+        <br>
+        <div style="text-align:left;" class='d-inline-block'>
+          <span class="star-prototype">{{ movie.vote_average }}</span>
+        </div>
+      </div>
+</form>
+    </div>
+    <div class="col">
+    <hr><p style="font-size:2.5vh;">{{movie.overview}}</p><hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" style="margin:0 10vw 20px;">
+          {% for review in reviews %}
 {{ review.content }}
 {{ review.score }}
 {{ review.user }}
@@ -26,7 +63,16 @@
 {% csrf_token %}
 {{ forms }}
 <button type="submit">댓글 달기</button>
-</form>
-
+</div>
+   </div>
+   </div> 
+</div>
+</div>
+<script>
+$.fn.generateStars = function() {
+    return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*8));});
+};
+$('.star-prototype').generateStars();
+</script>
 {% endblock %}
 
