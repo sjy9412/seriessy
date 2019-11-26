@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
+{% block css %}
+.bg {
+  background-image: url('https://image.tmdb.org/t/p/original/{{ movie.backdrop_path }}');
+  background-size: cover;
+  height: 100vh;
+  opacity: 0.5;
+}
+{% endblock %}
 {% block body %}
 제목 : {{ movie.title }}
 평점 : {{ movie.vote_average}}
 <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="">
-<img src="https://image.tmdb.org/t/p/w500/{{ movie.backdrop_path }}" alt="">
+<img src="" alt="">
 설명 : {{movie.overview}}<br>
 {% for review in reviews %}
 {{ review.content }}

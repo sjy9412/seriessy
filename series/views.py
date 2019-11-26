@@ -39,7 +39,7 @@ def like(request, series_pk):
             series.like_users.add(user)
             is_liked = False
         count =  series.like_users.count()
-        return JsonResponse({'count': count, 'is_liked': is_liked, 'user': user.username })
+        return JsonResponse({'count': count, 'is_liked': is_liked, 'user': user.username, 'pk': series_pk})
     else:
         return HttpResponseForbidden()
 
@@ -53,13 +53,6 @@ def movie_detail(request, movie_pk):
         'reviews': reviews
     }
     return render(request, 'series/movie_detail.html', context)
-
-@login_required
-def like_users(request, series_pk):
-    series = get_object_or_404(Series, pk=series_pk)
-    count = series.like_users.count()
-    like_users = series.like_users.all()
-    return JsonResponse({'count': count, 'like_users': like_users})
 
 @login_required
 def review_create(request, movie_pk):
@@ -83,8 +76,11 @@ def review_delete(request, movie_pk, review_pk):
 
 
 def room(request, series_pk):
+    user = request.user
     return render(request, 'series/room.html', {
-        'room_name_json': mark_safe(json.dumps(series_pk))
+        'room_name_json': mark_safe(json.dumps(series_pk)),
+        'user' : user.username
+        
     })
 
 def search(request):
