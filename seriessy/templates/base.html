@@ -94,30 +94,27 @@ window.onscroll = () => {
       <li class="nav-item active d-inline-block">
         <a href="{% url 'accounts:login' %}" >로그인</a>
       </li>
-      {% else %}
+      {% endif %}
       <li class="nav-item active d-inline-block">
-        <a href="{% url 'accounts:logout' %}" >로그아웃</a>
+      <form action="{% url 'series:search'  %}" class="form-inline d-line-bolck">
+        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </form>
       </li>
     </ul>
-    <li class="nav-item active dropdown d-inline-block my-rg-2 mr-5" style="float:right">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    </div>
+    {% if user.is_authenticated %}
+    <li class="nav-item active dropdown d-inline-block my-rg-2" style="float:right">
+        <a class="nav-link dropdown-toggle mr-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ user }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">로그아웃</a>
+          <a class="dropdown-item" href="{% url 'accounts:logout' %}" >로그아웃</a>
           <a class="dropdown-item" href="#">회원정보수정</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">지영이바보오오</a>
         </div>
-      </li>
-    </div> 
-    <form action="{% url 'series:search'  %}" class="form-inline d-line-bolck">
-    <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-  </form>
-    <form class="form-inline d-inline-block mr-5" style="float:right; font-size: 22px; margin-top:6.3px">
-        {{ user }}
-      </form>
+      </li> 
       {% endif %}
 </nav>
   {% block body %}

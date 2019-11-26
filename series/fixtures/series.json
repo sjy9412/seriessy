@@ -502,7 +502,7 @@
 		"pk": 31562,
 		"model": "series.series",
 		"fields": {
-			"name": "본",
+			"name": "본 시리즈",
 			"genre": [
 				28,
 				18,
