@@ -65,7 +65,7 @@ h1 {
 <div>
 <img src="https://image.tmdb.org/t/p/w500/{{ s.backdrop_path }}" alt="{{ s.name }} backdrop path" height="100%">
 </div>
-<div class="m-5" style="width:95%" id="{{ s.pk }}">
+<div class="m-5" style="hight:300vh; width:95%" id="{{ s.pk }}">
 <br>
 <br>
 <br>
@@ -75,15 +75,9 @@ h1 {
 {{ s.name }}
 {% if user.is_authenticated %}
 {% if user in s.like_users.all %}
-    <form action="{% url 'series:like' s.pk %}" method="POST" class="d-inline-block">
-    {% csrf_token %}
-    <button class="btn btn-primary">옆구리에 빼기</button>
-    </form>
+    <button class="btn btn-primary" id='like-button' data-id="{{ s.pk }}">옆구리에 빼기</button>
     {% else %}
-    <form action="{% url 'series:like' s.pk %}" method="POST" class="d-inline-block">
-    {% csrf_token %}
-    <button class="btn btn-primary">옆구리에 추가</button>
-    </form>
+    <button class="btn btn-primary" id='like-button' data-id="{{ s.pk }}">옆구리에 추가</button>
     {% endif %}
 <button class="btn btn-primary" data-toggle="modal" data-target="#series-{{ s.pk }}">옆구리에 추가한 사람들</button>
 {% endif %}
@@ -113,15 +107,15 @@ h1 {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">{{ s.name }} 추가한 사람들 [{{ s.like_users.count }}명]</h5>
+        <h5 class="modal-title">{{ s.name }} 추가한 사람들 [<span id="cnt"></span>명]</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div id='list' class="modal-body">
         {% for u in s.like_users.all %}
         {% if u == user %}
-        <p><a href="{% url 'accounts:detail' u.pk %}">{{ u }}</a>
+        <p id='user'>{{ u }}</p>
         {% endif %}
         {% endfor %}
         {% for u in s.like_users.all %}
@@ -133,7 +127,7 @@ h1 {
         {% endfor %}
         {% for u in s.like_users.all %}
         {% if u not in user.followings.all and u != user %}
-        <p><a href="{% url 'accounts:detail' u.pk %}">{{ u }}</a>
+        <p>{{ u }}
         <button class="btn btn-sm btn-primary" id="follow-button" data-id="{{u.pk}}">팔로우</button>
         </p>
         {% endif %}
@@ -141,6 +135,7 @@ h1 {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -184,6 +179,40 @@ function requestTick() {
 
  window.addEventListener('scroll', requestTick);
 
+const likeButton = document.querySelectorAll('#like-button')
+  likeButton.forEach(elem => {
+  elem.addEventListener('click', function(event){
+      console.log(event.target.dataset.id)
+      axios.defaults.xsrfCookieName = 'csrftoken'
+      axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+      axios.defaults.headers.common['X-REQUESTED-WITH'] = 'XMLHttpRequest'
+      axios.post(`/series/${event.target.dataset.id}/like/`)
+        .then(response => {
+          // const cnt = document.querySelector('#cnt')
+          // cnt.innerText = `${response.data.count}`
+          if (response.data.is_liked == 'max') {
+            alert("5개 이상 추가할 수 없습니다!")
+          }
+          else if (response.data.is_liked) {
+            $('#user').remove()
+          event.target.innerText = '옆구리에 추가'
+          }
+          else {
+            console.log(response.data.user)
+            const list = document.querySelector('#list')
+            const user = document.createElement('p')
+            user.id = 'user'
+            user.innerText = `${response.data.user}`
+            list.prepend(user)
+            event.target.innerText = '옆구리에 빼기'
+          }
+        })
+      .catch(error => {
+        console.log(error)
+      })
+    })
+    })
+
   const followButton = document.querySelectorAll('#follow-button')
   followButton.forEach(elem => {
   elem.addEventListener('click', function(event){
@@ -205,6 +234,7 @@ function requestTick() {
       })
     })
     })
+
 
 </script>
 <script>

@@ -27,13 +27,21 @@ def detail(request, series_pk):
 
 @login_required
 def like(request, series_pk):
-    if request.method == 'POST':
+    if request.is_ajax():
         series = get_object_or_404(Series, pk=series_pk)
-        if request.user in series.like_users.all():
-            series.like_users.remove(request.user)
+        user = request.user
+        if user in series.like_users.all():
+            series.like_users.remove(user)
+            is_liked = True
+        elif user.like_series.count() > 5:
+            is_liked = 'max'
         else:
-            series.like_users.add(request.user)
-    return redirect(f'/series/#{series_pk}')
+            series.like_users.add(user)
+            is_liked = False
+        count =  series.like_users.count()
+        return JsonResponse({'count': count, 'is_liked': is_liked, 'user': user.username })
+    else:
+        return HttpResponseForbidden()
 
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie,pk=movie_pk)
