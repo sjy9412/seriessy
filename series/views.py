@@ -74,13 +74,14 @@ def review_delete(request, movie_pk, review_pk):
         review.delete()
     return redirect('series:movie_detail', movie_pk)
 
-
+@login_required
 def room(request, series_pk):
+    series = get_object_or_404(Series, pk=series_pk)
     user = request.user
     return render(request, 'series/room.html', {
         'room_name_json': mark_safe(json.dumps(series_pk)),
-        'user' : user.username
-        
+        'user_name': mark_safe(json.dumps(user.username)),
+        'series': series,
     })
 
 def search(request):

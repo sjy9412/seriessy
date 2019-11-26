@@ -167,10 +167,10 @@ h1 span:nth-child(14) {
 {% endfor %}
 </h1>
 {% if user.is_authenticated %}
-{% if user in s.like_users.all %}
-    <form id="room-name-input" class="d-inline-block" action="{% url 'series:room' s.pk %}">
-<button class="btn btn-primary">채팅방 입장</button>
+<form id="room-name-input" class="d-inline-block" action="{% url 'series:room' s.pk %}">
+  <button class="btn btn-primary">채팅방 입장</button>
 </form>
+{% if user in s.like_users.all %}
     <button class="btn btn-primary" id='like-button' data-id="{{ s.pk }}">옆구리에 빼기</button>
     {% else %}
     <button class="btn btn-primary" id='like-button' data-id="{{ s.pk }}">옆구리에 추가</button>
