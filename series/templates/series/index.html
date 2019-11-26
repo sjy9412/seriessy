@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load order_by %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick.css" />
 <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css" />
@@ -7,7 +8,6 @@
 <script type="text/javascript" src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
-<link rel="stylesheet" href="path/to/swiper.min.css">
 <script src="https://unpkg.com/swiper/js/swiper.js"></script>
 <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 {% endblock %}
@@ -65,7 +65,7 @@ h1 {
 <div>
 <img src="https://image.tmdb.org/t/p/w500/{{ s.backdrop_path }}" alt="{{ s.name }} backdrop path" height="100%">
 </div>
-<div class="m-5" style="hight:300vh; width:95%" id="{{ s.pk }}">
+<div class="m-5" style="width:95%" id="{{ s.pk }}">
 <br>
 <br>
 <br>
@@ -73,17 +73,30 @@ h1 {
 <br>
 <h1>
 {{ s.name }}
+{% if user.is_authenticated %}
+{% if user in s.like_users.all %}
+    <form action="{% url 'series:like' s.pk %}" method="POST" class="d-inline-block">
+    {% csrf_token %}
+    <button class="btn btn-primary">옆구리에 빼기</button>
+    </form>
+    {% else %}
+    <form action="{% url 'series:like' s.pk %}" method="POST" class="d-inline-block">
+    {% csrf_token %}
+    <button class="btn btn-primary">옆구리에 추가</button>
+    </form>
+    {% endif %}
+<button class="btn btn-primary" data-toggle="modal" data-target="#series-{{ s.pk }}">옆구리에 추가한 사람들</button>
+{% endif %}
 </h1>
-
 <div class="swiper-container" > 
     <div class="swiper-wrapper">
-      {% for movie in s.movie_set.all %}
+      {% for movie in s.movie_set.all|order_by:"release_date" %}
       <div class="swiper-slide" style="border-radius: 1%; width:30vw; height:62vh; background-color:#ffffff">
       <a class="movies" href="{% url 'series:movie_detail' movie.pk %}">
       {% if movie.poster_path %}
       <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" class="m-2" style="border-radius: 1%; width:28vw; height:52vh;" alt="">
       {% else %}
-      <img src="{% static 'logo/noimage.png' %}" style="border-radius: 1%; width:25vw; height:40vh; margin:50px 8px;" alt="">
+      <img src="https://image.tmdb.org/t/p/w500/{{ s.poster_path }}" class="m-2" style="border-radius: 1%; width:28vw; height:52vh;" alt="">
       {% endif %}
       </a>
       <h3 class="m-3">{{ movie.title }}</h3>
@@ -96,9 +109,43 @@ h1 {
 </div>
 <!-- Slider main container -->
 </section>
+<div class="modal" tabindex="-1" role="dialog" id="series-{{ s.pk }}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ s.name }} 추가한 사람들 [{{ s.like_users.count }}명]</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% for u in s.like_users.all %}
+        {% if u == user %}
+        <p><a href="{% url 'accounts:detail' u.pk %}">{{ u }}</a>
+        {% endif %}
+        {% endfor %}
+        {% for u in s.like_users.all %}
+        {% if u in user.followings.all %}
+        <p><a href="{% url 'accounts:detail' u.pk %}">{{ u }}</a>
+        <button class="btn btn-sm btn-primary" id="follow-button" data-id="{{u.pk}}">팔로우 취소</button>
+        </p> 
+        {% endif %}
+        {% endfor %}
+        {% for u in s.like_users.all %}
+        {% if u not in user.followings.all and u != user %}
+        <p><a href="{% url 'accounts:detail' u.pk %}">{{ u }}</a>
+        <button class="btn btn-sm btn-primary" id="follow-button" data-id="{{u.pk}}">팔로우</button>
+        </p>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 {% endfor %}
-
-<script src="path/to/swiper.min.js"></script>
 
 <script>
 let ticking = false;
@@ -136,6 +183,28 @@ function requestTick() {
 }
 
  window.addEventListener('scroll', requestTick);
+
+  const followButton = document.querySelectorAll('#follow-button')
+  followButton.forEach(elem => {
+  elem.addEventListener('click', function(event){
+      console.log(event.target.dataset.id)
+      axios.defaults.xsrfCookieName = 'csrftoken'
+      axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+      axios.defaults.headers.common['X-REQUESTED-WITH'] = 'XMLHttpRequest'
+      axios.post(`/accounts/${event.target.dataset.id}/detail/following/`)
+        .then(response => {
+          if (response.data.is_follow) {
+          event.target.innerText = '팔로우'
+          }
+          else {
+            event.target.innerText = '팔로우 취소'
+          }
+        })
+      .catch(error => {
+        console.log(error)
+      })
+    })
+    })
 
 </script>
 <script>

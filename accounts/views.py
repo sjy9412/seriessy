@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationFrom
 from django.contrib.auth import get_user_model
@@ -47,12 +48,20 @@ def detail(request, pk):
     }
     return render(request, 'accounts/detail.html', context)
 
+
+@login_required
 def following(request, pk):
-    if request.method == 'POST':
+    if request.is_ajax():
         detail_user = get_user_model().objects.get(pk=pk)
+        user = request.user
         if detail_user != request.user:
             if request.user in detail_user.followers.all():
-                detail_user.followers.remove(request.user)
+                detail_user.followers.remove(user)
+                is_follow = True
             else:
-                detail_user.followers.add(request.user) 
-    return redirect('accounts:detail', pk)
+                detail_user.followers.add(user)
+                is_follow = False
+            cnt_following = detail_user.followings.count()
+            cnt_followers = detail_user.followers.count()
+            return JsonResponse({'cnt_following': cnt_following, 'cnt_followers': cnt_followers, 'is_follow': is_follow})
+

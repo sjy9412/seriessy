@@ -641,7 +641,7 @@
 		"model": "series.movie",
 		"fields": {
 			"title": "The Chronicles of Narnia: The Silver Chair",
-			"release_date":null,
+			"release_date":"9999-12-31",
 			"vote_average": 0.0,
 			"overview": "",
 			"poster_path": "/fwfLgk5Kn6FuVDWfqDc1RKFU0N2.jpg",
@@ -1551,7 +1551,7 @@
 		"model": "series.movie",
 		"fields": {
 			"title": "McClane",
-			"release_date": null,
+			"release_date": "9999-12-31",
 			"vote_average": 0.0,
 			"overview": "",
 			"poster_path": null,
@@ -2396,7 +2396,7 @@
 		"model": "series.movie",
 		"fields": {
 			"title": "매트릭스 4",
-			"release_date": null,
+			"release_date": "9999-12-31",
 			"vote_average": 0.0,
 			"overview": "",
 			"poster_path": "/uoQfAYR1NTax9akJ1ceeQTKNXeo.jpg",
@@ -2487,7 +2487,7 @@
 		"model": "series.movie",
 		"fields": {
 			"title": "Untitled Jeremy Renner/Bourne Sequel",
-			"release_date":null,
+			"release_date": "9999-12-31",
 			"vote_average": 0.0,
 			"overview": "",
 			"poster_path": null,
@@ -2643,7 +2643,7 @@
 		"model": "series.movie",
 		"fields": {
 			"title": "Kingsman 3",
-			"release_date":null,
+			"release_date": "9999-12-31",
 			"vote_average": 0.0,
 			"overview": "",
 			"poster_path": null,
@@ -2656,7 +2656,7 @@
 		"model": "series.movie",
 		"fields": {
 			"title": "Statesman",
-			"release_date":null,
+			"release_date": "9999-12-31",
 			"vote_average": 0.0,
 			"overview": "",
 			"poster_path": null,
