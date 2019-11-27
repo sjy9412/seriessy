@@ -11,6 +11,7 @@ class Series(models.Model):
     overview = models.TextField(blank=True)
     poster_path = models.CharField(max_length=100, null=True)
     backdrop_path = models.CharField(max_length=100, null=True)
+    score_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='score_series', through='Score')
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_series', blank=True)
 
 class Movie(models.Model):
@@ -21,9 +22,15 @@ class Movie(models.Model):
     poster_path = models.CharField(max_length=100, null=True)
     backdrop_path = models.CharField(max_length=100, null=True)
     overview = models.TextField(blank=True)
+    story = models.IntegerField(default=0)
 
 class Review(models.Model):
     content = models.CharField(max_length=200)
     score = models.IntegerField()
-    series = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    series = models.ForeignKey(Series, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+class Score(models.Model):
+    user_score = models.IntegerField()
+    series = models.ForeignKey(Series, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

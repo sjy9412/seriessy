@@ -1,26 +1,74 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Genre, Movie, Review, Series
+from .models import Genre, Movie, Review, Series, Score
 from .forms import ReviewForm
 from django.contrib.auth.decorators import login_required
 from django.utils.safestring import mark_safe
-import json
+import json, random
+from IPython import embed
+def result(series_all, user):
+    my_genre = set()
+    for my in user.like_series.all():
+        for g in my.genre.all():
+            my_genre.add(g.name)
+    for s in series_all:
+        if Score.objects.filter(user_id=user).filter(series_id=s.pk):
+            newscore = Score.objects.filter(user_id=user).filter(series_id=s.pk)[0]
+        else:
+            newscore = Score()
+        score = 0
+        newscore.user = user
+        for g in s.genre.all():
+            cnt = 0
+            if g.name in my_genre:
+                cnt += 1
+        if 0 < cnt < 3:
+            score += 2
+        elif 2 <= cnt:
+            score += 3
+        for follower in user.followings.all():
+            for review in follower.review_set.all():
+                if review.series_id == s.pk:
+                    if review.score <= 1:
+                        score -= 2
+                    elif 1 < review.score <= 2:
+                        score -= 1
+                    elif 3 < review.score <= 4:
+                        score += 1
+                    elif 4 < review.score <= 5:
+                        score += 2
+            for series in follower.like_series.all():
+                if series.pk == s.pk:
+                    score += 2
+        newscore.series = s
+        newscore.user_score = score
+        newscore.save()
+    return user.score_series.order_by('-score__user_score')
 
 # Create your views here.
-
 def index(request):
     series = Series.objects.all()
+    user = request.user
+    if user.is_authenticated:
+        series = result(series, user)
+    else:
+        series = list(series)
+        random.shuffle(series)
     context = {
         'series':series,
-        'chk': False
     }
     return render(request, 'series/index.html', context)
 
 def detail(request, series_pk, movie_pk):
     series = get_object_or_404(Series, pk=series_pk)
+    forms = ReviewForm()
     context = {
         'series': series,
-        'movie_pk': movie_pk
+        'movie_pk': movie_pk,
+        'forms': forms,
+        'room_name_json': mark_safe(json.dumps(series_pk)),
+        'user_name': mark_safe(json.dumps(request.user.username)),
+        'series': series,
     }
     return render(request, 'series/detail.html', context)
 
@@ -49,21 +97,28 @@ def movie_detail(request, movie_pk):
     context = {
         'movie': movie, 
         'forms': forms,
-        'reviews': reviews
+        'reviews': reviews,
     }
     return render(request, 'series/movie_detail.html', context)
 
 @login_required
-def review_create(request, movie_pk):
-    movie = get_object_or_404(Movie, pk=movie_pk)
+def review_create(request, series_pk, movie_pk):
+    series = get_object_or_404(Series, pk=series_pk)
+    reviews = series.review_set.all()
     if request.method == 'POST':
-        forms = ReviewForm(request.POST)
-        if forms.is_valid():
-            review = forms.save(commit=False)
-            review.user = request.user
-            review.movie = movie
-            forms.save()
-    return redirect('series:movie_detail', movie_pk)
+        for review in reviews:
+            if request.user == review.user:
+                forms = ReviewForm(request.POST, instance=review)
+                forms.save()
+                break
+        else:
+            forms = ReviewForm(request.POST)
+            if forms.is_valid():
+                review = forms.save(commit=False)
+                review.user = request.user
+                review.series = series
+                forms.save()
+    return redirect('series:detail', series_pk, movie_pk)
 
 @login_required
 def review_delete(request, movie_pk, review_pk):
@@ -91,8 +146,13 @@ def search(request):
             name = s.name.replace(' ', '')
             if search in name or search in s.name:
                 return redirect(f'/series/#{s.pk}')
+    user = request.user
+    if user.is_authenticated:
+        series = result(series, user)
+    else:
+        series = list(series)
+        random.shuffle(series)
     context = {
         'series':series,
-        'chk': False
     }
     return render(request, 'series/index.html', context)

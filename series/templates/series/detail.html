@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block css %}
 .bg {
   background-image: url('https://image.tmdb.org/t/p/original/{{ series.backdrop_path }}');
@@ -23,13 +24,137 @@ span.star-prototype > * {
     background-position: 0 0;
     max-width:80px; 
 }
+{
+  box-sizing: border-box;
+}
+.chat-container {
+  position: fixed;
+  margin: 0 auto;
+  width: 400px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+  transition: width 0.3s ease;
+}
+
+.chat-header {
+  background-color: white;
+  position: relative;
+  padding: 30px 8px 8px 8px;
+}
+
+.chat-header .header-btn {
+  border-radius: 50%;
+  border: none;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  padding: 0;
+}
+
+.chat-header #close {
+  background-color: #ff6059;
+  left: 8px;
+}
+
+.chat-header #minimize {
+  background-color: #ffbf2f;
+  left: 26px;
+}
+
+.chat-header #maximize {
+  background-color: #29cd42;
+  left: 44px;
+}
+
+.chat-header #profile-pic {
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+.chat-header #username {
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 5px;
+  color: #343434;
+}
+
+/* chat box */
+
+.chatbox {
+  height: 60vh;
+  background-color: #d7e4f2;
+  padding: 10px;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.bubble {
+  margin: 5px 0;
+  display: inline-block;
+  max-width: 300px;
+  font-size: 14px;
+  position: relative;
+}
+
+.friend-bubble {
+  background-color: white;
+  border-radius: 14px 14px 14px 0;
+  padding: 7px 15px 7px 15px;
+  float: left;
+  clear: both;
+}
+
+.my-bubble {
+  background-color: #fff46d;
+  border-radius: 14px 14px 0px 14px;
+  padding: 7px 15px 7px 15px;
+  float: right;
+  clear: both;
+}
+
+/* text box */
+
+.text-box {
+  background-color: #fafafa;
+  padding: 10px;
+}
+
+.text-box textarea {
+  height: 60px;
+  float: left;
+  width: calc(100% - 70px);
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 0.5px #d7d7d7;
+  resize: none;
+  padding: 10px;
+  font-size: 14px;
+}
+
+#send {
+  background-color: #4a90e2;
+  width: 60px;
+  height: 60px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 10px;
+  float: left;
+}
+
+.clearfix {
+  clear: both;
+}
 {% endblock %}
 {% block body %}
 <div class="bg">
 <div>
 <h2 style="text-align:center; font-size:4vh; padding-top:95px;">{{series.name}}</h2>
-<div class="row m-4">
-<div class="col-2">
+<div class="row mt-4 tx-4">
+<div class="col-2 mb-4">
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 {% for movie in series.movie_set.all %}
 {% if movie.pk == movie_pk %}
@@ -41,6 +166,7 @@ span.star-prototype > * {
 </div>
 </div>
 <div id="carouselExampleIndicators" class="carousel slide col-7 height=80vh;" data-ride="carousel" data-interval="false">
+<div class="row">
   <div class="carousel-inner" >
   {% for movie in series.movie_set.all %}
     {% if movie.pk == movie_pk %}
@@ -64,6 +190,23 @@ span.star-prototype > * {
             </div> 
         </div>
     {% endfor %}
+</div>
+<div class='row'>
+{% for review in series.review_set.all %}
+{{ review.content }}
+{{ review.score }}
+{{ review.user }}
+<form action="{% url 'series:review_delete' movie_pk review.pk %}" method='POST'>
+{% csrf_token %}
+<button type="submit">댓글 삭제</button>
+</form>
+{% endfor %}
+<form action="{% url 'series:review_create' series.pk movie_pk %}" method='POST'>
+{% csrf_token %}
+{{ forms }}
+<button type="submit">댓글 달기</button>
+</form>
+</div>
   <a class="carousel-control-prev col-1" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -72,9 +215,29 @@ span.star-prototype > * {
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+  </div>
+    </div>
+<div class="col-3">
+<div class="chat-container">
+<div class="chat-header">
+
+<button id="close" class="header-btn"></button>
+      <button id="minimize" class="header-btn"></button>
+      <button id="maximize" class="header-btn"></button>
+      <img id="profile-pic" src="{% static '/logo/main.jpg' %}" width="50" height="50">
+      <span id="username">악마지영의 방</span>
+</div>
+<div class="chatbox">
+      <div class="friend-bubble bubble">
+        <p><span style="color:blue">{{ user }}</span>님이 채팅방에 참가하셨습니다.</p>
+      </div>
+</div>
+    <div class="text-box">
+        <textarea id="chat-message-input" placeholder="메시지를 입력해주세요"></textarea>
+        <input id="send" type="button" value="전송"/>
+        <div class="clearfix"></div>
     </div>
 </div>
-<div class="col-3">
 </div>
 </div>
 </div>
@@ -84,5 +247,64 @@ $.fn.generateStars = function() {
     return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*8));});
 };
 $('.star-prototype').generateStars();
+ var roomName = {{ room_name_json }};
+    
+    window.onload = function(){
+       var message = '님이 입장하셨습니다.';
+       var user = {{ user_name }}
+       document.querySelector('#chatbox').value += (user+ message + '\n');
+    } 
+    var chatSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/chat/' + roomName + '/');
+
+    chatSocket.onmessage = function(e) {
+        var d = new Date();
+        var currentDate = d.getHours() + "시" + d.getMinutes() + "분"
+        var data = JSON.parse(e.data);
+        var message = data['message'];
+        var user = {{ user_name }}
+        if(message){
+        $('.chatbox').append('<div class="my-bubble bubble">'+ message+'</div>');
+        $('.chatbox').animate({
+        scrollTop: $('.chatbox').get(0).scrollHeight
+        }, 100);
+        $('textarea').val('');
+        }
+        
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function(e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#send').click();
+        }
+    };
+
+    document.querySelector('#send').onclick = function(e) {
+        var messageInputDom = document.querySelector('#chat-message-input');
+        var message = messageInputDom.value;
+        var message = $('textarea').val();
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }));
+        messageInputDom.value = '';
+    };
+    $('#send').on('click', send);
+function send() {
+    var message = $('textarea').val();
+    console.log(message);
+    if(message){
+    $('.chatbox').append('<div class="my-bubble bubble">'+ message+'</div>');
+    $('.chatbox').animate({
+      scrollTop: $('.chatbox').get(0).scrollHeight
+    }, 100);
+    $('textarea').val('');
+    }
+}
 </script>
 {% endblock %}
