@@ -1,26 +1,118 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block css %}
+.bg {
+background-image: url("{% static 'logo/main.jpg' %}");
+height: 100vh;
+}
+.card{
+width : 20vw;
+text-align : center;
+opacity: 1;
+}
+{% endblock %}
 {% block body %}
-{{ detail_user.username }}
-{% if user != detail_user %}
-<form action="{% url 'accounts:following' detail_user.pk %}" method='POST'>
-{% csrf_token %}
-<button type='submit'>팔로잉</button>
-</form>
-{% endif %}
-<h3>팔로워 목록</h3>
-{% for user in detail_user.followers.all %}
-<p>{{ user }}</p>
-{% endfor %}
-<h3>팔로잉 목록</h3>
-{% for user in detail_user.followings.all %}
-<p>{{ user }}</p>
-{% endfor %}
-<h3>좋아하는 시리즈</h3>
-{% for series in detail_user.like_series.all %}
-<p>{{ series.name }}</p>
-{% endfor %}
-<h3>작성한 리뷰</h3>
-{% for review in detail_user.review_set.all %}
-<p>{{ review.movie.title }} : {{ review.content }} [{{ review.score }}]</p>
-{% endfor %}
-{% endblock %}  
+<div class='bg'>
+​
+​
+    <h2>{{ detail_user.username }}님의 프로필 입니다!</h2>
+    {% if user != detail_user %}
+    {% if user in detail_user.followers.all %}
+    <p>
+        <button class="btn btn-sm btn-primary" id="follow-button" data-id={{detail_user.pk}}>팔로우 취소</button>
+    </p>
+    {% endif %}
+    {% if user not in detail_user.followers.all %}
+    <p>
+        <button class="btn btn-sm btn-primary" id="follow-button" data-id={{detail_user.pk}}>팔로우</button>
+    </p>
+    {% endif %}
+    {% endif %}
+    <div class='col mt-5'>
+        <div class='row'>
+            <div class='mx-3'>
+                <div class="card border-info mb-3 mx-5 d-inline-block" style="max-width: 18rem;">
+                    <div class="card-header">팔로워 목록</div>
+                    <div class="card-body text-info">
+                        <h5 class="card-title">팔로워 : {{ detail_user.followers.count }}명
+                        </h5>
+                        <p class="card-text">{% for user in detail_user.followers.all %}
+                            <a href="{% url 'accounts:detail' user.pk %}">
+                                {{ user }}
+                            </a>
+                            <br>
+                            {% endfor %}</p>
+                    </div>
+                </div>
+            </div>
+            <div class='row'>
+                <div class="card border-info mb-3 mx-5 d-inline-block" style="max-width: 18rem;">
+                    <div class="card-header">팔로잉 목록</div>
+                    <div class="card-body text-info">
+                        <h5 class="card-title">
+                            팔로잉 : {{ detail_user.followings.count }}명</h5>
+                        <p class="card-text">{% for user in detail_user.followings.all %}
+                            <a class="text-info" href="{% url 'accounts:detail' user.pk %}">
+                                {{ user }}
+                            </a>
+                            <br>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class='row'>
+                <div class="card border-info mb-3 mx-5 d-inline-block" style="max-width: 18rem;">
+                    <div class="card-header">좋아하는 시리즈</div>
+                    <div class="card-body text-info">
+                        <h5 class="card-title">
+                            {% for series in detail_user.like_series.all %}
+                            <a class="text-info" href="{% url 'series:detail' series.pk %}">
+                                <img height="150px" src="https://image.tmdb.org/t/p/w500/{{ series.poster_path }}">
+                                <br>{{ series.name }}
+                            </a>
+                            <br>
+                            {% endfor %}</h5>
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+​
+            <div class='row'>
+                <div class="card border-info mb-3 mx-5 d-inline-block" style="max-width: 18rem;">
+                    <div class="card-header">작성한 리뷰</div>
+                    <div class="card-body text-info">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">{% for review in detail_user.review_set.all %}
+                            <p>{{ review.movie.title }} : <br>{{ review.content }} [{{ review.score }}]</p>
+                            <br>
+                            {% endfor %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const followButton = document.querySelectorAll('#follow-button')
+    followButton.forEach(elem => {
+        elem.addEventListener('click', function (event) {
+            console.log(event)
+            axios.defaults.xsrfCookieName = 'csrftoken'
+            axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+            axios.defaults.headers.common['X-REQUESTED-WITH'] = 'XMLHttpRequest'
+            axios.post(`/accounts/${event.target.dataset.id}/detail/following/`)
+                .then(response => {
+                    if (response.data.is_follow) {
+                        event.target.innerText = '팔로우'
+                    } else {
+                        event.target.innerText = '팔로우 취소'
+                    }
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        })
+    })
+</script>
+{% endblock %}

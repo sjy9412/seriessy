@@ -104,10 +104,10 @@ nav a{
           {{ user }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'accounts:detail' user.pk %}">회원정보</a>
           <a class="dropdown-item" href="{% url 'accounts:logout' %}" >로그아웃</a>
-          <a class="dropdown-item" href="#">회원정보수정</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">지영이바보오오</a>
+          <a class="dropdown-item" href="#">시리즈 건의하기</a>
         </div>
       </li> 
       {% endif %}
