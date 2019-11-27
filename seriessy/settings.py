@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'sass_processor',
+    # 'sass_processor',
     'bootstrap4',
     'channels',
     'series',

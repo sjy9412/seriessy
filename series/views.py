@@ -16,12 +16,11 @@ def index(request):
     }
     return render(request, 'series/index.html', context)
 
-def detail(request, series_pk):
+def detail(request, series_pk, movie_pk):
     series = get_object_or_404(Series, pk=series_pk)
-    movies = series.movie_set.all()
     context = {
         'series': series,
-        'movies': movies
+        'movie_pk': movie_pk
     }
     return render(request, 'series/detail.html', context)
 

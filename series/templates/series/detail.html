@@ -1,59 +1,88 @@
 {% extends 'base.html' %}
-{% block body %}
-<img src="https://image.tmdb.org/t/p/w500/{{ series.backdrop_path }}" alt="{{ series.name }} backdrop path">
-<h1>
-{{ series.name }}
-<br>
-
-<form id="room-name-input" action="{% url 'series:room' series.pk %}">
-<button>Enter</button>
-</form>
-
-</h1>
-<a href="{% url 'series:like_users' series.pk %}">이 시리즈를 좋아하는 사람들</a><br>
-{% if not user.is_authenticated %}
-<form action="{% url 'accounts:login' %}" method="POST" class="d-inline">
-{% csrf_token %}
-<button>
-좋아요..!!
-</button>
-{% else %}
-<form action="{% url 'series:like' series.pk %}" method="POST" class="d-inline">
-      {% csrf_token %}
-      {% if request.user in series.like_users.all %}
-      <button>
-        옆구리에 빼기
-      </button>
-      {% else %}
-      <button>
-        옆구리에 담기
-      </button>
-      {% endif %}
-</form>
-{% endif %}
-{% for movie in movies %}
-<a href="{% url 'series:movie_detail' movie.pk %}">
-{{ movie.title }}
-</a>
-<br>
-<img class="slide-content" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="">
-<br>
-{{ movie.vote_average }}
-{% endfor %}
-
+{% block css %}
+.bg {
+  background-image: url('https://image.tmdb.org/t/p/original/{{ series.backdrop_path }}');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+.bg > div {
+  background-color: rgba(255, 255, 255, 0.6);
+  min-height: 100vh;
+}
+span.star-prototype, span.star-prototype > * {
+    height: 16px; 
+    background: url(http://i.imgur.com/YsyS5y8.png) 0 -16px repeat-x;
+    width: 80px;
+    display: inline-block;
+}
+ 
+span.star-prototype > * {
+    background-position: 0 0;
+    max-width:80px; 
+}
 {% endblock %}
-    <script>
-        document.querySelector('#room-name-input').focus();
-        document.querySelector('#room-name-input').onkeyup = function(e) {
-            if (e.keyCode === 13) {  // enter, return
-                document.querySelector('#room-name-submit').click();
-            }
-        };
-
-        document.querySelector('#room-name-submit').onclick = function(e) {
-            var roomName = document.querySelector('#room-name-input').value;
-            window.location.pathname = '/series/' + roomName + '/room/';
-        };
-    </script>
-
-
+{% block body %}
+<div class="bg">
+<div>
+<h2 style="text-align:center; font-size:4vh; padding-top:95px;">{{series.name}}</h2>
+<div class="row m-4">
+<div class="col-2">
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+{% for movie in series.movie_set.all %}
+{% if movie.pk == movie_pk %}
+    <a class="nav-link active" href="{% url 'series:detail' series.pk movie.pk %}" role="tab" aria-controls="v-pills-home" aria-selected="true">{{ movie.title }}</a>
+    {% else %}
+    <a class="nav-link" href="{% url 'series:detail' series.pk movie.pk %}" role="tab" aria-controls="v-pills-profile" aria-selected="false">{{ movie.title }}</a>
+    {% endif %}
+    {% endfor %}
+</div>
+</div>
+<div id="carouselExampleIndicators" class="carousel slide col-7 height=80vh;" data-ride="carousel" data-interval="false">
+  <div class="carousel-inner" >
+  {% for movie in series.movie_set.all %}
+    {% if movie.pk == movie_pk %}
+    <div class="carousel-item active">
+    {% else %}
+    <div class="carousel-item">
+    {% endif %}
+            <div class="row m-5">
+                <div class="col-4" style="margin: auto 0;">
+                    <div style="height:50vh; text-align:center; ">
+                        <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" style="border:3px solid white; border-radius: 1%;" width="100%" alt="{{ movie.title }} poster">
+                            <h5>{{ movie.title }}</h5>
+                            <div style="text-align:left;" class='d-inline-block'>
+                                <span class="star-prototype">{{ movie.vote_average }}</span>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-8">
+                    <hr><p style="font-size:2vh;">{{movie.overview}}</p><hr>
+                </div>
+            </div> 
+        </div>
+    {% endfor %}
+  <a class="carousel-control-prev col-1" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next col-1" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+    </div>
+</div>
+<div class="col-3">
+</div>
+</div>
+</div>
+</div>
+<script>
+$.fn.generateStars = function() {
+    return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*8));});
+};
+$('.star-prototype').generateStars();
+</script>
+{% endblock %}
