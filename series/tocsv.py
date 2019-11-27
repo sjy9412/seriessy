@@ -19,19 +19,31 @@ for num in ids:
         }
     })
     for movie in response['parts']:
+        title = movie.get('title')
+        params =  {
+        'part':'snippet',
+        'type': 'video',
+        'q': f'{title} 예고편',
+        }
+        response2 = requests.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyC2je31rAAa1r1WSXyNjv5dd5K-UIqJmuk', params=params).json()
         movies.append({
             "pk": movie['id'],
             "model": "series.movie",
             "fields": {
                 "title": movie.get('title'),
-                "release_date": movie.get('release_date'),
+                "release_date": movie.get('release_date', 9999-12-31),
                 "vote_average": movie.get('vote_average'),
                 "overview": movie.get('overview'),
-                "poster_path": movie.get('poster_path'),
+                "poster_path": movie.get('poster_path', response.get('poster_path')),
                 "backdrop_path": movie.get('backdrop_path'),
+                "video_url": "",
                 "series": response['id']
             }
         })
+        print(response2)
+        if response2.get('items', 0):
+            print(response2['items'])
+            movies[-1]['fields']['video_url'] = response2['items'][0]['id']['videoId'],
         for genre_id in movie['genre_ids']:
             if genre_id not in series[-1]['fields']['genre']:
                 series[-1]['fields']['genre'].append(genre_id)
