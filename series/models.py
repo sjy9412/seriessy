@@ -35,3 +35,7 @@ class Score(models.Model):
     user_score = models.IntegerField()
     series = models.ForeignKey(Series, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+class Request(models.Model):
+    series_name = models.CharField(max_length=100)
+    user = models.CharField(max_length=100)

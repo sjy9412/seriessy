@@ -157,16 +157,31 @@ def search(request):
     }
     return render(request, 'series/index.html', context)
 
+@login_required
 def comment_create_ajax(request):
-    review = Review()
-    review.content = request.POST.get('content')
-    review.series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
-    review.user = request.user
-    review.score = int(request.POST.get('score'))
-    review.save()
-    context = {
-        'content' : review.content,
-        'score' : review.score,
-        'username' : request.user.username
-    }
-    return HttpResponse(json.dumps(context), content_type="application/json")
+    series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
+    reviews = series.review_set.all()
+    if request.method == 'POST':
+        for review in reviews:
+            if request.user == review.user:
+                review.content = request.POST.get('content')
+                review.score = int(request.POST.get('score'))
+                review.save()
+                chk = False
+                break
+        else:
+            review = Review()
+            review.content = request.POST.get('content')
+            review.series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
+            review.user = request.user
+            review.score = int(request.POST.get('score'))
+            review.save()
+            chk = True
+        context = {
+            'content' : review.content,
+            'score' : review.score,
+            'username' : request.user.username,
+            'user_id' : request.user.pk,
+            'chk' : chk
+        }
+        return HttpResponse(json.dumps(context), content_type="application/json")
