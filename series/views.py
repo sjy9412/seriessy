@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Genre, Movie, Review, Series, Score
 from .forms import ReviewForm
@@ -68,7 +68,6 @@ def detail(request, series_pk, movie_pk):
         'forms': forms,
         'room_name_json': mark_safe(json.dumps(series_pk)),
         'user_name': mark_safe(json.dumps(request.user.username)),
-        'series': series,
     }
     return render(request, 'series/detail.html', context)
 
@@ -101,24 +100,24 @@ def movie_detail(request, movie_pk):
     }
     return render(request, 'series/movie_detail.html', context)
 
-@login_required
-def review_create(request, series_pk, movie_pk):
-    series = get_object_or_404(Series, pk=series_pk)
-    reviews = series.review_set.all()
-    if request.method == 'POST':
-        for review in reviews:
-            if request.user == review.user:
-                forms = ReviewForm(request.POST, instance=review)
-                forms.save()
-                break
-        else:
-            forms = ReviewForm(request.POST)
-            if forms.is_valid():
-                review = forms.save(commit=False)
-                review.user = request.user
-                review.series = series
-                forms.save()
-    return redirect('series:detail', series_pk, movie_pk)
+# @login_required
+# def review_create(request, series_pk, movie_pk):
+#     series = get_object_or_404(Series, pk=series_pk)
+#     reviews = series.review_set.all()
+#     if request.method == 'POST':
+#         for review in reviews:
+#             if request.user == review.user:
+#                 forms = ReviewForm(request.POST, instance=review)
+#                 forms.save()
+#                 break
+#         else:
+#             forms = ReviewForm(request.POST)
+#             if forms.is_valid():
+#                 review = forms.save(commit=False)
+#                 review.user = request.user
+#                 review.series = series
+#                 forms.save()
+#     return redirect('series:detail', series_pk, movie_pk)
 
 @login_required
 def review_delete(request, movie_pk, review_pk):
@@ -156,3 +155,17 @@ def search(request):
         'series':series,
     }
     return render(request, 'series/index.html', context)
+
+def comment_create_ajax(request):
+    review = Review()
+    review.content = request.POST.get('content')
+    review.series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
+    review.user = request.user
+    review.score = int(request.POST.get('score'))
+    review.save()
+    context = {
+        'content' : review.content,
+        'score' : review.score,
+        'username' : request.user.username
+    }
+    return HttpResponse(json.dumps(context), content_type="application/json")

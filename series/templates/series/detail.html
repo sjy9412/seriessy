@@ -212,21 +212,19 @@ span.star-prototype > * {
 </div>
     {% endfor %}
 </div>
-<div class='row'>
+<div id='comment_list' class='row'>
 {% for review in series.review_set.all %}
 {{ review.content }}
 {{ review.score }}
 {{ review.user }}
-<form action="{% url 'series:review_delete' movie_pk review.pk %}" method='POST'>
+<form action="{% url 'series:review_delete' series.pk review.pk %}" method='POST'>
 {% csrf_token %}
 <button type="submit">댓글 삭제</button>
 </form>
 {% endfor %}
-<form action="{% url 'series:review_create' series.pk movie_pk %}" method='POST'>
-{% csrf_token %}
 {{ forms }}
-<button type="submit">댓글 달기</button>
-</form>
+<button onClick="make_comment({{series.pk}})">댓글 달기</button>
+
 </div>
   <a class="carousel-control-prev col-1" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -328,4 +326,32 @@ function send() {
     }
 }
 </script>
+<script>
+function make_comment(series_id){
+  var content = $("#id_content").val();
+  var score = $("#id_score").val();
+  $.ajax({
+    type: "POST",
+    url: "{% url 'series:comment_create_ajax' %}",
+    data:{
+      'series_id': series_id,
+      'content': content,
+      'score' : score,
+      'csrfmiddlewaretoken': '{{ csrf_token }}',
+    },
+    dataType: "json",
+    success: function(response){
+      console.log('hi');
+      console.log(response.message);
+      $("#comment_list").append("<p>"+response.content+response.score+response.username+"</p><hr>")
+      $("#comment").val(' ')
+    },
+    error: function(request, status, error){
+      console.log('bye...');
+      alert(error);
+    },
+  });
+}
+</script>
+
 {% endblock %}

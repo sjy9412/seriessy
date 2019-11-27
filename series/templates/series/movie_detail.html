@@ -47,9 +47,9 @@ span.star-prototype > * {
     <hr><p style="font-size:2.5vh;">{{movie.overview}}</p><hr>
     </div>
   </div>
-  <div class="row">
+  <div class="row" id="comment-list">
     <div class="col" style="margin:0 10vw 20px;">
-          {% for review in reviews %}
+          {% for review in series.review_set.all %}
 {{ review.content }}
 {{ review.score }}
 {{ review.user }}
@@ -58,10 +58,10 @@ span.star-prototype > * {
 <button type="submit">댓글 삭제</button>
 </form>
 {% endfor %}
-<form action="{% url 'series:review_create' movie.pk %}" method='POST'>
+<form id="comment" action="{% url 'series:comment_create_ajax' series.pk %}" method='POST'>
 {% csrf_token %}
 {{ forms }}
-<button type="submit">댓글 달기</button>
+<button onClick="make_comment({{series.pk}})"type="submit">댓글 달기</button>
 </form>
 </div>
    </div>
@@ -74,5 +74,6 @@ $.fn.generateStars = function() {
 };
 $('.star-prototype').generateStars();
 </script>
+
 {% endblock %}
 
