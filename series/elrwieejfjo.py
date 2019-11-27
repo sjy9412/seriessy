@@ -20,5 +20,5 @@ params =  {
         'type': 'video',
         'q': '스타워즈 에피소드 4: 새로운 희망 예고편',
     }
-response = requests.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyBclnDZz8Zaqq4Fh1rdxoOVNoLzK6OZhu8', params=params).json()
+response = requests.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyBuX90KIrqjBMu8RhKXf1wGNJ9ggdunul0', params=params).json()
 print('https://www.youtube.com/embed/' + response['items'][0]['id']['videoId'])

@@ -23,6 +23,7 @@ class Movie(models.Model):
     backdrop_path = models.CharField(max_length=100, null=True)
     overview = models.TextField(blank=True)
     story = models.IntegerField(default=0)
+    video_url = models.TextField(max_length=200)
 
 class Review(models.Model):
     content = models.CharField(max_length=200)

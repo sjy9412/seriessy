@@ -12,6 +12,20 @@
 <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 {% endblock %}
 {% block css %}
+h2{
+  position: absolute;
+         top:20%;
+         left:50%;
+         transform: translate(-50%, -50%);                                                                   
+         font-size:5rem;
+         color: white;
+         z-index: 2;
+         text-align: center;
+}
+h3{
+  padding-right:10px;
+​
+}
 h1 {
   cursor: default;
   overflow: hidden;
@@ -41,6 +55,41 @@ h1 span {
 ​
 }
 ​
+.text{
+cursor: default;
+  overflow: hidden;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 12vh;
+  display: block;
+  margin-top: 30vh;
+  font-size: 25px;
+}
+.copyh1{
+  font-size: 5vh;
+  margin-top: 20px;
+}
+​
+​
+.textt{
+cursor: default;
+  overflow: hidden;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 12vh;
+  display: block;
+  margin-top: 1000vh;
+}
 h1 span:nth-child(2) {
   -webkit-animation-delay: 0.1s;
 }
@@ -92,7 +141,7 @@ h1 span:nth-child(13) {
 h1 span:nth-child(14) {
   -webkit-animation-delay: 0.8s;
 }
-
+​
 @-webkit-keyframes bounce {
   100% {
     top: -20px;
@@ -101,7 +150,7 @@ h1 span:nth-child(14) {
       0 50px 25px rgba(0, 0, 0, 0.2);
   }
 }
-
+​
 .swiper-container {
       overflow: hidden;
       width: 100%;
@@ -148,7 +197,21 @@ h1 span:nth-child(14) {
 <section class="background-change-wrap">
 <div>
 <img src="{% static '/logo/main.jpg' %}" alt="main" height="100%">
+<h2 style="position:absolute">Just Scrol!l!l</h2>
 </div>
+<div>
+<p class="text" style="text-align:center">영화 시리즈 추천 페이지입니다.<br>
+원하시는 시리즈가 없다면 <a href="{% url 'series:suggest' %}"><span class="copyh1">건의</span>하기</a>를 이용하세요~</p>
+<br><br><br><br><br><br><br><br><br>
+<p class="textt" style="text-align:center">지영이천사</p>
+<br><br><br><br><br>
+<div style="padding-right:80px">
+<p style="text-align:right">made_by : song na en<p>
+<p style="text-align:right">           ssa bo gum</p>
+</div>
+​
+</div>
+​
 </section>
 {% for s in series %}
 <section class="background-change-wrap">
@@ -159,7 +222,7 @@ h1 span:nth-child(14) {
 <br>
 <br>
 <br>
-<h1 >
+<h1>
 {% for text in s.name %}
 <span >
 {{ text }}  
@@ -235,16 +298,16 @@ h1 span:nth-child(14) {
   </div>
 </div>
 {% endfor %}
-
+​
 <script>
 let ticking = false;
-
+​
 function isElementUnderBottom(elem, triggerDiff) {
   const { top } = elem.getBoundingClientRect();
   const { innerHeight } = window;
   return top > innerHeight + (triggerDiff || 0);
 }
-
+​
 function handleScroll() {
   ticking = false;
   
@@ -263,16 +326,16 @@ function handleScroll() {
   }
   })
 }
-
+​
 function requestTick() {
   if(!ticking) {
     requestAnimationFrame(handleScroll);
   }
   ticking = true;
 }
-
+​
  window.addEventListener('scroll', requestTick);
-
+​
 const likeButton = document.querySelectorAll('#like-button')
   likeButton.forEach(elem => {
   elem.addEventListener('click', function(event){
@@ -306,7 +369,7 @@ const likeButton = document.querySelectorAll('#like-button')
       })
     })
     })
-
+​
 const followButton = document.querySelectorAll('#follow-button')
   followButton.forEach(elem => {
   elem.addEventListener('click', function(event){
@@ -328,7 +391,7 @@ const followButton = document.querySelectorAll('#follow-button')
       })
     })
     })
-
+​
 const chat = document.querySelectorAll('#room-name-submit')
     chat.forEach(elem => {
       elem.onclick = function(e) {

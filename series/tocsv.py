@@ -2,7 +2,9 @@ import requests, json
 
 series = []
 movies = []
-ids = [10, 84, 119, 151, 230, 263, 264, 295, 328, 399, 420, 432, 528, 556, 645, 656, 748, 1241, 1565, 1570, 1582, 1709, 1733, 2150, 131635, 295130, 34055, 9888, 121938, 435259, 2344, 31562, 87359, 391860, 313086, 131780, 228446, 10194, 123800, 473847, ]
+ids = [10]
+ids = [84, 119, 151, 230, 263, 264, 295, 328, 399, 420, 432, 528, 556, 645, 656]
+ids = [748, 1241, 1565, 1570, 1582, 1709, 1733, 2150, 131635, 295130, 34055, 9888, 121938, 435259, 2344, 31562, 87359, 391860, 313086, 131780, 228446, 10194, 123800, 473847, ]
 for num in ids:
     print(num)
     url = f'https://api.themoviedb.org/3/collection/{num}?api_key=196c02579911763f3a86f8b9f729739b&language=ko-kr'
@@ -25,7 +27,7 @@ for num in ids:
         'type': 'video',
         'q': f'{title} 예고편',
         }
-        response2 = requests.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyC2je31rAAa1r1WSXyNjv5dd5K-UIqJmuk', params=params).json()
+        response2 = requests.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyATxY7wWNHfE0eIYjg4P7_JuczVF7ounqk', params=params).json()
         movies.append({
             "pk": movie['id'],
             "model": "series.movie",
@@ -43,7 +45,7 @@ for num in ids:
         print(response2)
         if response2.get('items', 0):
             print(response2['items'])
-            movies[-1]['fields']['video_url'] = response2['items'][0]['id']['videoId'],
+            movies[-1]['fields']['video_url'] = response2['items'][0]['id']['videoId'][0],
         for genre_id in movie['genre_ids']:
             if genre_id not in series[-1]['fields']['genre']:
                 series[-1]['fields']['genre'].append(genre_id)
