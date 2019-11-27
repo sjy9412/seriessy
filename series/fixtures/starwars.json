@@ -1,0 +1,146 @@
+[
+	{
+		"pk": 11,
+		"model": "series.movie",
+		"fields": {
+			"title": "스타워즈 에피소드 4: 새로운 희망",
+			"release_date": "1977-05-25",
+			"vote_average": 8.2,
+			"overview": "공화국이 붕괴하고 제국이 수립된 뒤 20년, 제다이 기사단은 전멸하고 강력한 제국군의 횡포에 은하계는 공포에 휩싸여 있다. 그러던 중 공화국 재건을 노리는 반란군이 제국군의 비밀병기 데스스타 설계도를 훔쳐 달아나고 제국군은 이를 쫓는다. 하지만 결국 제국의 손에 붙잡히게 된 그들은 드로이드 R2-D2에 설계도를 넣어서 R2의 친구 C-3PO와 탈출시키는 데 성공하고, 두 드로이드 콤비는 타투인의 시골 마을에서 숙부와 함께 살고 있던 청년 루크 스카이워커에게 오게 되는데...",
+			"poster_path": "/7XFfURIFCJxN1mfBg0SAjk5yGzg.jpg",
+			"backdrop_path": "/4iJfYYoQzZcONB9hNzg0J0wWyPH.jpg",
+			"video_url":  
+				"VnT4q-951Tw"
+			,
+			"series": 10
+		}
+	},
+	{
+		"pk": 1891,
+		"model": "series.movie",
+		"fields": {
+			"title": "스타워즈 에피소드 5: 제국의 역습",
+			"release_date": "1980-05-20",
+			"vote_average": 8.4,
+			"overview": "제국군은 데스스타를 잃은 뒤에도 여전히 강력한 화력으로 반란군을 수세로 몰아넣었고, 반란군은 게릴라전을 위해 얼음으로 뒤덮인 행성 호스에 은신한다. 하지만 결국 제국군에 의해 호스의 반란군 기지마저 탄로나게 되고, 일행은 필사적으로 호스를 탈출해 다시 정처없는 피난길에 오른다. 반란군의 피난길에 함께 오르던 루크는 포스의 영이 된 오비완으로부터 제다이 마스터 요다를 찾아가라는 메시지를 받고 요다가 있는 정글 행성 대고바로 향한다. 루크는 요다를 만나 제다이가 되기 위한 훈련을 시작하고 솔로 일행은 제국군을 따돌리기 위해 옛 친구 랜도를 찾아가는데...",
+			"poster_path": "/icaO5w8uLVm4JxMew71JJrQE2YX.jpg",
+			"backdrop_path": "/amYkOxCwHiVTFKendcIW0rSrRlU.jpg",
+			"video_url":  
+				"uU5OZ26BzIk"
+			,
+			"series": 10
+		}
+	},
+	{
+		"pk": 1892,
+		"model": "series.movie",
+		"fields": {
+			"title": "스타워즈 에피소드 6: 제다이의 귀환",
+			"release_date": "1983-05-23",
+			"vote_average": 8.0,
+			"overview": "루크와 그의 일행은 우주해적 자바 더 헛에게 잡혀간 한 솔로를 구하기 위해 그들의 본거지이자 그의 고향행성인 타투인으로 향한다. 한편 제국군은 반란군을 멸하기 위해 엔도 행성의 상공에서 두 번째 데스스타를 건조하기 시작한다. 이제 포스의 모든 것을 터득한 루크가 정면으로 도전해 자바 일당을 물리치고 한을 무사히 구출해 낸다. 데고바로 돌아간 루크는 뜻하지 않게 요다의 임종을 맞이하게 되고, 그 자리에서 베이더와의 관계와 함께 또 다른 비밀인 자신의 쌍둥이 누이에 대하여 전해 듣게 되는데...",
+			"poster_path": "/qUA5lGAXzgr9UDKvUreiLOGa9fM.jpg",
+			"backdrop_path": "/koE7aMeR2ATivI18mCbscLsI0Nm.jpg",
+			"video_url":  
+				"hfSw5x8xp9E"
+			,
+			"series": 10
+		}
+	},
+	{
+		"pk": 1893,
+		"model": "series.movie",
+		"fields": {
+			"title": "스타워즈 에피소드 1: 보이지 않는 위험",
+			"release_date": "1999-05-19",
+			"vote_average": 6.4,
+			"overview": "공화국력 BBY 32년, 공화국이 큰 분쟁에 휩싸인다. 상인 조직인 무역 연합이 암흑에 가린 세력의 조종을 받고 나부 행성을 봉쇄해버린 것. 분쟁을 해결하기 위해 은하계 원로 회의는 콰이곤 진과 오비완 케노비 두 제다이를 파견한다. 타투인 행성에서 그는 노예 구역에서 어머니와 살고 있는 아나킨 스카이워커라는 소년을 만나 그가 미래의 은하계를 구할 수 있는 강한 힘을 가진 인물임을 믿고 그를 데려간다. 한편 나부 행성이 침입을 받자 아미달라 여왕은 은하계 원로 회의에 도움을 청하나, 원로 회의는 힘을 상실한 상태로 나부 행성은 위험에 처하게 되는데...",
+			"poster_path": "/pt7oxFkvQFzXD0ByCe1uJumL6vD.jpg",
+			"backdrop_path": "/oFmzoKDMedABPpRBDVwr0aynSK1.jpg",
+			"video_url":  
+				"SJYB-ctggRQ"
+			,
+			"series": 10
+		}
+	},
+	{
+		"pk": 1894,
+		"model": "series.movie",
+		"fields": {
+			"title": "스타워즈 에피소드 2: 클론의 습격",
+			"release_date": "2002-05-15",
+			"vote_average": 6.5,
+			"overview": "공화국으로부터 분리하려는 수백개의 행성연합은 은하계의 거대하고 새로운 위험으로 등장한다. 생명의 위협을 느끼는 아미달라 여왕의 신변 보호를 위해 아나킨과 오비완에게 경호 임무가 부여여된다. 공화국 수상 팰퍼핀의 야욕은 어마어마한 클론 군대를 비밀리에 양성하고, 오비완 캐노비는 암살 의혹을 파헤치던 임무 중에 클론의 존재를 감지한다. 분리주의 세력과 공화국과의 걷잡을 수 없는 갈등은 마침내 거대한 전쟁을 불러오게 된다. 아나킨은 최고의 제다이 기사가 되고 싶은 욕망과 스승인 오비완과의 우정과 갈등, 여왕과의 사랑으로 갈등하는데...",
+			"poster_path": "/uGfoiO5T8astFTYeutTfdjfz03m.jpg",
+			"backdrop_path": "/vovhXw10DSsRS9yoVbZqb60pXyX.jpg",
+			"video_url":  
+				"kV_MwwINBNY"
+			,
+			"series": 10
+		}
+	},
+	{
+		"pk": 1895,
+		"model": "series.movie",
+		"fields": {
+			"title": "스타워즈 에피소드 3: 시스의 복수",
+			"release_date": "2005-05-17",
+			"vote_average": 7.3,
+			"overview": "클론 전쟁이 시작되었던 때로부터 3년이 지나고 팰퍼틴 의장과 제다이 사이의 불화는 더욱 커져 클론 전쟁은 더 이상 걷잡을 수 없게 격화된다. 자신이 제다이가 될 것임을 굳게 믿고 있던 아나킨은 제다이 기사 자격을 줄 수 없다는 기사단의 결정에 절망하고, 스승인 오비완과의 갈등은 더욱 깊어만 간다. 그런 아나킨에게 자신의 정체를 드러낸 펠퍼틴은 절대적인 힘을 갖게 해 주겠다며 그를 유혹하고, 아나킨은 점점 어둠의 힘에 이끌려 변해간다. 어둠의 세력에 완전히 장악 당한 아나킨은 자신에게는 아버지나 다름없는 오비완과 맞닥뜨리게 되는데...",
+			"poster_path": "/4cRrUZM8Jk8lF4wSRIjweaz94lO.jpg",
+			"backdrop_path": "/wUYTfFbfPiZC6Lcyt1nonr69ZmK.jpg",
+			"video_url":  
+				"HrkehqJHfGA"
+			,
+			"series": 10
+		}
+	},
+	{
+		"pk": 140607,
+		"model": "series.movie",
+		"fields": {
+			"title": "스타워즈: 깨어난 포스",
+			"release_date": "2015-12-15",
+			"vote_average": 7.4,
+			"overview": "2번째 데스 스타가 파괴되고 다스 베이더가 사망한 지 약 30년 후, 마지막 남은 제다이인 루크 스카이워커가 사라졌다. 몰락한 은하 제국으로부터 일어난 퍼스트 오더는 루크와 공화국을 찾아내 제거하려 한다. 공화국과 루크의 쌍둥이 여동생 레이아 오르가나가 이끄는 저항군은 퍼스트 오더를 저지하고 루크의 도움을 받기 위해 루크를 찾는다. 저항군 최고의 파일럿 포 다메론은 자쿠 행성의 마을 장로를 만나 루크가 있는 장소의 지도를 얻는다. 카일로 렌이 이끄는 스톰트루퍼들은 마을을 파괴하고 포를 붙잡지만, 포의 드로이드 BB-8는 지도를 갖고 탈출하고 부랑자 레이를 만나게 된다.",
+			"poster_path": "/eOD7WQULbncPmiETBPmvDxBCpKY.jpg",
+			"backdrop_path": "/c2Ax8Rox5g6CneChwy1gmu4UbSb.jpg",
+			"video_url":  
+				"G7VijpXyAXI"
+			,
+			"series": 10
+		}
+	},
+	{
+		"pk": 181812,
+		"model": "series.movie",
+		"fields": {
+			"title": "스타워즈: 라이즈 오브 스카이워커",
+			"release_date": "2019-12-18",
+			"vote_average": 0.0,
+			"overview": "",
+			"poster_path": "/opENUWyvrxvsXrRM3qq4wmJDCo2.jpg",
+			"backdrop_path": "/jOzrELAzFxtMx2I4uDGHOotdfsS.jpg",
+			"video_url":  
+				"_-nMy2goCnI"
+			,
+			"series": 10
+		}
+	},
+	{
+		"pk": 181808,
+		"model": "series.movie",
+		"fields": {
+			"title": "스타워즈: 라스트 제다이",
+			"release_date": "2017-12-13",
+			"vote_average": 7.0,
+			"overview": "악의 세력인 무자비한 퍼스트 오더가 은하계를 장악한 시대. 레아 장군(캐리 피셔)의 저항군은 힘겨운 싸움을 이어가고 있다. 그들의 유일한 희망은 마지막 제다이 루크 스카이워커(마크 해밀). 저항군은 승리의 불씨를 지필 마지막 희망을 찾아 레이를 과거의 영웅 루크에게 보낸다. 레이(데이지 리들리)는 우여곡절 끝에 루크를 찾아내지만, 자신의 잘못으로 레아의 아들 벤 솔로가 퍼스트 오더의 실세 카일로 렌이 되었다고 생각하는 루크는 함께 떠나자는 레이의 제안을 거절한다. 한편 레이는 알 수 없는 이유로 카일로 렌과 교감할 수 있게 된다.",
+			"poster_path": "/n7j35xkQn0swL7DoProA3qfE2I2.jpg",
+			"backdrop_path": "/5Iw7zQTHVRBOYpA0V6z0yypOPZh.jpg",
+			"video_url":  
+				"-YSrn9rNDDw"
+			,
+			"series": 10
+		}
+	}
+]

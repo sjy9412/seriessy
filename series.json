@@ -1,0 +1,622 @@
+[
+	{
+		"pk": 84,
+		"model": "series.series",
+		"fields": {
+			"name": "인디아나 존스",
+			"genre": [
+				12,
+				28
+			],
+			"overview": "《인디아나 존스》는 스티븐 스필버그가 1981년에 처음 제작한 일련의 모험영화인 동시에 영화의 주인공이다. 가공의 인물인 고고학자 인디아나 존스의 모험을 다루었다. 영화 도입부에 파라마운트의 로고가 마터호른이나 마터호른을 조각한 징 등으로 오버랩이 되면서 영화가 시작된다.",
+			"poster_path": "/lpxDrACKJhbbGOlwVMNz5YCj6SI.jpg",
+			"backdrop_path": "/9f8kjuytZPJEPf1bhJgkekaoanr.jpg"
+		}
+	},
+	{
+		"pk": 119,
+		"model": "series.series",
+		"fields": {
+			"name": "반지의 제왕",
+			"genre": [
+				12,
+				14,
+				28
+			],
+			"overview": "",
+			"poster_path": "/p4UokEk2XnjjRTdXGe6DLYXlbI1.jpg",
+			"backdrop_path": "/bccR2CGTWVVSZAG0yqmy3DIvhTX.jpg"
+		}
+	},
+	{
+		"pk": 151,
+		"model": "series.series",
+		"fields": {
+			"name": "스타 트렉 : 오리지날",
+			"genre": [
+				12,
+				9648,
+				878,
+				28,
+				53
+			],
+			"overview": "",
+			"poster_path": "/zcB8KxHA4EapOoZZPAvwgmE1iGK.jpg",
+			"backdrop_path": "/9BQj9hq0aK6yM9Tm2NJ28jg572y.jpg"
+		}
+	},
+	{
+		"pk": 230,
+		"model": "series.series",
+		"fields": {
+			"name": "대부",
+			"genre": [
+				80,
+				18,
+				53
+			],
+			"overview": "",
+			"poster_path": "/9Baumh5J9N1nJUYzNkm0xsgjpwY.jpg",
+			"backdrop_path": "/3WZTxpgscsmoUk81TuECXdFOD0R.jpg"
+		}
+	},
+	{
+		"pk": 263,
+		"model": "series.series",
+		"fields": {
+			"name": "다크 나이트",
+			"genre": [
+				28,
+				80,
+				18,
+				53
+			],
+			"overview": "다크 나이트 시리즈는 배트맨 실사영화 시리즈를 리부트한 배트맨 비긴즈, 다크 나이트, 다크 나이트 라이즈로 구성된 3부작으로 크리스토퍼 놀란 감독이 연출했다.",
+			"poster_path": "/bqS2lMgGkuodIXtDILFWTSWDDpa.jpg",
+			"backdrop_path": "/xfKot7lqaiW4XpL5TtDlVBA9ei9.jpg"
+		}
+	},
+	{
+		"pk": 264,
+		"model": "series.series",
+		"fields": {
+			"name": "빽 투 더 퓨쳐",
+			"genre": [
+				12,
+				35,
+				878,
+				10751
+			],
+			"overview": "",
+			"poster_path": "/n7AhnUSfeHBOfwCEsgXK8oZXkkB.jpg",
+			"backdrop_path": "/c9C9Pg2QctyjZHRmS0P8rZg1OTA.jpg"
+		}
+	},
+	{
+		"pk": 295,
+		"model": "series.series",
+		"fields": {
+			"name": "캐리비안의 해적",
+			"genre": [
+				28,
+				12,
+				14,
+				35
+			],
+			"overview": "캐리비안의 해적(영어: Pirates of the Caribbean)은 고어 버빈스키가 감독하고 제리 브룩하이머가 제작한 어드벤처 영화 시리즈이다. 이 시리즈는 월트 디즈니 사의 테마 파크의 같은 이름의 놀이기구인 '캐리비안의 해적'에서 착안하여 만들었으며, 주요 등장 인물로는 캡틴 잭 스패로우(조니 뎁 출연), 윌 터너(올랜도 블룸 출연), 엘리자베스 스완(키이라 나이틀리 출연) 등이 있다.  2003년 7월 9일 첫 번째 영화인 《캐리비안의 해적: 블랙 펄의 저주》가 개봉되었다.  첫 번째 영화는 흥행에 성공했으며, 이러한 예상치 못한 성공에 월트 디즈니 픽처스는 3부작을 제작하고 있다고 밝혔다.  3년 후 2006년 7월 7일 《캐리비안의 해적: 망자의 함》이 개봉했다. 《망자의 함》은 세계적으로 총 $1,066,179,725(10억 달러 이상)를 벌어들이고, 월드와이드 개봉 하루 최대 수입의 기록을 깨기도 하였으며, 누적 영화 매출 순위에서 총 4위이며,[3] 세계에서 많은 양의 돈을 가장 빨리 번 영화가 되는 등 흥행에 크게 성공 하였다.  시리즈 세 번째 영화인 《캐리비안의 해적: 세상의 끝에서》는 2007년 5월 24일 전 세계 동시 개봉했다. 월트 디즈니는 지금까지 세 편의 캐리비안의 해적 시리즈로 총 27.9억 달러(약 3조 7천억 원)[4] 를 벌어들였다.  2008년 9월, 뎁이 네 번째 영화인 《캐리비안의 해적: 낯선 조류》에 계약을 했으며, 이는 2011년 5월 20일 개봉했다.",
+			"poster_path": "/zRBaZxS5YauLvRYjAdL4AUCwlht.jpg",
+			"backdrop_path": "/zJd4E0ImT1U6O8k6aX3ssc9iUBS.jpg"
+		}
+	},
+	{
+		"pk": 328,
+		"model": "series.series",
+		"fields": {
+			"name": "쥬라기 공원",
+			"genre": [
+				12,
+				878,
+				28,
+				53
+			],
+			"overview": "",
+			"poster_path": "/qIm2nHXLpBBdMxi8dvfrnDkBUDh.jpg",
+			"backdrop_path": "/pJjIH9QN0OkHFV9eue6XfRVnPkr.jpg"
+		}
+	},
+	{
+		"pk": 399,
+		"model": "series.series",
+		"fields": {
+			"name": "프레데터",
+			"genre": [
+				878,
+				28,
+				12,
+				53,
+				27
+			],
+			"overview": "",
+			"poster_path": "/6Z7lASptoiRVxiCFvZaFgH9qp7u.jpg",
+			"backdrop_path": "/fXVzk9OxQwROCuiWvd0Cv76qmZi.jpg"
+		}
+	},
+	{
+		"pk": 420,
+		"model": "series.series",
+		"fields": {
+			"name": "나니아 연대기",
+			"genre": [
+				12,
+				10751,
+				14
+			],
+			"overview": "",
+			"poster_path": "/sh6Kn8VBfXotJ6qsvJkdfscxXKR.jpg",
+			"backdrop_path": "/vlv2skpXYg02TRg1iyXGvDvZSZ9.jpg"
+		}
+	},
+	{
+		"pk": 432,
+		"model": "series.series",
+		"fields": {
+			"name": "큐브",
+			"genre": [
+				9648,
+				878,
+				53
+			],
+			"overview": "",
+			"poster_path": "/pRshONhwgQYb2IYcxhEIMDFc62d.jpg",
+			"backdrop_path": "/4SdZhO4M5vJ48dqp7r8PieZ37RJ.jpg"
+		}
+	},
+	{
+		"pk": 528,
+		"model": "series.series",
+		"fields": {
+			"name": "터미네이터",
+			"genre": [
+				28,
+				53,
+				878,
+				12
+			],
+			"overview": "",
+			"poster_path": "/vxiKtcxAJxHhlg2H1X8y7zcM3k6.jpg",
+			"backdrop_path": "/cpmbkwSxZnKO69V82A9a34tvk2E.jpg"
+		}
+	},
+	{
+		"pk": 556,
+		"model": "series.series",
+		"fields": {
+			"name": "스파이더맨",
+			"genre": [
+				28,
+				14,
+				12
+			],
+			"overview": "",
+			"poster_path": "/bp5PqLa06QA1LsELA1SsKZ008H7.jpg",
+			"backdrop_path": "/waZqriYTuBE3WqXI3SDGi3kfDQE.jpg"
+		}
+	},
+	{
+		"pk": 645,
+		"model": "series.series",
+		"fields": {
+			"name": "007 제임스 본드",
+			"genre": [
+				12,
+				28,
+				53,
+				878,
+				80
+			],
+			"overview": "이언 플레밍의 스파이 소설을 토대로 제작자 앨버트 R. 브로콜리와 해리 솔츠만이 설립한 EON 프로덕션에서 독점 제작하는 프랜차이즈영화. 코드넘버 007의 영국 첩보원 제임스 본드가 주인공으로 세계 각국의 이색적인 풍경을 담아내는 현지 로케이션 촬영과 매회 바뀌는 본드걸, 기상천외한 특수장비 등 시리즈 특유의 클리셰를 만들어내면서 첩보영화의 대표작으로 자리잡았다.",
+			"poster_path": "/HORpg5CSkmeQlAolx3bKMrKgfi.jpg",
+			"backdrop_path": "/6VcVl48kNKvdXOZfJPdarlUGOsk.jpg"
+		}
+	},
+	{
+		"pk": 656,
+		"model": "series.series",
+		"fields": {
+			"name": "쏘우",
+			"genre": [
+				80,
+				27,
+				9648,
+				53
+			],
+			"overview": "",
+			"poster_path": "/xmC2A7qPEfiOkQC58fZh8srWQ5v.jpg",
+			"backdrop_path": "/oLfS1lOmN2KIU2IQ200SDEPVEZe.jpg"
+		}
+	},
+	{
+		"pk": 748,
+		"model": "series.series",
+		"fields": {
+			"name": "엑스맨",
+			"genre": [
+				12,
+				28,
+				878,
+				53,
+				14
+			],
+			"overview": "",
+			"poster_path": "/31rqs6ZxFdi5nWZZaFPIr17q8jt.jpg",
+			"backdrop_path": "/Abnosho2v3bcdvDww6T7Hfeczm1.jpg"
+		}
+	},
+	{
+		"pk": 1241,
+		"model": "series.series",
+		"fields": {
+			"name": "해리 포터",
+			"genre": [
+				12,
+				14,
+				10751,
+				9648
+			],
+			"overview": "",
+			"poster_path": "/eVPs2Y0LyvTLZn6AP5Z6O2rtiGB.jpg",
+			"backdrop_path": "/wfnMt6LGqYHcNyOfsuusw5lX3bL.jpg"
+		}
+	},
+	{
+		"pk": 1565,
+		"model": "series.series",
+		"fields": {
+			"name": "28일/주 후",
+			"genre": [
+				27,
+				53,
+				878
+			],
+			"overview": "좀비 바이러스 확산으로 인해 가정이 무너지고 사회가 무너지는 사태를 다루고 있다.",
+			"poster_path": "/4AeGz1Jwnq6ky2kfLT95Tm8nEiw.jpg",
+			"backdrop_path": "/oLT5tHDNzb5LfytO2g7q6dF0QkC.jpg"
+		}
+	},
+	{
+		"pk": 1570,
+		"model": "series.series",
+		"fields": {
+			"name": "다이 하드",
+			"genre": [
+				28,
+				53
+			],
+			"overview": "",
+			"poster_path": "/xhnb5lVfwE7NHycdPNdIxHx7kZi.jpg",
+			"backdrop_path": "/5kHVblr87FUScuab1PVSsK692IL.jpg"
+		}
+	},
+	{
+		"pk": 1582,
+		"model": "series.series",
+		"fields": {
+			"name": "닌자거북이",
+			"genre": [
+				28,
+				12,
+				35,
+				878,
+				10751,
+				14
+			],
+			"overview": "",
+			"poster_path": "/hxcTQ9aR9U2hOWyy7S1HoBDFprA.jpg",
+			"backdrop_path": "/7dusELv6x1ANRGorNvqbKhKIUPY.jpg"
+		}
+	},
+	{
+		"pk": 1709,
+		"model": "series.series",
+		"fields": {
+			"name": "혹성탈출 오리지널",
+			"genre": [
+				878,
+				12,
+				18,
+				28,
+				9648
+			],
+			"overview": "",
+			"poster_path": "/7OvC0TNbINmhfEmi3lMYEnGWNOr.jpg",
+			"backdrop_path": "/eYf3GRnuVCgeFQfEo0qK7ua5rCR.jpg"
+		}
+	},
+	{
+		"pk": 1733,
+		"model": "series.series",
+		"fields": {
+			"name": "미이라",
+			"genre": [
+				12,
+				28,
+				14
+			],
+			"overview": "",
+			"poster_path": "/4UMn5KmXopgpkC862Ms3t5j1sXl.jpg",
+			"backdrop_path": "/1BeKi6IytbfQlQocJSvP2k6sO1a.jpg"
+		}
+	},
+	{
+		"pk": 2150,
+		"model": "series.series",
+		"fields": {
+			"name": "슈렉",
+			"genre": [
+				12,
+				16,
+				35,
+				10751,
+				14
+			],
+			"overview": "",
+			"poster_path": "/qveAMqXnqAObA4q6DbF487RZQy8.jpg",
+			"backdrop_path": "/gMWrKQjoTIpYjhc8SxZF20EDIES.jpg"
+		}
+	},
+	{
+		"pk": 131635,
+		"model": "series.series",
+		"fields": {
+			"name": "헝거게임",
+			"genre": [
+				12,
+				878,
+				53,
+				28,
+				14
+			],
+			"overview": "",
+			"poster_path": "/wrWNUgkBqWyR619tNhg1upWhkHw.jpg",
+			"backdrop_path": "/zWiiLNg8yXv0he3tCH6XignPaYV.jpg"
+		}
+	},
+	{
+		"pk": 295130,
+		"model": "series.series",
+		"fields": {
+			"name": "메이즈 러너",
+			"genre": [
+				28,
+				9648,
+				878,
+				53
+			],
+			"overview": "",
+			"poster_path": "/9TzEraXQoy4Y3Ec5AcHaN9Rtb60.jpg",
+			"backdrop_path": "/6My0TVRN0fXnmOoqbcFGBEiMSPJ.jpg"
+		}
+	},
+	{
+		"pk": 34055,
+		"model": "series.series",
+		"fields": {
+			"name": "포켓몬",
+			"genre": [
+				12,
+				16,
+				14,
+				878,
+				10751,
+				28,
+				18,
+				35
+			],
+			"overview": "",
+			"poster_path": "/oUdOt0VbJQnkLwOiQLPJLxH8oCA.jpg",
+			"backdrop_path": "/iGoYKA0TFfgSoZpG2u5viTJMGfK.jpg"
+		}
+	},
+	{
+		"pk": 9888,
+		"model": "series.series",
+		"fields": {
+			"name": "나 홀로 집에",
+			"genre": [
+				35,
+				10751,
+				12,
+				80
+			],
+			"overview": "",
+			"poster_path": "/zYPsleQJo1n1rBPlecJBRb3iwSO.jpg",
+			"backdrop_path": "/cYS2aWxECESUN2OS3JiLrKMmOko.jpg"
+		}
+	},
+	{
+		"pk": 121938,
+		"model": "series.series",
+		"fields": {
+			"name": "호빗",
+			"genre": [
+				28,
+				12,
+				14
+			],
+			"overview": "",
+			"poster_path": "/j4e06Vg7Rb3Z4rN17kOtDS5Q8pD.jpg",
+			"backdrop_path": "/7wO7MSnP5UcwR2cTHdJFF1vP4Ie.jpg"
+		}
+	},
+	{
+		"pk": 435259,
+		"model": "series.series",
+		"fields": {
+			"name": "신비한 동물사전",
+			"genre": [
+				12,
+				14,
+				10751
+			],
+			"overview": "",
+			"poster_path": "/wsVseA7i3FqX24m26Z2gD3EtH4l.jpg",
+			"backdrop_path": "/3ybt95EcivmtIynUq6kisWsGnEo.jpg"
+		}
+	},
+	{
+		"pk": 2344,
+		"model": "series.series",
+		"fields": {
+			"name": "매트릭스",
+			"genre": [
+				28,
+				878,
+				12,
+				53,
+				16
+			],
+			"overview": "인간의 기억을 지배하는 가상현실, 매트릭스 2199년. 인공 두뇌를 가진 컴퓨터(AI: Artificial Intelligence)가 지배하는 세계에서 인간을 가축처럼 인공 자궁(인큐베이터)에서 재배해 에너지 원으로 활용하는 끔찍한 시대다. AI에 의해 뇌세포에 ‘매트릭스’라는 프로그램(내용은 1999년의 가상현실)을 입력 당한 인간은, 매트릭스 프로그램에 따라 평생 1999년의 가상 현실을 살아간다. 프로그램 안에 있는 동안 인간의 뇌는 AI의 철저한 통제를 받는다. 인간이 보고 느끼는 것들은 항상 그들의 검색 엔진에 노출되어 있고, 인간의 기억 또한 그들에 의해 입력되고 삭제된다. 그러나, 이러한 가상 현실 속에서 진정한 현실을 인식할 수 있는 인간은 없다.",
+			"poster_path": "/lh4aGpd3U9rm9B8Oqr6CUgQLtZL.jpg",
+			"backdrop_path": "/RhUxjzNojIJsdZSYTn0CQvdKsn.jpg"
+		}
+	},
+	{
+		"pk": 31562,
+		"model": "series.series",
+		"fields": {
+			"name": "본",
+			"genre": [
+				28,
+				18,
+				9648,
+				53
+			],
+			"overview": "",
+			"poster_path": "/5wcNRGQ5oexJlJUkHyIFT5org4Z.jpg",
+			"backdrop_path": "/vA5xMglyZv7yzDTj1qUTU4OvelV.jpg"
+		}
+	},
+	{
+		"pk": 87359,
+		"model": "series.series",
+		"fields": {
+			"name": "미션 임파서블",
+			"genre": [
+				12,
+				28,
+				53
+			],
+			"overview": "",
+			"poster_path": "/geEjCGfdmRAA1skBPwojcdvnZ8A.jpg",
+			"backdrop_path": "/jYl0UuJFcmhymv9ZNO14lPLDY1Z.jpg"
+		}
+	},
+	{
+		"pk": 391860,
+		"model": "series.series",
+		"fields": {
+			"name": "킹스맨",
+			"genre": [
+				28,
+				12,
+				35,
+				80
+			],
+			"overview": "킹스맨 시리즈는 첩보기관 킹스맨의 요원의 활약을 그리고 있다. 감독은 매튜 본, 각본은 제인 골드먼이며, 원작은 만화가 마크 밀러와 데이브 기번스의 작품인 《시크릿 서비스》이다.",
+			"poster_path": "/iR8L2XHA72wmYHc6O8LZmwV5hd5.jpg",
+			"backdrop_path": "/8XZnIWG7on74SaJ6t23kdPOYXUG.jpg"
+		}
+	},
+	{
+		"pk": 313086,
+		"model": "series.series",
+		"fields": {
+			"name": "컨저링",
+			"genre": [
+				27,
+				53,
+				9648
+			],
+			"overview": "",
+			"poster_path": "/z5VKhNSQKQyxm0co68HAkCqHnmX.jpg",
+			"backdrop_path": "/oU1hA6PorJHcvsmhIdQOcxze6QC.jpg"
+		}
+	},
+	{
+		"pk": 131780,
+		"model": "series.series",
+		"fields": {
+			"name": "여고괴담",
+			"genre": [
+				27,
+				14,
+				10749
+			],
+			"overview": "여고괴담 시리즈 시리즈 컬렉션입니다.",
+			"poster_path": "/snxMKlOnODej8e0dXTkO5uktGBa.jpg",
+			"backdrop_path": "/2lbjjv6ghOZUGICKaweAJfsRuOu.jpg"
+		}
+	},
+	{
+		"pk": 228446,
+		"model": "series.series",
+		"fields": {
+			"name": "인시디어스",
+			"genre": [
+				27,
+				53,
+				18,
+				9648
+			],
+			"overview": "",
+			"poster_path": "/w1213HKk1XKSwHiBgjkWghn9biC.jpg",
+			"backdrop_path": "/5FrPZHgbbmTIq0oxpwSGqu5HyXC.jpg"
+		}
+	},
+	{
+		"pk": 10194,
+		"model": "series.series",
+		"fields": {
+			"name": "토이 스토리",
+			"genre": [
+				16,
+				35,
+				10751,
+				12,
+				14
+			],
+			"overview": "토이 스토리 시리즈는 픽사가 제작하고 월트 디즈니 컴퍼니가 배급을 담당한  3D 애니메이션 시리즈이다. 장난감이 나오는 애니메이션이라서 겉만 보고 유치하다고 생각하는 사람들이 많지만 픽사 작품들 중에서도 손에 꼽히는 명작으로 평가되며, 각 편마다 뚜렷한 철학과 주제가 담겨있다.",
+			"poster_path": "/7G9915LfUQ2lVfwMEEhDsn3kT4B.jpg",
+			"backdrop_path": "/9FBwqcd9IRruEDUrTdcaafOMKUq.jpg"
+		}
+	},
+	{
+		"pk": 123800,
+		"model": "series.series",
+		"fields": {
+			"name": "비포...",
+			"genre": [
+				18,
+				10749
+			],
+			"overview": "",
+			"poster_path": "/bBS1CfspKXq5RBok85hYvtW9ZwE.jpg",
+			"backdrop_path": "/to3l6Gwzd7FGWa9Spc708IP1K7l.jpg"
+		}
+	},
+	{
+		"pk": 473847,
+		"model": "series.series",
+		"fields": {
+			"name": "타짜",
+			"genre": [
+				80,
+				35,
+				18
+			],
+			"overview": "",
+			"poster_path": "/ldm9fbZpyojMrgD2fKwEmd1vc5I.jpg",
+			"backdrop_path": "/dESw9iYpa1UbVKo3PZDrdBKVSYW.jpg"
+		}
+	}
+]
