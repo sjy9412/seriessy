@@ -30,7 +30,7 @@ span.star-prototype > * {
 .chat-container {
   position: fixed;
   margin: 0 auto;
-  width: 400px;
+  width: 23vw;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
   transition: width 0.3s ease;
 }
@@ -83,7 +83,7 @@ span.star-prototype > * {
 /* chat box */
 
 .chatbox {
-  height: 60vh;
+  height: 50vh;
   background-color: #d7e4f2;
   padding: 10px;
   overflow-y: scroll;
@@ -152,27 +152,33 @@ span.star-prototype > * {
 {% block body %}
 <div class="bg">
 <div>
-<h2 style="text-align:center; font-size:4vh; padding-top:95px;">{{series.name}}</h2>
-<div class="row mt-4 tx-4">
-<div class="col-2 mb-4">
-<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+<div class="row tx-4" style="width:98%; padding-top:90px;">
+<div class="col-2 my-4 ">
+<div class="nav flex-column nav-pills pl-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+<h3 class='mb-4 text-center'>시리즈 영화 목록</h3>
+<div style="overflow:auto; overflow-x: hidden; height:70vh;">
 {% for movie in series.movie_set.all %}
-{% if movie.pk == movie_pk %}
-    <a class="nav-link active" href="{% url 'series:detail' series.pk movie.pk %}" role="tab" aria-controls="v-pills-home" aria-selected="true">{{ movie.title }}</a>
+{% if movie_pk == movie.pk %}
+    <a id="btn-{{ movie.pk }}" data-id="{{ movie.pk }}" class="click nav-link active mr-3" href="#"role="tab" aria-controls="v-pills-home" aria-selected="true">{{ movie.title }}</a>
     {% else %}
-    <a class="nav-link" href="{% url 'series:detail' series.pk movie.pk %}" role="tab" aria-controls="v-pills-profile" aria-selected="false">{{ movie.title }}</a>
+    <a id="btn-{{ movie.pk }}" data-id="{{ movie.pk }}" class="click nav-link mr-3" href="#" role="tab" aria-controls="v-pills-profile" aria-selected="false">{{ movie.title }}</a>
     {% endif %}
-    {% endfor %}
+  {% endfor %}
 </div>
 </div>
-<div id="carouselExampleIndicators" class="carousel slide col-7 height=80vh;" data-ride="carousel" data-interval="false">
+</div>
+<div class="col-7">
+<div class="row">
+<h1 style="text-align:center; width:95%; font-size:6vh;">{{series.name}}</h1>
+</div>
+<div id="carouselExampleIndicators" class="carousel slide height=80vh;" data-ride="carousel" data-interval="false">
 <div class="row">
   <div class="carousel-inner" >
   {% for movie in series.movie_set.all %}
     {% if movie.pk == movie_pk %}
-    <div class="carousel-item active">
+    <div id="item-{{ movie.pk }}" class="carousel-item active">
     {% else %}
-    <div class="carousel-item">
+    <div id="item-{{ movie.pk }}" class="carousel-item">
     {% endif %}
             <div class="row m-5">
                 <div class="col-4" style="margin: auto 0;">
@@ -217,7 +223,7 @@ span.star-prototype > * {
 {{ review.content }}
 {{ review.score }}
 {{ review.user }}
-<form action="{% url 'series:review_delete' series.pk review.pk %}" method='POST'>
+<form action="" method='POST'>
 {% csrf_token %}
 <button type="submit">댓글 삭제</button>
 </form>
@@ -236,7 +242,8 @@ span.star-prototype > * {
   </a>
   </div>
     </div>
-<div class="col-3">
+    </div>
+<div class="col-3 mt-4">
 <div class="chat-container">
 <div class="chat-header">
 
@@ -325,6 +332,22 @@ function send() {
     $('textarea').val('');
     }
 }
+
+const button = document.querySelectorAll('.click')
+  button.forEach(elem => {
+  elem.addEventListener('click', function(event){
+      const btn = document.querySelector(`#btn-${event.target.dataset.id}`)
+      const item = document.querySelector(`#item-${event.target.dataset.id}`)
+      btn.classList.add('active')
+      item.classList.add('active')
+      const active = document.querySelectorAll('.active')
+      active.forEach(elem => {
+        if (btn.id !== elem.id && item.id !== elem.id){
+        elem.classList.remove('active')
+        }
+      })
+    })
+    })
 </script>
 <script>
 function make_comment(series_id){

@@ -59,12 +59,13 @@ def index(request):
     }
     return render(request, 'series/index.html', context)
 
-def detail(request, series_pk, movie_pk):
+def detail(request, series_pk):
     series = get_object_or_404(Series, pk=series_pk)
+    movie_pk = request.GET.get('movie_pk')
     forms = ReviewForm()
     context = {
         'series': series,
-        'movie_pk': movie_pk,
+        'movie_pk': int(movie_pk),
         'forms': forms,
         'room_name_json': mark_safe(json.dumps(series_pk)),
         'user_name': mark_safe(json.dumps(request.user.username)),

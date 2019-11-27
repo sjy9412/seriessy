@@ -63,5 +63,5 @@ def following(request, pk):
                 is_follow = False
             cnt_following = detail_user.followings.count()
             cnt_followers = detail_user.followers.count()
-            return JsonResponse({'cnt_following': cnt_following, 'cnt_followers': cnt_followers, 'is_follow': is_follow})
+            return JsonResponse({'user':user.username, 'user_pk': user.pk, 'cnt_followers': cnt_followers, 'is_follow': is_follow})
 

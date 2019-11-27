@@ -3,7 +3,17 @@
 {% block css %}
 .bg {
 background-image: url("{% static 'logo/main.jpg' %}");
-height: 100vh;
+background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100vw;
+}
+.bg > div {
+  background-color: rgba(255, 255, 255, 0.1);
+  min-height: 100vh;
+  width: 100%;
 }
 .card{
 width : 20vw;
@@ -13,31 +23,28 @@ opacity: 1;
 {% endblock %}
 {% block body %}
 <div class='bg'>
-​
-​
-    <h2>{{ detail_user.username }}님의 프로필 입니다!</h2>
+  <div>
+    <div style='padding-top:95px; text-align:center; width=95%; color:white;'>
+    <h1>{{ detail_user.username }}님의 프로필 입니다!
     {% if user != detail_user %}
     {% if user in detail_user.followers.all %}
-    <p>
-        <button class="btn btn-sm btn-primary" id="follow-button" data-id={{detail_user.pk}}>팔로우 취소</button>
-    </p>
+        <button class="btn btn btn-primary" id="follow-button" data-id={{detail_user.pk}}>팔로우 취소</button>
     {% endif %}
     {% if user not in detail_user.followers.all %}
-    <p>
-        <button class="btn btn-sm btn-primary" id="follow-button" data-id={{detail_user.pk}}>팔로우</button>
-    </p>
+        <button class="btn btn btn-primary" id="follow-button" data-id={{detail_user.pk}}>팔로우</button>
     {% endif %}
     {% endif %}
-
-        <div class='row mt-5'>
-            <div class='col'>
-                <div class="card border-info mb-3 mx-5 d-inline-block" style="max-width: 18rem;">
+    </h1>
+    </div>
+ <div class='row mt-5 mx-auto' style="width:95%">
+            <div class='col-xl-3 col-6' style="text-align:center">
+                <div class="card border-info mb-3 d-inline-block" style="max-width: 18rem;">
                     <div class="card-header">팔로워 목록</div>
                     <div class="card-body text-info">
-                        <h5 class="card-title">팔로워 : {{ detail_user.followers.count }}명
+                        <h5 class="card-title">팔로워 : <span id="cnt">{{ detail_user.followers.count }}</span>명
                         </h5>
-                        <p class="card-text">{% for user in detail_user.followers.all %}
-                            <a href="{% url 'accounts:detail' user.pk %}">
+                        <p id="list" class="card-text">{% for user in detail_user.followers.all %}
+                            <a class="text-info" id="{{user.pk}}" href="{% url 'accounts:detail' user.pk %}">
                                 {{ user }}
                             </a>
                             <br>
@@ -45,8 +52,8 @@ opacity: 1;
                     </div>
                 </div>
             </div>
-            <div class='col'>
-                <div class="card border-info mb-3 mx-5 d-inline-block" style="max-width: 18rem;">
+            <div class='col-xl-3 col-6' style="text-align:center">
+                <div class="card border-info mb-3 d-inline-block" style="max-width: 18rem;">
                     <div class="card-header">팔로잉 목록</div>
                     <div class="card-body text-info">
                         <h5 class="card-title">
@@ -61,13 +68,13 @@ opacity: 1;
                     </div>
                 </div>
             </div>
-            <div class='col'>
-                <div class="card border-info mb-3 mx-5 d-inline-block" style="max-width: 18rem;">
+            <div class='col-xl-3 col-6' style="text-align:center">
+                <div class="card border-info mb-3 d-inline-block" style="max-width: 18rem;">
                     <div class="card-header">좋아하는 시리즈</div>
                     <div class="card-body text-info">
                         <h5 class="card-title">
                             {% for series in detail_user.like_series.all %}
-                            <a class="text-info" href="{% url 'series:detail' series.pk %}">
+                            <a class="text-info" href="">
                                 <img height="150px" src="https://image.tmdb.org/t/p/w500/{{ series.poster_path }}">
                                 <br>{{ series.name }}
                             </a>
@@ -78,8 +85,8 @@ opacity: 1;
                 </div>
             </div>
 ​
-            <div class='col'>
-                <div class="card border-info mb-3 mx-5 d-inline-block" style="max-width: 18rem;">
+            <div class='col-xl-3 col-6' style="text-align:center">
+                <div class="card border-info mb-3 d-inline-block" style="max-width: 18rem;">
                     <div class="card-header">작성한 리뷰</div>
                     <div class="card-body text-info">
                         <h5 class="card-title"></h5>
@@ -104,8 +111,20 @@ opacity: 1;
             axios.post(`/accounts/${event.target.dataset.id}/detail/following/`)
                 .then(response => {
                     if (response.data.is_follow) {
+                        $(`#${response.data.user_pk}`).remove()
+                        const cnt = document.querySelector('#cnt')
+                        cnt.innerText = `${response.data.cnt_followers}`
                         event.target.innerText = '팔로우'
                     } else {
+                        const cnt = document.querySelector('#cnt')
+                        const list = document.querySelector('#list')
+                        const user = document.createElement('a')
+                        user.id = `${response.data.user_pk}`
+                        user.class = `text-info`
+                        user.href = `/accounts/${response.data.user_pk}/detail/`
+                        user.innerText = `${response.data.user}`
+                        list.prepend(user)
+                        cnt.innerText = `${response.data.cnt_followers}`
                         event.target.innerText = '팔로우 취소'
                     }
                 })

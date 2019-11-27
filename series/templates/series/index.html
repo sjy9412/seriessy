@@ -35,9 +35,10 @@ cursor: default;
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 12vh;
+  height: 20vh;;
   display: block;
   margin-top: 30vh;
+  margin-bottom: 5vh;
   font-size: 25px;
 }
 .copyh1{
@@ -162,6 +163,11 @@ h1 span:nth-child(14) {
       width: 300px;
       height: 300px;
     }
+  .movies {
+    padding: 0;
+    border: none;
+    background: none;
+  }
  .movies:link { 
    color: black; 
    text-decoration: none;
@@ -199,19 +205,17 @@ h1 span:nth-child(14) {
 <img src="{% static '/logo/main.jpg' %}" alt="main" height="100%">
 <h2 style="position:absolute">Just Scrol!l!l</h2>
 </div>
-<div>
+<div style='margin-bottom:20px;'>
 <p class="text" style="text-align:center">영화 시리즈 추천 페이지입니다.<br>
-원하시는 시리즈가 없다면 <a href="#"><span class="copyh1">건의</span>하기</a>를 이용하세요~</p>
-<br><br><br><br><br><br><br><br><br>
-<p class="textt" style="text-align:center">지영이천사</p>
-<br><br><br><br><br>
-<div style="padding-right:80px">
+원하시는 시리즈가 없다면 <a href="#"><span class="copyh1">건의</span>하기</a>를 이용하세요~
+<br>
+</p>
+<p class="textt" style="margin-top:23vh; text-align:center">지영이천사</p>
+<div style="margin-top:10vh; padding-right:80px">
 <p style="text-align:right">made_by : song na en<p>
 <p style="text-align:right">           ssa bo gum</p>
 </div>
-​
 
-</div>
 </section>
 {% for s in series %}
 <section class="background-change-wrap">
@@ -230,9 +234,6 @@ h1 span:nth-child(14) {
 {% endfor %}
 </h1>
 {% if user.is_authenticated %}
-<form id="room-name-input" class="d-inline-block" action="{% url 'series:room' s.pk %}">
-  <button class="btn btn-primary">채팅방 입장</button>
-</form>
 {% if user in s.like_users.all %}
     <button class="btn btn-primary" id='like-button' data-id="{{ s.pk }}">옆구리에 빼기</button>
     {% else %}
@@ -244,22 +245,23 @@ h1 span:nth-child(14) {
     <div class="swiper-wrapper">
       {% for movie in s.movie_set.all|order_by:"release_date" %}
       <div class="swiper-slide" style="border-radius: 1%; width:40vh; height:56vh; background-color:#ffffff">
-      <a class="movies" href="{% url 'series:detail' s.pk movie.pk %}">
+      <form action="{% url 'series:detail' s.pk %}">
+      <button type="submit" class="movies">
+      <input type="hidden" name="movie_pk" value="{{movie.pk}}">
       {% if movie.poster_path %}
       <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" class="mt-2 mb-1" style="border-radius: 1%; width:35vh; height:48vh;" alt="">
       {% else %}
       <img src="https://image.tmdb.org/t/p/w500/{{ s.poster_path }}" class="mt-2 mb-1" style="border-radius: 1%; width:35vh; height:48vh;" alt="">
       {% endif %}
-      </a>
+      </button>
+      </form>
       <h3 style="font-size:3vh; margin: 1vh;" >{{ movie.title }}</h3>
       </div>
       {% endfor %}
     </div>
-    <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
   </div>
 </div>
-<!-- Slider main container -->
 </section>
 <div class="modal" tabindex="-1" role="dialog" id="series-{{ s.pk }}">
   <div class="modal-dialog" role="document">
