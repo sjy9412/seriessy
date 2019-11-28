@@ -1,409 +1,470 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block css %}
+{% load bootstrap4 %}
 .bg {
-  background-image: url('https://image.tmdb.org/t/p/original/{{ series.backdrop_path }}');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-attachment: fixed;
-  min-height: 100vh;
+background-image: url('https://image.tmdb.org/t/p/original/{{ series.backdrop_path }}');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: right top;
+background-attachment: fixed;
+min-height: 100vh;
 }
 .bg > div {
-  background-color: rgba(255, 255, 255, 0.5);
-  min-height: 100vh;
+background-color: rgba(255, 255, 255, 0.5);
+min-height: 100vh;
 }
 span.star-prototype, span.star-prototype > * {
-    height: 16px; 
-    background: url(https://i.imgur.com/YsyS5y8.png) 0 -16px repeat-x;
-    width: 80px;
-    display: inline-block;
+height: 16px;
+background: url(https://i.imgur.com/YsyS5y8.png) 0 -16px repeat-x;
+width: 80px;
+display: inline-block;
 }
- 
+
 span.star-prototype > * {
-    background-position: 0 0;
-    max-width:80px; 
+background-position: 0 0;
+max-width:80px;
 }
 {
-  box-sizing: border-box;
+box-sizing: border-box;
 }
 .chat-container {
-  position: fixed;
-  margin: 0 auto;
-  width: 23vw;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
-  transition: width 0.3s ease;
+position: fixed;
+margin: 0 auto;
+width: 23vw;
+box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+transition: width 0.3s ease;
 }
 
 .chat-header {
-  background-color: white;
-  position: relative;
-  padding: 30px 8px 8px 8px;
+background-color: white;
+position: relative;
+padding: 30px 8px 8px 8px;
 }
 
 .chat-header .header-btn {
-  border-radius: 50%;
-  border: none;
-  width: 12px;
-  height: 12px;
-  cursor: pointer;
-  position: absolute;
-  top: 8px;
-  padding: 0;
+border-radius: 50%;
+border: none;
+width: 12px;
+height: 12px;
+cursor: pointer;
+position: absolute;
+top: 8px;
+padding: 0;
 }
 
 .chat-header #close {
-  background-color: #ff6059;
-  left: 8px;
+background-color: #ff6059;
+left: 8px;
 }
 
 .chat-header #minimize {
-  background-color: #ffbf2f;
-  left: 26px;
+background-color: #ffbf2f;
+left: 26px;
 }
 
 .chat-header #maximize {
-  background-color: #29cd42;
-  left: 44px;
+background-color: #29cd42;
+left: 44px;
 }
 
 .chat-header #profile-pic {
-  vertical-align: middle;
-  border-radius: 50%;
+vertical-align: middle;
+border-radius: 50%;
 }
 
 .chat-header #username {
-  vertical-align: middle;
-  font-size: 14px;
-  font-weight: 500;
-  margin-left: 5px;
-  color: #343434;
+vertical-align: middle;
+font-size: 14px;
+font-weight: 500;
+margin-left: 5px;
+color: #343434;
 }
 
 /* chat box */
 
 .chatbox {
-  height: 50vh;
-  background-color: #d7e4f2;
-  padding: 10px;
-  overflow-y: scroll;
-  position: relative;
+height: 50vh;
+background-color: #d7e4f2;
+padding: 10px;
+overflow-y: scroll;
+position: relative;
 }
 
 .bubble {
-  margin: 5px 0;
-  display: inline-block;
-  max-width: 300px;
-  font-size: 14px;
-  position: relative;
+margin: 5px 0;
+display: inline-block;
+max-width: 300px;
+font-size: 14px;
+position: relative;
 }
 
 .friend-bubble {
-  background-color: white;
-  border-radius: 14px 14px 14px 0;
-  padding: 7px 15px 7px 15px;
-  float: left;
-  clear: both;
+background-color: white;
+border-radius: 14px 14px 14px 0;
+padding: 7px 15px 7px 15px;
+float: left;
+clear: both;
 }
 
 .my-bubble {
-  background-color: #fff46d;
-  border-radius: 14px 14px 0px 14px;
-  padding: 7px 15px 7px 15px;
-  float: right;
-  clear: both;
+background-color: #fff46d;
+border-radius: 14px 14px 0px 14px;
+padding: 7px 15px 7px 15px;
+float: right;
+clear: both;
 }
 
 /* text box */
 
 .text-box {
-  background-color: #fafafa;
-  padding: 10px;
+background-color: #fafafa;
+padding: 10px;
 }
 
 .text-box textarea {
-  height: 60px;
-  float: left;
-  width: calc(100% - 70px);
-  border-radius: 3px;
-  background-color: #ffffff;
-  border: solid 0.5px #d7d7d7;
-  resize: none;
-  padding: 10px;
-  font-size: 14px;
+height: 60px;
+float: left;
+width: calc(100% - 70px);
+border-radius: 3px;
+background-color: #ffffff;
+border: solid 0.5px #d7d7d7;
+resize: none;
+padding: 10px;
+font-size: 14px;
 }
 
 #send {
-  background-color: #4a90e2;
-  width: 60px;
-  height: 60px;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  margin-left: 10px;
-  float: left;
+background-color: #4a90e2;
+width: 60px;
+height: 60px;
+color: white;
+border: none;
+border-radius: 3px;
+cursor: pointer;
+margin-left: 10px;
+float: left;
 }
 
+#comment_list > div > .form-group {
+  margin-bottom:0;
+  margin-right:4px;
+  display: inline-block;
+  width: 40%;
+  z-index:10;
+}
 .clearfix {
-  clear: both;
+clear: both;
 }
 {% endblock %}
 {% block body %}
 <div class="bg">
-<div>
-<div class="row tx-4" style="width:98%; padding-top:90px;">
-<div class="col-2 my-xl-5 my-sm-4">
-<div class="nav flex-column nav-pills pl-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-<h3 class='mb-4 text-center'>시리즈 영화 목록</h3>
-<div style="overflow:auto; overflow-x: hidden; height:70vh;">
-{% for movie in series.movie_set.all %}
-{% if movie_pk == movie.pk %}
-    <a id="btn-{{ movie.pk }}" data-id="{{ movie.pk }}" class="click nav-link active mr-3" href="#"role="tab" aria-controls="v-pills-home" aria-selected="true">{{ movie.title }}</a>
-    {% else %}
-    <a id="btn-{{ movie.pk }}" data-id="{{ movie.pk }}" class="click nav-link mr-3" href="#" role="tab" aria-controls="v-pills-profile" aria-selected="false">{{ movie.title }}</a>
-    {% endif %}
-  {% endfor %}
-</div>
-</div>
-</div>
-<div class="col-7">
-<div class="row">
-<h1 style="text-align:center; width:95%; font-size:6vh;">{{series.name}}</h1>
-</div>
-<div id="carouselExampleIndicators" class="carousel slide height=80vh;" data-ride="carousel" data-interval="false">
-<div class="row">
-  <div class="carousel-inner" >
-  {% for movie in series.movie_set.all %}
-    {% if movie.pk == movie_pk %}
-    <div id="item-{{ movie.pk }}" class="carousel-item active">
-    {% else %}
-    <div id="item-{{ movie.pk }}" class="carousel-item">
-    {% endif %}
-            <div class="row m-5">
-                <div class="col-4" style="margin: auto 0;">
-                    <div style="height:50vh; text-align:center; ">
-                        {% if movie.poster_path %}
-                        <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" style="border:3px solid white; border-radius: 1%;" width="100%" alt="{{ movie.title }} poster">
-                        {% else %}
-                        <img src="https://image.tmdb.org/t/p/w500/{{ series.poster_path }}" style="border:3px solid white; border-radius: 1%;" width="100%" alt="{{ movie.title }} poster">
-                        {% endif %}
-                            <h5>{{ movie.title }}</h5>
-                            <!-- Button trigger modal -->
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-{{movie.pk}}">
-                                예고편 보기
-                              </button>
-                            <div style="text-align:left;" class='d-inline-block'>
-                                <span class="star-prototype">{{ movie.vote_average }}</span>
-                            </div>
-                        </div>
-                    </div>
-                <div class="col-8">
-                    <hr><p style="font-size:2vh;">{{movie.overview}}</p><hr>
-                </div>
-            </div> 
+  <div>
+    <div class="row tx-4" style="width:99%; padding-top:80px;">
+      <div class="col-2 pb-2 mb-xl-2 mb-sm-1 mr-3 ml-4" style="border-style: border; border-radius:1%; background-color:rgba(255, 255, 255, 0.5);">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <h3 class='mt-xl-4 mt-sm-3 mb-4 text-center'>시리즈 영화 목록</h3>
+          <div style="height:78vh; overflow:auto; overflow-x: hidden;">
+            {% for movie in series.movie_set.all %}
+            {% if movie_pk == movie.pk %}
+            <a id="btn-{{ movie.pk }}" data-id="{{ movie.pk }}" class="click nav-link active mr-3" href="#" role="tab"
+              aria-controls="v-pills-home" aria-selected="true">{{ movie.title }}</a>
+            {% else %}
+            <a id="btn-{{ movie.pk }}" data-id="{{ movie.pk }}" class="click nav-link mr-3" href="#" role="tab"
+              aria-controls="v-pills-profile" aria-selected="false">{{ movie.title }}</a>
+            {% endif %}
+            {% endfor %}
+          </div>
         </div>
-        <div class="modal fade" id="modal-{{movie.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" style="width:700px; height:360px;" role="document">
-    <div class="modal-content">
-      <div class="modal-header py-1 px-3">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
-      <div class="modal-body py-1 px-auto">
-        <iframe width="100%" height="360" src="https://www.youtube.com/embed/{{ movie.video_url }}" frameborder="0"></iframe>
-      </div>
-      <div class="modal-footer">
+      <div class="col-6">
+        <div class="row">
+          <h1 style="text-align:center; width:95%; font-size:6vh;">{{series.name}}</h1>
+        </div>
+        <div id="carouselExampleIndicators" style="height:50vh;" class="carousel slide row" data-ride="carousel"
+          data-interval="false">
+            <div class="carousel-inner">
+              {% for movie in series.movie_set.all %}
+              {% if movie.pk == movie_pk %}
+              <div id="item-{{ movie.pk }}" class="carousel-item active">
+                {% else %}
+                <div id="item-{{ movie.pk }}" class="carousel-item">
+                  {% endif %}
+                  <div class="row m-5">
+                    <div class="col-4" style="margin: auto 0;">
+                      <div style="height:50vh; text-align:center; ">
+                        <p class='m-0'>*포스터를 눌러보세요*</p>
+                        {% if movie.poster_path %}
+                        <img type="button" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}"
+                          style="border:3px solid white; border-radius: 2%; padding: 0; background: none;" width="100%"
+                          alt="{{ movie.title }} poster" class="btn mb-1 btn-primary" data-toggle="modal"
+                          data-target="#modal-{{movie.pk}}">
+                        {% else %}
+                        <img type="button" src="https://image.tmdb.org/t/p/w500/{{ series.poster_path }}"
+                          style="border:3px solid white; border-radius: 2%; padding: 0; background: none;" width="100%"
+                          alt="{{ movie.title }} poster" class="btn mb-1 btn-primary" data-toggle="modal"
+                          data-target="#modal-{{movie.pk}}">
+                        {% endif %}
+                        <h4>{{ movie.title }}</h4>
+                      </div>
+                    </div>
+                    <div class="col-8 p-3" style="height:38vh; overflow:auto; overflow-x: hidden;">
+                      <hr>
+                      <p style="font-size:2vh; margin:auto 20px;">
+                        {% if movie.overview %}
+                        {{movie.overview}}
+                        {% else %}
+                        영화 정보가 없습니다.
+                        {% endif %}
+                      </p>
+                      <hr>
+                    </div>
+                  </div>
+                </div>
+              <a class="carousel-control-prev col-1" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next col-1" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+                <div class="modal fade" id="modal-{{movie.pk}}" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg" style="width:700px; height:360px;"
+                    role="document">
+                    <div class="modal-content">
+                      <div class="modal-header py-1 px-3">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body py-1 px-auto">
+                        <iframe width="100%" height="360" src="https://www.youtube.com/embed/{{ movie.video_url }}"
+                          frameborder="0"></iframe>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="row mt-5 mb-0">
+              <h2 class='col-12 text-center' style="font-size:2.5vh;">리뷰</h2>
+            </div>
+            <hr>
+              <div id='comment_list' class="px-5">
+                <div style="height:12vh; overflow:auto; overflow-x: hidden;">
+                  {% for review in series.review_set.all %}
+                  {% if review.user == user %}
+                  <div id='user-{{ review.pk }}' class="col-12">
+                    <div class="row">
+                      <p class="col-9 pt-1" id='user-{{ review.pk }}-p'>{{ review.user }} : {{ review.content }}</p>
+                      <div style="text-align:left;" class='d-inline-block col-2 pt-2'>
+                          <span id="my-star" class="star-prototype">{{ review.score }}</span>
+                        </div>
+                        <button class="btn btn-danger btn-sm col-1 mb-3 mt-1" onClick="delete_comment({{review.pk}})">삭제</button>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% for review in series.review_set.all %}
+                    {% if review.user != user %}
+                    <div id='user-{{ review.pk }}' class="col-12">
+                      <div class="row">
+                        <p class="col-9 pt-1" id='user-{{ review.pk }}-p'>{{ review.user }} : {{ review.content }}</p>
+                        <div style="text-align:left;" class='d-inline-block col-2 pt-2'>
+                            <span class="star-prototype">{{ review.score }}</span>
+                          </div>
+                          <div class="col-1"></div>
+                        </div>
+                      </div>
+                      {% endif %}
+                      {% endfor %}
+                    </div>
+                      <div class="text-center mt-3">
+                        {% bootstrap_form forms %}
+                        <button class="btn btn-primary" onClick="make_comment({{series.pk}})">댓글 달기</button>
+                      </div>
+                    </div>
+          </div>
+        <div class="col-3 mt-4">
+          <div class="chat-container ml-4 mt-5">
+            <div class="chat-header">
+              <button id="close" class="header-btn"></button>
+              <button id="minimize" class="header-btn"></button>
+              <button id="maximize" class="header-btn"></button>
+              <img id="profile-pic" src="{% static '/logo/main.jpg' %}" width="50" height="50">
+              <span id="username">{{ series.name }}의 방</span>
+            </div>
+            <div class="chatbox">
+              <div class="friend-bubble bubble">
+                <p><span style="color:blue">{{ user }}</span>님이 채팅방에 참가하셨습니다.</p>
+              </div>
+            </div>
+            <div class="text-box">
+              <textarea id="chat-message-input" placeholder="메시지를 입력해주세요"></textarea>
+              <input id="send" type="button" value="전송" />
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-    {% endfor %}
-</div>
-<div id='comment_list' class='row'>
-{% for review in series.review_set.all %}
-<div id='user-{{ review.pk }}'>
-<p id='user-{{ review.pk }}-p'>{{ review.content }}
-{{ review.score }}
-{{ review.user }}</p>
-<button onClick="delete_comment({{review.pk}})">댓글 삭제</button>
-</div>
-{% endfor %}
-{{ forms }}
-<button onClick="make_comment({{series.pk}})">댓글 달기</button>
-</div>
-  <a class="carousel-control-prev col-1" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next col-1" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-  </div>
-    </div>
-    </div>
-<div class="col-3 mt-4">
-<div class="chat-container">
-<div class="chat-header">
-<button id="close" class="header-btn"></button>
-      <button id="minimize" class="header-btn"></button>
-      <button id="maximize" class="header-btn"></button>
-      <img id="profile-pic" src="{% static '/logo/main.jpg' %}" width="50" height="50">
-      <span id="username">악마지영의 방</span>
-</div>
-<div class="chatbox">
-      <div class="friend-bubble bubble">
-        <p><span style="color:blue">{{ user }}</span>님이 채팅방에 참가하셨습니다.</p>
-      </div>
-</div>
-    <div class="text-box">
-        <textarea id="chat-message-input" placeholder="메시지를 입력해주세요"></textarea>
-        <input id="send" type="button" value="전송"/>
-        <div class="clearfix"></div>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<script>
-$.fn.generateStars = function() {
-    return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*8));});
-};
-$('.star-prototype').generateStars();
- var roomName = {{ room_name_json }};
-    
-    window.onload = function(){
-       var message = '님이 입장하셨습니다.';
-       var user = {{ user_name }}
-       document.querySelector('#chatbox').value += (user+ message + '\n');
-    } 
+        </div>
+  <script>
+    $.fn.generateStars = function () {
+      return this.each(function (i, e) {
+        $(e).html($('<span/>').width($(e).text() * 8));
+      });
+    };
+    $('.star-prototype').generateStars();
+    var roomName = {{ room_name_json }};
+
+    window.onload = function () {
+      var message = '님이 입장하셨습니다.';
+      var user = {{ user_name }}
+      document.querySelector('#chatbox').value += (user + message + '\n');
+    }
     var chatSocket = new WebSocket(
         'wss://' + window.location.host +
         '/chat/' + roomName + '/');
 
-    chatSocket.onmessage = function(e) {
-        var d = new Date();
-        var currentDate = d.getHours() + "시" + d.getMinutes() + "분"
-        var data = JSON.parse(e.data);
-        var message = data['message'];
-        var user = {{ user_name }}
-        if(message){
-        $('.chatbox').append('<div class="my-bubble bubble">'+ message+'</div>');
+    chatSocket.onmessage = function (e) {
+      var d = new Date();
+      var currentDate = d.getHours() + "시" + d.getMinutes() + "분"
+      var data = JSON.parse(e.data);
+      var message = data['message'];
+      var user = {{ user_name }}
+      if (message) {
+        $('.chatbox').append('<div class="my-bubble bubble">' + message + '</div>');
         $('.chatbox').animate({
-        scrollTop: $('.chatbox').get(0).scrollHeight
+          scrollTop: $('.chatbox').get(0).scrollHeight
         }, 100);
         $('textarea').val('');
-        }
-        
+      }
+
     };
 
-    chatSocket.onclose = function(e) {
-        console.error('Chat socket closed unexpectedly');
+    chatSocket.onclose = function (e) {
+      console.error('Chat socket closed unexpectedly');
     };
 
     document.querySelector('#chat-message-input').focus();
-    document.querySelector('#chat-message-input').onkeyup = function(e) {
-        if (e.keyCode === 13) {  // enter, return
-            document.querySelector('#send').click();
-        }
+    document.querySelector('#chat-message-input').onkeyup = function (e) {
+      if (e.keyCode === 13) { // enter, return
+        document.querySelector('#send').click();
+      }
     };
 
-    document.querySelector('#send').onclick = function(e) {
-        var messageInputDom = document.querySelector('#chat-message-input');
-        var message = messageInputDom.value;
-        var message = $('textarea').val();
-        chatSocket.send(JSON.stringify({
-            'message': message
-        }));
-        messageInputDom.value = '';
+    document.querySelector('#send').onclick = function (e) {
+      var messageInputDom = document.querySelector('#chat-message-input');
+      var message = messageInputDom.value;
+      var message = $('textarea').val();
+      chatSocket.send(JSON.stringify({
+        'message': message
+      }));
+      messageInputDom.value = '';
     };
     $('#send').on('click', send);
-function send() {
-    var message = $('textarea').val();
-    console.log(message);
-    if(message){
-    $('.chatbox').append('<div class="my-bubble bubble">'+ message+'</div>');
-    $('.chatbox').animate({
-      scrollTop: $('.chatbox').get(0).scrollHeight
-    }, 100);
-    $('textarea').val('');
-    }
-}
 
-const button = document.querySelectorAll('.click')
-  button.forEach(elem => {
-  elem.addEventListener('click', function(event){
-      const btn = document.querySelector(`#btn-${event.target.dataset.id}`)
-      const item = document.querySelector(`#item-${event.target.dataset.id}`)
-      btn.classList.add('active')
-      item.classList.add('active')
-      const active = document.querySelectorAll('.active')
-      active.forEach(elem => {
-        if (btn.id !== elem.id && item.id !== elem.id){
-        elem.classList.remove('active')
-        }
+    function send() {
+      var message = $('textarea').val();
+      console.log(message);
+      if (message) {
+        $('.chatbox').append('<div class="my-bubble bubble">' + message + '</div>');
+        $('.chatbox').animate({
+          scrollTop: $('.chatbox').get(0).scrollHeight
+        }, 100);
+        $('textarea').val('');
+      }
+    }
+
+    const button = document.querySelectorAll('.click')
+    button.forEach(elem => {
+      elem.addEventListener('click', function (event) {
+        const btn = document.querySelector(`#btn-${event.target.dataset.id}`)
+        const item = document.querySelector(`#item-${event.target.dataset.id}`)
+        btn.classList.add('active')
+        item.classList.add('active')
+        const active = document.querySelectorAll('.active')
+        active.forEach(elem => {
+          if (btn.id !== elem.id && item.id !== elem.id) {
+            elem.classList.remove('active')
+          }
+        })
       })
     })
-    })
-</script>
-<script>
-function make_comment(series_id){
-  var content = $("#id_content").val();
-  var score = $("#id_score").val();
-  $.ajax({
-    type: "POST",
-    url: "{% url 'series:comment_create_ajax' %}",
-    data:{
-      'series_id': series_id,
-      'content': content,
-      'score' : score,
-      'csrfmiddlewaretoken': '{{ csrf_token }}',
-    },
-    dataType: "json",
-    success: function(response){
-      if (response.chk) {
-      $("#comment_list").prepend(`<div id=user-${response.review_id}><p id=user-${response.review_id}-p>`+response.content+response.score+response.username+`</p><button onClick="delete_comment(${response.review_id})">댓글 삭제</button></div>`)
-      $("#id_content").val(' ')
-      $("#id_score").val(' ')
+  </script>
+  <script>
+    function make_comment(series_id) {
+      var content = $("#id_content").val();
+      var score = $("#id_score").val();
+      $.ajax({
+        type: "POST",
+        url: "{% url 'series:comment_create_ajax' %}",
+        data: {
+          'series_id': series_id,
+          'content': content,
+          'score': score,
+          'csrfmiddlewaretoken': '{{ csrf_token }}',
+        },
+        dataType: "json",
+        success: function (response) {
+          if (response.chk) {
+            $("#comment_list").prepend(`<div id='user-${response.review_id}' class="col-12">
+                  <div class="row">
+                    <p class="col-9 pt-1" id='user-${response.review_id}-p'>` + response.username + ' : ' + response.content + `</p>
+                    <div style="text-align:left;" class='d-inline-block col-2 pt-2'>
+                        <span id="my-star" class="star-prototype">` + response.score + `</span>
+                      </div>
+                  <button class="btn btn-danger btn-sm col-1 mb-3 mt-1" onClick="delete_comment(${response.review_id})">삭제</button>
+                  </div>
+                  </div>`)
+            $('#my-star').generateStars();
+            $("#id_content").val(' ')
+            $("#id_score").val(' ')
+          } else {
+            console.log(document.querySelector(`#user-${response.review_id}`))
+            const user_comment = document.querySelector(`#user-${response.review_id}-p`)
+            const star = document.querySelector("#my-star")
+            user_comment.innerText = `${response.username}` + ' : ' + `${response.content}`
+            star.innerText = `${response.score}`
+            $('#my-star').generateStars();
+            $("#id_content").val(' ')
+            $("#id_score").val(' ')
+          }
+        },
+        error: function (request, status, error) {
+          console.log('bye...');
+          alert(error);
+        },
+      });
     }
-      else {
-        console.log(document.querySelector(`#user-${response.review_id}`))
-        const user_comment = document.querySelector(`#user-${response.review_id}-p`)
-        user_comment.innerText = `${response.content+response.score+response.username}`
-        $("#id_content").val(' ')
-        $("#id_score").val(' ')
-      }
-    },
-    error: function(request, status, error){
-      console.log('bye...');
-      alert(error);
-    },
-  });
-}
-function delete_comment(review_id){
-  $.ajax({
-    type: "POST",
-    url: "{% url 'series:review_delete' %}",
-    data:{
-      'review_id': review_id,
-      'csrfmiddlewaretoken': '{{ csrf_token }}',
-    },
-    dataType: "json",
-    success: function(response){
-        console.log(response)
-        const user_comment = document.querySelector(`#user-${response.review_id}`)
-        console.log(user_comment)
-        user_comment.parentNode.removeChild(user_comment)
-    },
-    error: function(request, status, error){
-      console.log('bye...');
-      alert(error);
-    },
-  });
-}
-</script>
 
-{% endblock %}
+    function delete_comment(review_id) {
+      $.ajax({
+        type: "POST",
+        url: "{% url 'series:review_delete' %}",
+        data: {
+          'review_id': review_id,
+          'csrfmiddlewaretoken': '{{ csrf_token }}',
+        },
+        dataType: "json",
+        success: function (response) {
+          console.log(response)
+          const user_comment = document.querySelector(`#user-${response.review_id}`)
+          console.log(user_comment)
+          user_comment.parentNode.removeChild(user_comment)
+        },
+        error: function (request, status, error) {
+          console.log('bye...');
+          alert(error);
+        },
+      });
+    }
+  </script>
+
+  {% endblock %}

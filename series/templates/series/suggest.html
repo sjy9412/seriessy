@@ -1,13 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block css %}
-
+.bg {
+background-image: url("{% static 'logo/main.jpg' %}");
+background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100vw;
+}
+.bg > div {
+  background-color: rgba(255, 255, 255, 0.1);
+  min-height: 100vh;
+  width: 100%;
+}
 {% endblock %}
 {% block body %}
+<div class='bg'>
 <div>
 <div class="row tx-4" style="width:98%; padding-top:90px;">
 <div class="col-2 my-4 ">
 <div class="nav flex-column nav-pills pl-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-<h3 class='mb-4 text-center'>시리즈 영화 목록</h3>
+<h3 class='mb-4 text-center text-light'>시리즈 목록</h3>
 <div style="overflow:auto; overflow-x: hidden; height:70vh;">
 {% for s in series %}
     <a id="btn-{{ s.pk }}" data-id="{{ s.pk }}" class="click nav-link mr-3" href="#" role="tab" aria-controls="v-pills-profile" aria-selected="false">{{ s.name }}</a>
@@ -18,8 +33,9 @@
 
 <form action="{% url 'series:suggest' %}" style="margin-left:28vw" class="form-inline d-line-bolck" method="POST">
 {% csrf_token %}
-<input name="name" class="form-control mr-2" type="text" placeholder="시리즈 등록">
-<button type="button" class="btn btn-outline-warning my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">제출</button>
+<input name="name" class="form-control-lg mr-2" type="text" placeholder="시리즈 등록">
+<button type="button" class="btn btn-lg btn-warning my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">제출</button>
+
 
 </form>
 </div>
@@ -46,5 +62,6 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 {% endblock %}

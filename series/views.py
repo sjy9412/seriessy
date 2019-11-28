@@ -40,13 +40,13 @@ def result(series_all, user):
         for follower in user.followings.all():
             for review in follower.review_set.all():
                 if review.series_id == s.pk:
-                    if review.score <= 1:
+                    if review.score <= 2:
                         score -= 2
-                    elif 1 < review.score <= 2:
+                    elif 2 < review.score <= 4:
                         score -= 1
-                    elif 3 < review.score <= 4:
+                    elif 6 < review.score <= 8:
                         score += 1
-                    elif 4 < review.score <= 5:
+                    elif 8 < review.score <= 10:
                         score += 2
             for series in follower.like_series.all():
                 if series.pk == s.pk:
@@ -125,13 +125,14 @@ def movie_detail(request, movie_pk):
 #                 review.series = series
 #                 forms.save()
 #     return redirect('series:detail', series_pk, movie_pk)
-@login_required
-def review_delete(request, movie_pk, review_pk):
-    movie = get_object_or_404(Movie, pk=movie_pk)
-    review = get_object_or_404(Review, pk=review_pk)
-    if request.method == 'POST':
-        review.delete()
-    return redirect('series:movie_detail', movie_pk)
+# @login_required
+# def review_delete(request, movie_pk, review_pk):
+#     movie = get_object_or_404(Movie, pk=movie_pk)
+#     review = get_object_or_404(Review, pk=review_pk)
+#     if request.method == 'POST':
+#         review.delete()
+#     return redirect('series:movie_detail', movie_pk)
+
 @login_required
 def room(request, series_pk):
     series = get_object_or_404(Series, pk=series_pk)
@@ -141,6 +142,7 @@ def room(request, series_pk):
         'user_name': mark_safe(json.dumps(user.username)),
         'series': series,
     })
+    
 def search(request):
     series = Series.objects.all()
     search = request.GET.get('search')
@@ -159,6 +161,7 @@ def search(request):
         'series':series,
     }
     return render(request, 'series/index.html', context)
+
 @login_required
 def comment_create_ajax(request):
     series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
@@ -197,6 +200,7 @@ def review_delete(request):
         }
     return HttpResponse(json.dumps(context), content_type="application/json")
 
+@login_required
 def suggest(request):
     suggest = Request()
     series = Series.objects.all()
