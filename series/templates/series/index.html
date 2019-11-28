@@ -2,14 +2,14 @@
 {% load static %}
 {% load order_by %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick.css" />
-<link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css" />
-<script src="http://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
-<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
-<script src="https://unpkg.com/swiper/js/swiper.js"></script>
-<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//kenwheeler.github.io/slick/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="//kenwheeler.github.io/slick/slick/slick-theme.css" />
+<script src="//code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//kenwheeler.github.io/slick/slick/slick.min.js"></script>
+<link rel="stylesheet" href="//unpkg.com/swiper/css/swiper.css">
+<link rel="stylesheet" href="//unpkg.com/swiper/css/swiper.min.css">
+<script src="//unpkg.com/swiper/js/swiper.js"></script>
+<script src="//unpkg.com/swiper/js/swiper.min.js"></script>
 {% endblock %}
 {% block css %}
 h2{
@@ -220,7 +220,7 @@ h1 span:nth-child(14) {
 {% for s in series %}
 <section class="background-change-wrap">
 <div>
-<img src="https://image.tmdb.org/t/p/original/{{ s.backdrop_path }}" alt="{{ s.name }} backdrop path" height="100%">
+<img src="//image.tmdb.org/t/p/original/{{ s.backdrop_path }}" alt="{{ s.name }} backdrop path" height="100%">
 </div>
 <div class="m-5" style="width:95%" id="{{ s.pk }}">
 <br>
@@ -249,9 +249,9 @@ h1 span:nth-child(14) {
       <button type="submit" class="movies">
       <input type="hidden" name="movie_pk" value="{{movie.pk}}">
       {% if movie.poster_path %}
-      <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" class="mt-2 mb-1" style="border-radius: 1%; width:35vh; height:48vh;" alt="">
+      <img src="//image.tmdb.org/t/p/w500/{{ movie.poster_path }}" class="mt-2 mb-1" style="border-radius: 1%; width:35vh; height:48vh;" alt="">
       {% else %}
-      <img src="https://image.tmdb.org/t/p/w500/{{ s.poster_path }}" class="mt-2 mb-1" style="border-radius: 1%; width:35vh; height:48vh;" alt="">
+      <img src="//image.tmdb.org/t/p/w500/{{ s.poster_path }}" class="mt-2 mb-1" style="border-radius: 1%; width:35vh; height:48vh;" alt="">
       {% endif %}
       </button>
       </form>
