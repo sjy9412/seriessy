@@ -152,30 +152,29 @@ def search(request):
 def comment_create_ajax(request):
     series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
     reviews = series.review_set.all()
-    if request.method == 'POST':
-        for review in reviews:
-            if request.user == review.user:
-                review.content = request.POST.get('content')
-                review.score = int(request.POST.get('score'))
-                review.save()
-                chk = False
-                break
-        else:
-            review = Review()
+    for review in reviews:
+        if request.user == review.user:
             review.content = request.POST.get('content')
-            review.series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
-            review.user = request.user
             review.score = int(request.POST.get('score'))
             review.save()
-            chk = True
-        context = {
-            'content' : review.content,
-            'score' : review.score,
-            'username' : request.user.username,
-            'review_id' : review.pk,
-            'chk' : chk
-        }
-        return HttpResponse(json.dumps(context), content_type="application/json")
+            chk = False
+            break
+    else:
+        review = Review()
+        review.content = request.POST.get('content')
+        review.series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
+        review.user = request.user
+        review.score = int(request.POST.get('score'))
+        review.save()
+        chk = True
+    context = {
+        'content' : review.content,
+        'score' : review.score,
+        'username' : request.user.username,
+        'review_id' : review.pk,
+        'chk' : chk
+    }
+    return HttpResponse(json.dumps(context), content_type="application/json")
 @login_required
 def review_delete(request):
     review_id = int(request.POST.get('review_id'))
