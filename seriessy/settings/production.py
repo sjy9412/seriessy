@@ -1,9 +1,9 @@
 from .base import *
 
-​DEBUG = False​
+DEBUG = False
 
 ALLOWED_HOSTS = [
-
+    # 배포된 url
 ]
 
 import django_heroku
