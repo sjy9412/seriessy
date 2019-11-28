@@ -99,10 +99,16 @@ font-size: 14px;
 position: relative;
 }
 
+.sd {
+  margin-top: 20px;
+  padding: 7px 15px 7px 15px;
+  float: left;
+  clear: both;
+}
+
 .friend-bubble {
 background-color: white;
 border-radius: 14px 14px 14px 0;
-margin-top: 16px;
 padding: 7px 15px 7px 15px;
 float: left;
 clear: both;
@@ -349,7 +355,7 @@ clear: both;
         }, 100);
         $('textarea').val('');
       } else {
-        $('.chatbox').append('<div><p>'+ send + '</p><div class="friend-bubble bubble">' + message + '</div></div>');
+        $('.chatbox').append('<div class="sd">'+ send + '</div><div class="friend-bubble bubble">' + message + '</div>');
         $('.chatbox').animate({
           scrollTop: $('.chatbox').get(0).scrollHeight
         }, 100);
