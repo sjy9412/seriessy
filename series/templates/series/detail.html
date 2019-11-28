@@ -292,10 +292,12 @@ clear: both;
                       {% endif %}
                       {% endfor %}
                     </div>
+                    {% if user.is_authenticated %}
                       <div class="text-center mt-3">
                         {% bootstrap_form forms %}
                         <button class="btn btn-primary" onClick="make_comment({{series.pk}})">댓글 달기</button>
                       </div>
+                      {% endif %}
                     </div>
           </div>
         <div class="col-3 mt-4">
