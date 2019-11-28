@@ -75,8 +75,8 @@ opacity: 1;
                         <h5 class="card-title">
                             {% for series in detail_user.like_series.all %}
                             <form action="{% url 'series:detail' series.pk %}">
-                                <button type="submit" style="padding: 0; border: none; background: none;">
                                 <input type="hidden" name="movie_pk" value="{{ series.movie_set.all.0.pk }}">
+                                <button type="submit" class='btn btn-outline-info'>
                                 <img height="150px" src="https://image.tmdb.org/t/p/w500/{{ series.poster_path }}">
                                 <br>{{ series.name }}
                                 </button>
@@ -94,7 +94,11 @@ opacity: 1;
                     <div class="card-body text-info">
                         <h5 class="card-title"></h5>
                         <p class="card-text">{% for review in detail_user.review_set.all %}
-                            <p>{{ review.series.name }}<br>{{ review.content }} [{{ review.score }}]</p>
+                                <form action="{% url 'series:detail' review.series.pk %}">
+                                <input type="hidden" name="movie_pk" value="{{ review.series.movie_set.all.0.pk }}">
+                                <button type="submit" class='btn btn-outline-info mb-2' style="width:80%">
+                                {{ review.series.name }} [{{ review.score }}점]
+                                </button>
                             <br>
                             {% endfor %}</p>
                     </div>
