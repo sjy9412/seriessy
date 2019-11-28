@@ -102,6 +102,7 @@ position: relative;
 .friend-bubble {
 background-color: white;
 border-radius: 14px 14px 14px 0;
+margin-top: 16px;
 padding: 7px 15px 7px 15px;
 float: left;
 clear: both;
@@ -336,10 +337,11 @@ clear: both;
       var d = new Date();
       var currentDate = d.getHours() + "시" + d.getMinutes() + "분"
       var data = JSON.parse(e.data);
-      console.log(e)
       var message = data['message'];
       var user = {{ user_name }}
       var send = data['send_user']
+      console.log(user)
+      console.log(send)
       if (user === send) {
         $('.chatbox').append('<div class="my-bubble bubble">' + message + '</div>');
         $('.chatbox').animate({
@@ -347,7 +349,7 @@ clear: both;
         }, 100);
         $('textarea').val('');
       } else {
-        $('.chatbox').append('<div><p>'+ user + '</p><div class="friend-bubble bubble">' + message + '</div></div>');
+        $('.chatbox').append('<div><p>'+ send + '</p><div class="friend-bubble bubble">' + message + '</div></div>');
         $('.chatbox').animate({
           scrollTop: $('.chatbox').get(0).scrollHeight
         }, 100);
