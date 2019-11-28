@@ -225,13 +225,12 @@ span.star-prototype > * {
 </div>
 <div id='comment_list' class='row'>
 {% for review in series.review_set.all %}
-<p id='user-{{ user.pk }}'>{{ review.content }}
+<div id='user-{{ review.pk }}'>
+<p id='user-{{ review.pk }}-p'>{{ review.content }}
 {{ review.score }}
-{{ review.user }}<p><hr>
-<form action="" method='POST'>
-{% csrf_token %}
-<button type="submit">댓글 삭제</button>
-</form>
+{{ review.user }}</p>
+<button onClick="delete_comment({{review.pk}})">댓글 삭제</button>
+</div>
 {% endfor %}
 {{ forms }}
 <button onClick="make_comment({{series.pk}})">댓글 달기</button>
@@ -370,14 +369,36 @@ function make_comment(series_id){
     dataType: "json",
     success: function(response){
       if (response.chk) {
-      $("#comment_list").append(`<p id=user-${response.user_id}>`+response.content+response.score+response.username+"</p><hr>")
+      $("#comment_list").prepend(`<div id=user-${response.review_id}><p id=user-${response.review_id}-p>`+response.content+response.score+response.username+`</p><button onClick="delete_comment({{review.pk}})">댓글 삭제</button></div>`)
       $("#comment").val(' ')
     }
       else {
-        console.log($("#comment_list"))
-        $(`#user-${response.user_id}`).innerText = `${response.content+response.score+response.username}`
+        console.log(document.querySelector(`#user-${response.review_id}`))
+        const user_comment = document.querySelector(`#user-${response.review_id}-p`)
+        user_comment.innerText = `${response.content+response.score+response.username}`
         $("#comment").val(' ')
       }
+    },
+    error: function(request, status, error){
+      console.log('bye...');
+      alert(error);
+    },
+  });
+}
+function delete_comment(review_id){
+  $.ajax({
+    type: "POST",
+    url: "{% url 'series:review_delete' %}",
+    data:{
+      'review_id': review_id,
+      'csrfmiddlewaretoken': '{{ csrf_token }}',
+    },
+    dataType: "json",
+    success: function(response){
+        console.log(response)
+        const user_comment = document.querySelector(`#user-${response.review_id}`)
+        console.log(user_comment)
+        user_comment.parentNode.removeChild(user_comment)
     },
     error: function(request, status, error){
       console.log('bye...');
