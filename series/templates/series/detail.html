@@ -300,7 +300,7 @@ clear: both;
               <span id="username">{{ series.name }}의 방</span>
             </div>
             <div class="chatbox">
-              <div class="friend-bubble bubble">
+              <div class="my-bubble bubble">
                 <p><span style="color:blue">{{ user }}</span>님이 채팅방에 참가하셨습니다.</p>
               </div>
             </div>
@@ -339,7 +339,7 @@ clear: both;
       var message = data['message'];
       var user = {{ user_name }}
       if (message) {
-        $('.chatbox').append('<div class="my-bubble bubble">' + message + '</div>');
+        $('.chatbox').append('<p>'+ user + '</p><div class="friend-bubble bubble">' + message + '</div>');
         $('.chatbox').animate({
           scrollTop: $('.chatbox').get(0).scrollHeight
         }, 100);
