@@ -329,7 +329,7 @@ clear: both;
       document.querySelector('#chatbox').value += (user + message + '\n');
     }
     var chatSocket = new WebSocket(
-        'wss://' + window.location.host +
+        'ws://' + window.location.host +
         '/chat/' + roomName + '/');
 
     chatSocket.onmessage = function (e) {
