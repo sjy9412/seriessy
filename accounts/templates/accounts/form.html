@@ -21,34 +21,43 @@ background-size: cover;
 {% block body %}
 <div class="bg">
 <div>
-<div class="container" style="padding-top: 95px; width:98%;">
-{% if request.resolver_match.url_name == 'signup' %}
+<div class="container" style="padding-top: 16vh; width:30vw;">
 <div class='p-4'style="border-style: border; border-radius:1%; background-color: rgba(255, 255, 255, 0.5)">
-<h2 class="mt-5">
-회원가입</h2>
+<h2 class="my-2">
+{% if request.resolver_match.url_name == 'signup' %}
+회원가입
 {% else %}
-<h2 class="mt-5">
-로그인</h2>
+로그인
 {% endif %}
+</h2>
+<hr>
 <form action="" method="POST">
 {% csrf_token %}
 {% bootstrap_form forms %}
-<button type="submit">제출</button>
+<div class="my-2" style="text-align:center;">
+<button class="btn btn-info" style="width:90%;" type="submit">
+{% if request.resolver_match.url_name == 'signup' %}
+가입하기
+{% else %}
+로그인
+{% endif %}
+</button>
+</div>
 </form>
-<div>
+<div style="text-align:center;">
 <hr>
 <a href="{% provider_login_url 'google' %}" style="text-transform:none; text-decoration:none;">
-      <div class="left btn btn-outline-secondary">
+      <div class="left btn btn-light mr-2">
         <img width="20px" alt="Google G Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/> | 구글 로그인
       </div>   
     </a>
     <a href="{% provider_login_url 'kakao' %}" style="text-transform:none; text-decoration:none;">
-      <div class="left btn btn-outline-secondary">
-        <img width="20px" alt="kakao Logo" src="http://mblogthumb2.phinf.naver.net/20150817_269/hello_38_1439804245658oNK04_JPEG/%C4%AB%C4%AB%BF%C0%C5%E5.jpg?type=w2"/> | 카카오 로그인
+      <div class="left btn btn-light mr-2">
+        <img width="20px" alt="kakao Logo" src="https://mblogthumb-phinf.pstatic.net/MjAxODAyMDJfMTA5/MDAxNTE3NTAyODA4ODAz.pfFBh3N_7cDEfgp925XW22NJgDO2-2_CdhjOOJsaqjog.YUrOiE5xseldfEb3R9_y8LMPuy8o4ml5JCqLHi1yHGgg.PNG.marketstory24/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1_%EB%A1%9C%EA%B3%A0_4.png?type=w800"/> | 카카오 로그인
       </div>   
     </a>
     <a href="{% provider_login_url 'naver' %}" style="text-transform:none; text-decoration:none;">
-      <div class="left btn btn-outline-secondary">
+      <div class="left btn btn-light mr-2">
         <img width="20px" alt="naver Logo" src="http://wiki.hash.kr/images/thumb/c/cf/%EB%84%A4%EC%9D%B4%EB%B2%84%E3%88%9C_%EB%A1%9C%EA%B3%A0.png/200px-%EB%84%A4%EC%9D%B4%EB%B2%84%E3%88%9C_%EB%A1%9C%EA%B3%A0.png"/> | 네이버 로그인
       </div>   
     </a>

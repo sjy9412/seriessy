@@ -32,7 +32,7 @@ class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 class Score(models.Model):
-    user_score = models.IntegerField()
+    user_score = models.FloatField()
     series = models.ForeignKey(Series, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 

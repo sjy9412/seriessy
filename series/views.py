@@ -11,6 +11,11 @@ def result(series_all, user):
     for my in user.like_series.all():
         for g in my.genre.all():
             my_genre.add(g.name)
+    cnt_like = 0
+    cnt_review = 0
+    for follower in user.followings.all():
+        cnt_like += follower.like_series.count()
+        cnt_review += follower.review_set.count()
     for s in series_all:
         if Score.objects.filter(user_id=user).filter(series_id=s.pk):
             newscore = Score.objects.filter(user_id=user).filter(series_id=s.pk)[0]
@@ -22,10 +27,16 @@ def result(series_all, user):
             cnt = 0
             if g.name in my_genre:
                 cnt += 1
-        if 0 < cnt < 3:
-            score += 2
-        elif 2 <= cnt:
-            score += 3
+        if cnt_like or cnt_review:
+            if 0 < cnt < 3:
+                score += (2 * (cnt_like*0.8 + cnt_review*0.2))
+            elif 2 <= cnt:
+                score += (3 * (cnt_like*0.8 + cnt_review*0.2))
+        else:
+            if 0 < cnt < 3:
+                score += 2 
+            elif 2 <= cnt:
+                score += 3 
         for follower in user.followings.all():
             for review in follower.review_set.all():
                 if review.series_id == s.pk:

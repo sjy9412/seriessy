@@ -94,7 +94,7 @@ opacity: 1;
                     <div class="card-body text-info">
                         <h5 class="card-title"></h5>
                         <p class="card-text">{% for review in detail_user.review_set.all %}
-                            <p>{{ review.movie.title }} : <br>{{ review.content }} [{{ review.score }}]</p>
+                            <p>{{ review.series.name }}<br>{{ review.content }} [{{ review.score }}]</p>
                             <br>
                             {% endfor %}</p>
                     </div>
