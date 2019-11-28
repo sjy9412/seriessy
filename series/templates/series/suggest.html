@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 {% block css %}
-.suggest{
- margin-top:100px;
- margin-left: 50px;
-}
+
 {% endblock %}
 {% block body %}
 <div>
@@ -18,9 +15,46 @@
 </div>
 </div>
 </div>
-<div class="suggest">
-<input type="text">
-<input type="submit">
+
+<form action="{% url 'series:suggest' %}" style="margin-left:28vw" class="form-inline d-line-bolck" method="POST">
+{% csrf_token %}
+<input name="name" class="form-control mr-2" type="text" placeholder="시리즈 등록">
+<button type="button" class="btn btn-outline-warning my-2 my-sm-0" data-toggle="modal" data-target=".bd-example-modal-sm">제출</button>
+
+</form>
 </div>
+</div>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      등록이 완료되었습니다.
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
