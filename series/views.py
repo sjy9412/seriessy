@@ -196,3 +196,15 @@ def suggest(request):
             'series': series
         }
         return render(request, 'series/suggest.html', context)
+
+        
+@login_required
+def review_delete(request):
+    review_id = int(request.POST.get('review_id'))
+    review = get_object_or_404(Review, pk=review_id)
+    if request.method == 'POST':
+        review.delete()
+    context = {
+            'review_id' : review_id
+        }
+    return HttpResponse(json.dumps(context), content_type="application/json") 
