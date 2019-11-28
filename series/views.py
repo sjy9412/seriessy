@@ -157,7 +157,22 @@ def search(request):
     }
     return render(request, 'series/index.html', context)
 
+@login_required
 def comment_create_ajax(request):
+    if request.method == 'POST':
+        for review in reviews:
+            if request.user == review.user:
+                forms = ReviewForm(request.POST, instance=review)
+                forms.save()
+                break
+        else:
+            forms = ReviewForm(request.POST)
+            if forms.is_valid():
+                review = forms.save(commit=False)
+                review.user = request.user
+                review.series = series
+                forms.save()
+    return redirect('series:detail', series_pk, movie_pk)
     review = Review()
     review.content = request.POST.get('content')
     review.series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
@@ -170,3 +185,14 @@ def comment_create_ajax(request):
         'username' : request.user.username
     }
     return HttpResponse(json.dumps(context), content_type="application/json")
+
+
+def suggest(request):
+    if request.method == 'POST':
+        return redirect('series:suggest')
+    else:
+        series = Series.objects.all()
+        context = {
+            'series': series
+        }
+        return render(request, 'series/suggest.html', context)

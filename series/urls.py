@@ -13,4 +13,5 @@ urlpatterns = [
     path('<int:movie_pk>/movie/reviews/<int:review_pk>/delete/', views.review_delete, name="review_delete"),
     path('search/', views.search, name='search'),
     path('comment/create/', views.comment_create_ajax, name='comment_create_ajax'),
+    path('suggest/', views.suggest, name='suggest')
 ]
