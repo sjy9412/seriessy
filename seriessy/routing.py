@@ -13,3 +13,4 @@ application = ProtocolTypeRouter({
         )
     ),
 })
+ASGI_APPLICATION = "seriessy.routing.application"
