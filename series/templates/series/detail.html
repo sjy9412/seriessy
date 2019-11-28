@@ -336,10 +336,18 @@ clear: both;
       var d = new Date();
       var currentDate = d.getHours() + "시" + d.getMinutes() + "분"
       var data = JSON.parse(e.data);
+      console.log(e)
       var message = data['message'];
       var user = {{ user_name }}
-      if (message) {
-        $('.chatbox').append('<p>'+ user + '</p><div class="friend-bubble bubble">' + message + '</div>');
+      var send = data['send_user']
+      if (user === send) {
+        $('.chatbox').append('<div class="my-bubble bubble">' + message + '</div>');
+        $('.chatbox').animate({
+          scrollTop: $('.chatbox').get(0).scrollHeight
+        }, 100);
+        $('textarea').val('');
+      } else {
+        $('.chatbox').append('<div><p>'+ user + '</p><div class="friend-bubble bubble">' + message + '</div></div>');
         $('.chatbox').animate({
           scrollTop: $('.chatbox').get(0).scrollHeight
         }, 100);
@@ -364,7 +372,8 @@ clear: both;
       var message = messageInputDom.value;
       var message = $('textarea').val();
       chatSocket.send(JSON.stringify({
-        'message': message
+        'message': message,
+        'send_user': {{ user_name }}
       }));
       messageInputDom.value = '';
     };
