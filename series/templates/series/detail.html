@@ -173,7 +173,7 @@ clear: both;
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <h3 class='mt-xl-4 mt-sm-3 mb-4 text-center'>시리즈 영화 목록</h3>
           <div style="height:78vh; overflow:auto; overflow-x: hidden;">
-            {% for movie in series.movie_set.all|order_by:"release_date %}
+            {% for movie in series.movie_set.all|order_by:"release_date" %}
             {% if movie_pk == movie.pk %}
             <a id="btn-{{ movie.pk }}" data-id="{{ movie.pk }}" class="click nav-link active mr-3" href="#" role="tab"
               aria-controls="v-pills-home" aria-selected="true">{{ movie.title }}</a>
