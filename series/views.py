@@ -44,7 +44,6 @@ def result(series_all, user):
         newscore.user_score = score
         newscore.save()
     return user.score_series.order_by('-score__user_score')
-
 # Create your views here.
 def index(request):
     series = Series.objects.all()
@@ -58,7 +57,6 @@ def index(request):
         'series':series,
     }
     return render(request, 'series/index.html', context)
-
 def detail(request, series_pk):
     series = get_object_or_404(Series, pk=series_pk)
     movie_pk = request.GET.get('movie_pk')
@@ -71,7 +69,6 @@ def detail(request, series_pk):
         'user_name': mark_safe(json.dumps(request.user.username)),
     }
     return render(request, 'series/detail.html', context)
-
 @login_required
 def like(request, series_pk):
     if request.is_ajax():
@@ -89,7 +86,6 @@ def like(request, series_pk):
         return JsonResponse({'count': count, 'is_liked': is_liked, 'user': user.username, 'pk': series_pk})
     else:
         return HttpResponseForbidden()
-
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie,pk=movie_pk)
     forms = ReviewForm()
@@ -100,7 +96,6 @@ def movie_detail(request, movie_pk):
         'reviews': reviews,
     }
     return render(request, 'series/movie_detail.html', context)
-
 # @login_required
 # def review_create(request, series_pk, movie_pk):
 #     series = get_object_or_404(Series, pk=series_pk)
@@ -119,7 +114,6 @@ def movie_detail(request, movie_pk):
 #                 review.series = series
 #                 forms.save()
 #     return redirect('series:detail', series_pk, movie_pk)
-
 @login_required
 def review_delete(request, movie_pk, review_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
@@ -127,7 +121,6 @@ def review_delete(request, movie_pk, review_pk):
     if request.method == 'POST':
         review.delete()
     return redirect('series:movie_detail', movie_pk)
-
 @login_required
 def room(request, series_pk):
     series = get_object_or_404(Series, pk=series_pk)
@@ -137,7 +130,6 @@ def room(request, series_pk):
         'user_name': mark_safe(json.dumps(user.username)),
         'series': series,
     })
-
 def search(request):
     series = Series.objects.all()
     search = request.GET.get('search')
@@ -156,7 +148,6 @@ def search(request):
         'series':series,
     }
     return render(request, 'series/index.html', context)
-
 @login_required
 def comment_create_ajax(request):
     series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
@@ -181,11 +172,20 @@ def comment_create_ajax(request):
             'content' : review.content,
             'score' : review.score,
             'username' : request.user.username,
-            'user_id' : request.user.pk,
+            'review_id' : review.pk,
             'chk' : chk
         }
         return HttpResponse(json.dumps(context), content_type="application/json")
-
+@login_required
+def review_delete(request):
+    review_id = int(request.POST.get('review_id'))
+    review = get_object_or_404(Review, pk=review_id)
+    if request.method == 'POST':
+        review.delete()
+    context = {
+            'review_id' : review_id
+        }
+    return HttpResponse(json.dumps(context), content_type="application/json")
 
 def suggest(request):
     if request.method == 'POST':
@@ -196,15 +196,3 @@ def suggest(request):
             'series': series
         }
         return render(request, 'series/suggest.html', context)
-
-        
-@login_required
-def review_delete(request):
-    review_id = int(request.POST.get('review_id'))
-    review = get_object_or_404(Review, pk=review_id)
-    if request.method == 'POST':
-        review.delete()
-    context = {
-            'review_id' : review_id
-        }
-    return HttpResponse(json.dumps(context), content_type="application/json") 

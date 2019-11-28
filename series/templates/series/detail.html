@@ -10,7 +10,7 @@
   min-height: 100vh;
 }
 .bg > div {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.5);
   min-height: 100vh;
 }
 span.star-prototype, span.star-prototype > * {
@@ -185,7 +185,6 @@ span.star-prototype > * {
                     <div style="height:50vh; text-align:center; ">
                         {% if movie.poster_path %}
                         <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" style="border:3px solid white; border-radius: 1%;" width="100%" alt="{{ movie.title }} poster">
-
                         {% else %}
                         <img src="https://image.tmdb.org/t/p/w500/{{ series.poster_path }}" style="border:3px solid white; border-radius: 1%;" width="100%" alt="{{ movie.title }} poster">
                         {% endif %}
@@ -204,7 +203,6 @@ span.star-prototype > * {
                 </div>
             </div> 
         </div>
-
         <div class="modal fade" id="modal-{{movie.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" style="width:700px; height:360px;" role="document">
     <div class="modal-content">
@@ -234,7 +232,6 @@ span.star-prototype > * {
 {% endfor %}
 {{ forms }}
 <button onClick="make_comment({{series.pk}})">댓글 달기</button>
-
 </div>
   <a class="carousel-control-prev col-1" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -250,7 +247,6 @@ span.star-prototype > * {
 <div class="col-3 mt-4">
 <div class="chat-container">
 <div class="chat-header">
-
 <button id="close" class="header-btn"></button>
       <button id="minimize" class="header-btn"></button>
       <button id="maximize" class="header-btn"></button>
@@ -369,14 +365,16 @@ function make_comment(series_id){
     dataType: "json",
     success: function(response){
       if (response.chk) {
-      $("#comment_list").prepend(`<div id=user-${response.review_id}><p id=user-${response.review_id}-p>`+response.content+response.score+response.username+`</p><button onClick="delete_comment({{review.pk}})">댓글 삭제</button></div>`)
-      $("#comment").val(' ')
+      $("#comment_list").prepend(`<div id=user-${response.review_id}><p id=user-${response.review_id}-p>`+response.content+response.score+response.username+`</p><button onClick="delete_comment(${response.review_id})">댓글 삭제</button></div>`)
+      $("#id_content").val(' ')
+      $("#id_score").val(' ')
     }
       else {
         console.log(document.querySelector(`#user-${response.review_id}`))
         const user_comment = document.querySelector(`#user-${response.review_id}-p`)
         user_comment.innerText = `${response.content+response.score+response.username}`
-        $("#comment").val(' ')
+        $("#id_content").val(' ')
+        $("#id_score").val(' ')
       }
     },
     error: function(request, status, error){
