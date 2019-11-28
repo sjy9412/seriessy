@@ -159,40 +159,40 @@ def search(request):
 
 @login_required
 def comment_create_ajax(request):
+    series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
+    reviews = series.review_set.all()
     if request.method == 'POST':
         for review in reviews:
             if request.user == review.user:
-                forms = ReviewForm(request.POST, instance=review)
-                forms.save()
+                review.content = request.POST.get('content')
+                review.score = int(request.POST.get('score'))
+                review.save()
+                chk = False
                 break
         else:
-            forms = ReviewForm(request.POST)
-            if forms.is_valid():
-                review = forms.save(commit=False)
-                review.user = request.user
-                review.series = series
-                forms.save()
-    return redirect('series:detail', series_pk, movie_pk)
-    review = Review()
-    review.content = request.POST.get('content')
-    review.series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
-    review.user = request.user
-    review.score = int(request.POST.get('score'))
-    review.save()
-    context = {
-        'content' : review.content,
-        'score' : review.score,
-        'username' : request.user.username
-    }
-    return HttpResponse(json.dumps(context), content_type="application/json")
-
-
-def suggest(request):
-    if request.method == 'POST':
-        return redirect('series:suggest')
-    else:
-        series = Series.objects.all()
+            review = Review()
+            review.content = request.POST.get('content')
+            review.series = get_object_or_404(Series, pk=int(request.POST.get('series_id')))
+            review.user = request.user
+            review.score = int(request.POST.get('score'))
+            review.save()
+            chk = True
         context = {
-            'series': series
+            'content' : review.content,
+            'score' : review.score,
+            'username' : request.user.username,
+            'review_id' : review.pk,
+            'chk' : chk
         }
-        return render(request, 'series/suggest.html', context)
+        return HttpResponse(json.dumps(context), content_type="application/json")
+
+@login_required
+def review_delete(request):
+    review_id = int(request.POST.get('review_id'))
+    review = get_object_or_404(Review, pk=review_id)
+    if request.method == 'POST':
+        review.delete()
+    context = {
+            'review_id' : review_id
+        }
+    return HttpResponse(json.dumps(context), content_type="application/json")

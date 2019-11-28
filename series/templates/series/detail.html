@@ -153,7 +153,7 @@ span.star-prototype > * {
 <div class="bg">
 <div>
 <div class="row tx-4" style="width:98%; padding-top:90px;">
-<div class="col-2 my-4 ">
+<div class="col-2 my-xl-5 my-sm-4">
 <div class="nav flex-column nav-pills pl-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 <h3 class='mb-4 text-center'>시리즈 영화 목록</h3>
 <div style="overflow:auto; overflow-x: hidden; height:70vh;">
@@ -183,7 +183,12 @@ span.star-prototype > * {
             <div class="row m-5">
                 <div class="col-4" style="margin: auto 0;">
                     <div style="height:50vh; text-align:center; ">
+                        {% if movie.poster_path %}
                         <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" style="border:3px solid white; border-radius: 1%;" width="100%" alt="{{ movie.title }} poster">
+
+                        {% else %}
+                        <img src="https://image.tmdb.org/t/p/w500/{{ series.poster_path }}" style="border:3px solid white; border-radius: 1%;" width="100%" alt="{{ movie.title }} poster">
+                        {% endif %}
                             <h5>{{ movie.title }}</h5>
                             <!-- Button trigger modal -->
                               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-{{movie.pk}}">
@@ -220,13 +225,12 @@ span.star-prototype > * {
 </div>
 <div id='comment_list' class='row'>
 {% for review in series.review_set.all %}
-{{ review.content }}
+<div id='user-{{ review.pk }}'>
+<p id='user-{{ review.pk }}-p'>{{ review.content }}
 {{ review.score }}
-{{ review.user }}
-<form action="" method='POST'>
-{% csrf_token %}
-<button type="submit">댓글 삭제</button>
-</form>
+{{ review.user }}</p>
+<button onClick="delete_comment({{review.pk}})">댓글 삭제</button>
+</div>
 {% endfor %}
 {{ forms }}
 <button onClick="make_comment({{series.pk}})">댓글 달기</button>
@@ -364,10 +368,37 @@ function make_comment(series_id){
     },
     dataType: "json",
     success: function(response){
-      console.log('hi');
-      console.log(response.message);
-      $("#comment_list").append("<p>"+response.content+response.score+response.username+"</p><hr>")
+      if (response.chk) {
+      $("#comment_list").prepend(`<div id=user-${response.review_id}><p id=user-${response.review_id}-p>`+response.content+response.score+response.username+`</p><button onClick="delete_comment({{review.pk}})">댓글 삭제</button></div>`)
       $("#comment").val(' ')
+    }
+      else {
+        console.log(document.querySelector(`#user-${response.review_id}`))
+        const user_comment = document.querySelector(`#user-${response.review_id}-p`)
+        user_comment.innerText = `${response.content+response.score+response.username}`
+        $("#comment").val(' ')
+      }
+    },
+    error: function(request, status, error){
+      console.log('bye...');
+      alert(error);
+    },
+  });
+}
+function delete_comment(review_id){
+  $.ajax({
+    type: "POST",
+    url: "{% url 'series:review_delete' %}",
+    data:{
+      'review_id': review_id,
+      'csrfmiddlewaretoken': '{{ csrf_token }}',
+    },
+    dataType: "json",
+    success: function(response){
+        console.log(response)
+        const user_comment = document.querySelector(`#user-${response.review_id}`)
+        console.log(user_comment)
+        user_comment.parentNode.removeChild(user_comment)
     },
     error: function(request, status, error){
       console.log('bye...');
