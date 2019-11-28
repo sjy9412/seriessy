@@ -346,7 +346,7 @@ clear: both;
       var message = data['message'];
       var user = {{ user_name }}
       var send = data['send_user']
-      console.log(user)
+      console.log(e.data)
       console.log(send)
       if (user === send) {
         $('.chatbox').append('<div class="my-bubble bubble">' + message + '</div>');
@@ -355,7 +355,7 @@ clear: both;
         }, 100);
         $('textarea').val('');
       } else {
-        $('.chatbox').append('<div class="sd">'+ send + '</div><div class="friend-bubble bubble">' + message + '</div>');
+        $('.chatbox').append('<div class="friend-bubble bubble">' + message + '</div>');
         $('.chatbox').animate({
           scrollTop: $('.chatbox').get(0).scrollHeight
         }, 100);
