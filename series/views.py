@@ -1,6 +1,6 @@
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Genre, Movie, Review, Series, Score
+from .models import Genre, Movie, Review, Series, Score, Request
 from .forms import ReviewForm
 from django.contrib.auth.decorators import login_required
 from django.utils.safestring import mark_safe
@@ -188,11 +188,14 @@ def review_delete(request):
     return HttpResponse(json.dumps(context), content_type="application/json")
 
 def suggest(request):
+    suggest = Request()
+    series = Series.objects.all()
     if request.method == 'POST':
+        suggest.series_name = request.POST.get('name')
+        suggest.user = request.user
+        suggest.save()
         return redirect('series:suggest')
-    else:
-        series = Series.objects.all()
-        context = {
-            'series': series
-        }
-        return render(request, 'series/suggest.html', context)
+    context = {
+        'series': series
+    }
+    return render(request, 'series/suggest.html', context)
