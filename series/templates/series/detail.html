@@ -264,7 +264,7 @@ clear: both;
             </div>
             <hr>
               <div id='comment_list' class="px-5">
-                <div style="height:12vh; overflow:auto; overflow-x: hidden;">
+                <div id='comment_list2' style="height:12vh; padding-right:4px; overflow:auto; overflow-x: hidden;">
                   {% for review in series.review_set.all %}
                   {% if review.user == user %}
                   <div id='user-{{ review.pk }}' class="col-12">
@@ -434,7 +434,7 @@ clear: both;
         dataType: "json",
         success: function (response) {
           if (response.chk) {
-            $("#comment_list").prepend(`<div id='user-${response.review_id}' class="col-12">
+            $("#comment_list2").prepend(`<div id='user-${response.review_id}' class="col-12">
                   <div class="row">
                     <p class="col-9 pt-1" id='user-${response.review_id}-p'>` + response.username + ' : ' + response.content + `</p>
                     <div style="text-align:left;" class='d-inline-block col-2 pt-2'>
