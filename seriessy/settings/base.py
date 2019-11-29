@@ -33,8 +33,8 @@ SECRET_KEY = config('SECRET_KEY')
 
 INSTALLED_APPS = [
     # 'sass_processor',
-    'bootstrap4',
     'channels',
+    'bootstrap4',
     'series',
     'accounts',
     'django.contrib.admin',
