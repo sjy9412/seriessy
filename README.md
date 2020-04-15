@@ -236,7 +236,7 @@
     
     ```
     
-2. 결과
+2. 결과 (http://seriessy.herokuapp.com/series)
 
     * 메인페이지
 
@@ -251,6 +251,7 @@
       ![시리즈상세페이지](/image/시리즈상세페이지.JPG)
     
     * 동영상 ![동영상](/image/동영상.JPG)
+    
     
     
 
