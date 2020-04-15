@@ -18,7 +18,7 @@
 
 ### 2. Seed Data 구성
 
-![ORM](C:\Users\student\Desktop\image\ORM.JPG)
+![ORM](/image/ORM.JPG)
 
 ### 3. `accounts` App
 
@@ -90,15 +90,15 @@
 
     * 로그인 창
 
-      ![로그인창](C:\Users\student\Desktop\image\로그인창.JPG)
+      ![로그인창](/image/로그인창.JPG)
       
     * 회원가입 창
     
-      ![회원가입창](C:\Users\student\Desktop\image\회원가입창.JPG)
+      ![회원가입창](/image/회원가입창.JPG)
     
     * 회원 상세보기
     
-      ![프로필](C:\Users\student\Desktop\image\프로필.JPG)
+      ![프로필](/image/프로필.JPG)
     
       
 
@@ -119,7 +119,8 @@
             'series':series,
         }
         return render(request, 'series/index.html', context)
-def detail(request, series_pk): # 시리즈 상세보기 화면
+        
+    def detail(request, series_pk): # 시리즈 상세보기 화면
         series = get_object_or_404(Series, pk=series_pk)
         movie_pk = request.GET.get('movie_pk')
         forms = ReviewForm()
@@ -130,7 +131,8 @@ def detail(request, series_pk): # 시리즈 상세보기 화면
             'room_name_json': mark_safe(json.dumps(series_pk)),
             'user_name': mark_safe(json.dumps(request.user.username)),
         }
-    return render(request, 'series/detail.html', context)
+        return render(request, 'series/detail.html', context)
+        
     @login_required
     def like(request, series_pk): # 좋아요 기능
         if request.is_ajax():
@@ -150,7 +152,7 @@ def detail(request, series_pk): # 시리즈 상세보기 화면
             return HttpResponseForbidden()
     
     @login_required
-def room(request, series_pk): # 채팅방 기능
+    def room(request, series_pk): # 채팅방 기능
         series = get_object_or_404(Series, pk=series_pk)
         user = request.user
         return render(request, 'series/room.html', {
@@ -238,17 +240,17 @@ def room(request, series_pk): # 채팅방 기능
 
     * 메인페이지
 
-      ![메인페이지](C:\Users\student\Desktop\image\메인페이지.JPG)
+      ![메인페이지](/image/메인페이지.JPG)
 
     * 메인페이지(시리즈)
 
-      ![영화메인페이지](C:\Users\student\Desktop\image\영화메인페이지.JPG)
+      ![영화메인페이지](/image/영화메인페이지.JPG)
 
     * 시리즈 상세페이지
 
-      ![시리즈상세페이지](C:\Users\student\Desktop\image\시리즈상세페이지.JPG)
+      ![시리즈상세페이지](/image/시리즈상세페이지.JPG)
     
-    * 동영상 ![동영상](C:\Users\student\Desktop\image\동영상.JPG)
+    * 동영상 ![동영상](/image/동영상.JPG)
     
     
 
